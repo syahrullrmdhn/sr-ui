@@ -9,13 +9,14 @@ export default function AdminLayout() {
 
   return (
     <ToastProvider>
-      <div className="fixed inset-0 overflow-auto bg-[#F4F6F9]">
+      <div className="fixed inset-0 overflow-hidden bg-slate-50 font-sans text-slate-800 flex">
         <Sidebar collapsed={collapsed} />
         <Header collapsed={collapsed} onToggle={() => setCollapsed(!collapsed)} />
-        <main className={"fixed top-[50px] bottom-0 right-0 transition-all duration-500 " + (collapsed ? 'left-0' : 'left-[220px]')}>
-          <div className="absolute top-0 left-0 right-0 h-[80px] bg-primary"></div>
-          <div className="absolute inset-0 overflow-y-auto p-5 pt-7">
-            <div className="relative">
+        
+        {/* PERHATIKAN: left-[260px] disamakan agar main content tidak bergeser dan w-full h-full agar full page tanpa sudut sia-sia */}
+        <main className={`fixed top-[64px] bottom-0 right-0 transition-all duration-300 ease-in-out bg-slate-50 flex flex-col ${collapsed ? 'left-0' : 'left-[260px]'}`}>
+          <div className="absolute inset-0 overflow-y-auto overflow-x-hidden p-4 md:p-6 w-full h-full flex flex-col">
+            <div className="w-full min-h-full flex-1 flex flex-col">
               <Outlet />
             </div>
           </div>

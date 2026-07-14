@@ -13,6 +13,14 @@ import JadwalPage from './components/Jadwal/JadwalPage'
 import TokenPage from './components/Token/TokenPage'
 import RuangPage from './components/Ruang/RuangPage'
 import RekapPage from './components/Rekap/RekapPage'
+import SoalImportPage from './components/Soal/SoalImportPage'
+import MateriPage from './components/Materi/MateriPage'
+import PaketPage from './components/Paket/PaketPage'
+import SesiPage from './components/Sesi/SesiPage'
+import RekapLokasiPage from './components/Rekap/RekapLokasiPage'
+import RekapJenisPage from './components/Rekap/RekapJenisPage'
+import SettingsPage from './components/Settings/SettingsPage'
+import AccountPage from './components/Account/AccountPage'
 import ExamPage from './components/Exam/ExamPage'
 import ExamSessionPage from './components/Exam/ExamSessionPage'
 import PendaftaranPage from './components/Pendaftaran/PendaftaranPage'
@@ -40,12 +48,20 @@ function App() {
           <Route path="/admin/dashboard" element={<DashboardPage />} />
           <Route path="/admin/users" element={<UsersPage />} />
           <Route path="/admin/soal" element={<SoalPage />} />
+          <Route path="/admin/soal/import" element={<SoalImportPage />} />
           <Route path="/admin/tes" element={<TesPage />} />
+          <Route path="/admin/materi" element={<MateriPage />} />
+          <Route path="/admin/paket" element={<PaketPage />} />
           <Route path="/admin/peserta" element={<PesertaPage />} />
           <Route path="/admin/jadwal" element={<JadwalPage />} />
           <Route path="/admin/token" element={<TokenPage />} />
           <Route path="/admin/ruang" element={<RuangPage />} />
+          <Route path="/admin/sesi" element={<SesiPage />} />
           <Route path="/admin/rekap" element={<RekapPage />} />
+          <Route path="/admin/rekap/lokasi" element={<RekapLokasiPage />} />
+          <Route path="/admin/rekap/jenis" element={<RekapJenisPage />} />
+          <Route path="/admin/settings" element={<SettingsPage />} />
+          <Route path="/admin/account" element={<AccountPage />} />
         </Route>
 
         <Route path="*" element={<NotFoundPage />} />

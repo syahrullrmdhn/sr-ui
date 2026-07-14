@@ -1,38 +1,176 @@
+import { useState } from 'react'
 import { mockJadwal } from '../../data/mockData'
 import { Card, CardHeader, CardBody } from '../ui/Card'
 import DataTable from '../ui/DataTable'
 import Button from '../ui/Button'
 import Badge from '../ui/Badge'
+import Page from '../ui/Page'
+import Modal from '../ui/Modal'
+import Input from '../ui/Input'
+import { useToast } from '../ui/Toast'
 
 export default function JadwalPage() {
+  const { addToast } = useToast()
+  const [jadwalList, setJadwalList] = useState(mockJadwal)
+  const [modalOpen, setModalOpen] = useState(false)
+  const [editingId, setEditingId] = useState(null)
+
+  const [formData, setFormData] = useState({
+    namaTes: 'Tes Kompetensi Dasar',
+    tanggal: '22 Juli 2026',
+    jamMulai: '08:00 WIB',
+    jamSelesai: '10:00 WIB',
+    sesi: '1',
+    lokasi: 'Lab Komputer Utama (Lab 1)',
+    status: 'Terjadwal'
+  })
+
+  const handleOpenAdd = () => {
+    setEditingId(null)
+    setFormData({ namaTes: 'Tes Kompetensi Dasar', tanggal: '22 Juli 2026', jamMulai: '08:00 WIB', jamSelesai: '10:00 WIB', sesi: '1', lokasi: 'Lab Komputer Utama (Lab 1)', status: 'Terjadwal' })
+    setModalOpen(true)
+  }
+
+  const handleOpenEdit = (jadwal) => {
+    setEditingId(jadwal.id)
+    setFormData({
+      namaTes: jadwal.namaTes,
+      tanggal: jadwal.tanggal,
+      jamMulai: jadwal.jamMulai,
+      jamSelesai: jadwal.jamSelesai,
+      sesi: String(jadwal.sesi),
+      lokasi: jadwal.lokasi,
+      status: jadwal.status
+    })
+    setModalOpen(true)
+  }
+
+  const handleDelete = (id, nama) => {
+    if (window.confirm(`Hapus jadwal sesi "${nama}"?`)) {
+      setJadwalList(jadwalList.filter(j => j.id !== id))
+      addToast({ title: 'Jadwal Dihapus', message: `Jadwal ujian "${nama}" berhasil dihapus.`, variant: 'danger' })
+    }
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    if (!formData.namaTes || !formData.tanggal) {
+      addToast({ title: 'Input Kurang', message: 'Nama Tes dan Tanggal wajib diisi!', variant: 'warning' })
+      return
+    }
+
+    if (editingId) {
+      setJadwalList(jadwalList.map(j => j.id === editingId ? { ...j, ...formData, sesi: Number(formData.sesi) } : j))
+      addToast({ title: 'Jadwal Diperbarui', message: `Jadwal "${formData.namaTes}" Sesi ${formData.sesi} berhasil diperbarui.`, variant: 'success' })
+    } else {
+      const newJadwal = {
+        id: Date.now(),
+        ...formData,
+        sesi: Number(formData.sesi)
+      }
+      setJadwalList([newJadwal, ...jadwalList])
+      addToast({ title: 'Jadwal Dibuat', message: `Jadwal baru "${formData.namaTes}" Sesi ${formData.sesi} berhasil ditambahkan.`, variant: 'success' })
+    }
+    setModalOpen(false)
+  }
+
   const columns = [
     { header: 'No', render: (_, i) => i + 1 },
-    { header: 'Nama Tes', accessor: 'namaTes', render: r => <span className="font-semibold">{r.namaTes}</span> },
-    { header: 'Tanggal', accessor: 'tanggal' },
-    { header: 'Jam', render: r => r.jamMulai + ' - ' + r.jamSelesai },
-    { header: 'Sesi', render: r => 'Sesi ' + r.sesi },
-    { header: 'Lokasi', accessor: 'lokasi' },
-    { header: 'Status', accessor: 'status', render: r => <Badge variant={r.status === 'Terjadwal' ? 'success' : 'warning'}>{r.status}</Badge> },
+    { header: 'Nama Tes / Sesi', accessor: 'namaTes', render: r => <span className="font-bold text-slate-800">{r.namaTes}</span> },
+    { header: 'Tanggal Pelaksanaan', accessor: 'tanggal', render: r => <span className="font-medium text-slate-700">{r.tanggal}</span> },
+    { header: 'Jam Ujian', render: r => <span className="text-xs font-mono bg-slate-100 px-2.5 py-1 rounded-md text-slate-700 font-bold">{r.jamMulai} - {r.jamSelesai}</span> },
+    { header: 'Sesi', render: r => <Badge variant="purple">Sesi {r.sesi}</Badge> },
+    { header: 'Lokasi / Ruang', accessor: 'lokasi', render: r => <span className="text-sm text-slate-700 font-medium">{r.lokasi}</span> },
+    { header: 'Status Sesi', accessor: 'status', render: r => <Badge variant={r.status === 'Terjadwal' ? 'success' : 'warning'} dot>{r.status}</Badge> },
   ]
 
   return (
-    <div>
-      <h4 className="text-base font-medium text-gray-700 mb-5 flex items-center gap-2">
-        <i className="fas fa-calendar text-primary"></i> Jadwal Ujian
-      </h4>
-      <Card>
-        <CardHeader action={<Button variant="primary" size="sm" icon="fa-plus">Tambah Jadwal</Button>}>Daftar Jadwal</CardHeader>
-        <CardBody>
-          <DataTable columns={columns} data={mockJadwal}
+    <Page 
+      title="Jadwal Pelaksanaan Sesi Ujian" 
+      subtitle="Atur tanggal, jam mulai/selesai, serta alokasi sesi ujian di setiap laboratorium dan ruang CBT"
+      icon="fa-calendar-alt"
+      bannerTheme="rose"
+      badge={`Total: ${jadwalList.length} Sesi Terjadwal`}
+    >
+      <Card className="flex-1 flex flex-col w-full shadow-sm">
+        <CardHeader action={
+          <Button variant="primary" size="sm" icon="fa-plus" onClick={handleOpenAdd}>
+            Buat Jadwal Baru
+          </Button>
+        }>
+          Daftar Jadwal Sesi & Gelombang CBT
+        </CardHeader>
+        <CardBody className="flex-1 flex flex-col">
+          <DataTable 
+            columns={columns} 
+            data={jadwalList}
+            className="flex-1"
             actions={row => (
-              <div className="flex gap-1">
-                <Button variant="outline" size="xs" icon="fa-edit" />
-                <Button variant="danger" size="xs" icon="fa-trash" />
+              <div className="flex justify-end gap-1.5">
+                <Button variant="outline" size="xs" icon="fa-edit" title="Edit Jadwal" onClick={() => handleOpenEdit(row)} />
+                <Button variant="danger" size="xs" icon="fa-trash" title="Hapus Jadwal" onClick={() => handleDelete(row.id, row.namaTes)} />
               </div>
             )}
           />
         </CardBody>
       </Card>
-    </div>
+
+      {/* Modal Tambah / Edit Jadwal */}
+      <Modal
+        open={modalOpen}
+        onClose={() => setModalOpen(false)}
+        title={editingId ? 'Edit Jadwal Sesi Ujian' : 'Buat Jadwal Sesi Baru'}
+        icon="fa-calendar-plus"
+        size="md"
+        footer={
+          <>
+            <Button variant="ghost" onClick={() => setModalOpen(false)}>Batal</Button>
+            <Button variant="primary" icon="fa-save" onClick={handleSubmit}>
+              {editingId ? 'Simpan Perubahan' : 'Buat Jadwal'}
+            </Button>
+          </>
+        }
+      >
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <Input label="Nama Tes / Mata Ujian" value={formData.namaTes} onChange={e => setFormData({...formData, namaTes: e.target.value})} icon="fa-clipboard" required />
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <Input label="Tanggal Pelaksanaan" value={formData.tanggal} onChange={e => setFormData({...formData, tanggal: e.target.value})} icon="fa-calendar" placeholder="22 Juli 2026" required />
+            <div className="space-y-1.5">
+              <label className="block text-xs font-semibold text-slate-700 tracking-wide uppercase">Sesi Ujian</label>
+              <select value={formData.sesi} onChange={e => setFormData({...formData, sesi: e.target.value})} className="w-full px-4 py-2.5 text-sm bg-slate-50 border border-slate-200/80 rounded-xl focus:border-teal-500 outline-none font-medium text-slate-800">
+                <option value="1">Sesi 1 (08:00 - 10:00 WIB)</option>
+                <option value="2">Sesi 2 (10:30 - 12:30 WIB)</option>
+                <option value="3">Sesi 3 (13:30 - 15:30 WIB)</option>
+              </select>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <Input label="Jam Mulai" value={formData.jamMulai} onChange={e => setFormData({...formData, jamMulai: e.target.value})} icon="fa-clock" placeholder="08:00 WIB" required />
+            <Input label="Jam Selesai" value={formData.jamSelesai} onChange={e => setFormData({...formData, jamSelesai: e.target.value})} icon="fa-clock" placeholder="10:00 WIB" required />
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="space-y-1.5">
+              <label className="block text-xs font-semibold text-slate-700 tracking-wide uppercase">Lokasi / Laboratorium</label>
+              <select value={formData.lokasi} onChange={e => setFormData({...formData, lokasi: e.target.value})} className="w-full px-4 py-2.5 text-sm bg-slate-50 border border-slate-200/80 rounded-xl focus:border-teal-500 outline-none font-medium text-slate-800">
+                <option value="Lab Komputer Utama (Lab 1)">Lab Komputer Utama (Lab 1)</option>
+                <option value="Lab Multimedia (Lab 2)">Lab Multimedia (Lab 2)</option>
+                <option value="Ruang Ujian Terpadu A">Ruang Ujian Terpadu A</option>
+              </select>
+            </div>
+
+            <div className="space-y-1.5">
+              <label className="block text-xs font-semibold text-slate-700 tracking-wide uppercase">Status Sesi</label>
+              <select value={formData.status} onChange={e => setFormData({...formData, status: e.target.value})} className="w-full px-4 py-2.5 text-sm bg-slate-50 border border-slate-200/80 rounded-xl focus:border-teal-500 outline-none font-medium text-slate-800">
+                <option value="Terjadwal">Terjadwal (Siap Dilaksanakan)</option>
+                <option value="Ditunda">Ditunda / Reschedule</option>
+              </select>
+            </div>
+          </div>
+        </form>
+      </Modal>
+    </Page>
   )
 }

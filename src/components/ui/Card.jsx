@@ -1,6 +1,9 @@
 export function Card({ children, className = '', ...props }) {
   return (
-    <div className={`bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden \${className}`} {...props}>
+    <div 
+      className={`bg-white rounded-xl shadow-sm border border-slate-200/60 overflow-hidden flex flex-col w-full ${className}`} 
+      {...props}
+    >
       {children}
     </div>
   )
@@ -8,17 +11,25 @@ export function Card({ children, className = '', ...props }) {
 
 export function CardHeader({ children, className = '', action }) {
   return (
-    <div className={`flex items-center justify-between px-5 py-3.5 border-b border-gray-100 \${className}`}>
-      <div className="font-medium text-sm text-gray-800">{children}</div>
-      {action && <div>{action}</div>}
+    <div 
+      className={`flex items-center justify-between px-5 py-4 border-b border-slate-100 bg-slate-50/40 w-full ${className}`}
+    >
+      <div className="font-bold text-sm text-slate-800 tracking-wide flex items-center gap-2">{children}</div>
+      {action && <div className="flex items-center gap-1.5">{action}</div>}
     </div>
   )
 }
 
 export function CardBody({ children, className = '' }) {
-  return <div className={`px-5 py-4 \${className}`}>{children}</div>
+  return <div className={`p-5 flex-1 w-full ${className}`}>{children}</div>
 }
 
 export function CardFooter({ children, className = '' }) {
-  return <div className={`px-5 py-3 bg-gray-50/50 border-t border-gray-100 \${className}`}>{children}</div>
+  return (
+    <div 
+      className={`px-5 py-4 bg-slate-50/80 border-t border-slate-100/80 w-full ${className}`}
+    >
+      {children}
+    </div>
+  )
 }

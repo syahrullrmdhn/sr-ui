@@ -18,8 +18,8 @@ export function ProgressBar({ value = 0, max = 100, variant = 'primary', size = 
           {showPercent && <span className="text-xs font-semibold text-gray-500">{Math.round(percent)}%</span>}
         </div>
       )}
-      <div className={`w-full bg-gray-200 rounded-full overflow-hidden \${heights[size]}`}>
-        <div className={`\${colors[variant]} \${heights[size]} rounded-full transition-all duration-500`} style={{ width: percent + '%' }}></div>
+      <div className={`w-full bg-gray-200 rounded-full overflow-hidden ${heights[size]}`}>
+        <div className={`${colors[variant]} ${heights[size]} rounded-full transition-all duration-500`} style={{ width: percent + '%' }}></div>
       </div>
     </div>
   )
