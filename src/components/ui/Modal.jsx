@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import { createPortal } from 'react-dom'
 
 export default function Modal({ open, onClose, title, children, size = 'md', footer, icon }) {
   const sizes = { 
@@ -9,19 +10,28 @@ export default function Modal({ open, onClose, title, children, size = 'md', foo
   }
 
   useEffect(() => {
-    if (open) document.body.style.overflow = 'hidden'
-    else document.body.style.overflow = ''
-    return () => { document.body.style.overflow = '' }
+    if (open) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = ''
+    }
+    return () => { 
+      document.body.style.overflow = '' 
+    }
   }, [open])
 
   if (!open) return null
 
-  return (
-    <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4 overflow-y-auto">
-      <div className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm transition-opacity" onClick={onClose}></div>
+  const modalContent = (
+    <div className="fixed inset-0 z-[999999] flex items-center justify-center p-4 overflow-y-auto">
+      {/* Backdrop overlay full screen dengan blur di SELURUH layar (Sidebar, Header, Konten) */}
+      <div 
+        className="fixed inset-0 bg-slate-900/65 backdrop-blur-md transition-opacity animate-[fadeIn_0.2s_ease-out]" 
+        onClick={onClose}
+      ></div>
       
       <div className={`relative bg-white rounded-2xl shadow-2xl border border-slate-200/80 w-full ${sizes[size] || sizes.md} animate-[modalIn_0.25s_cubic-bezier(0.16,1,0.3,1)] max-h-[90vh] flex flex-col z-10 overflow-hidden my-auto`}>
-        {/* Header */}
+        {/* Header Modal */}
         <div className="flex items-center justify-between px-6 py-4 bg-gradient-to-r from-slate-50 to-white border-b border-slate-100">
           <div className="flex items-center gap-3">
             {icon && (
@@ -40,12 +50,12 @@ export default function Modal({ open, onClose, title, children, size = 'md', foo
           </button>
         </div>
 
-        {/* Body */}
+        {/* Body Modal */}
         <div className="px-6 py-5 overflow-y-auto flex-1 text-sm text-slate-700">
           {children}
         </div>
 
-        {/* Footer */}
+        {/* Footer Modal */}
         {footer && (
           <div className="px-6 py-4 bg-slate-50/90 border-t border-slate-100/80 flex items-center justify-end gap-2.5">
             {footer}
@@ -54,11 +64,19 @@ export default function Modal({ open, onClose, title, children, size = 'md', foo
       </div>
 
       <style>{`
+        @keyframes fadeIn {
+          from { opacity: 0; }
+          to { opacity: 1; }
+        }
         @keyframes modalIn {
-          from { opacity: 0; transform: scale(0.95) translateY(10px); }
+          from { opacity: 0; transform: scale(0.95) translateY(12px); }
           to { opacity: 1; transform: scale(1) translateY(0); }
         }
       `}</style>
     </div>
   )
+
+  // Menggunakan createPortal agar Modal di-render langsung di bawah document.body
+  // Sehingga overlay menutupi SELURUH viewport termasuk Sidebar & Header
+  return typeof document !== 'undefined' ? createPortal(modalContent, document.body) : modalContent
 }
