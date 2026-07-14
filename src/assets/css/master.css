@@ -1,0 +1,36 @@
+/* ========== REGISTER / PENDAFTARAN ========== */
+.register-wrapper {
+  min-height: 100vh; display: flex;
+  align-items: center; justify-content: center;
+  background-color: #edf2f9; padding: 20px;
+}
+.register-card {
+  background: white; border-radius: 10px;
+  box-shadow: 0 7px 14px rgba(65,69,88,0.1), 0 3px 6px rgba(0,0,0,0.07);
+  overflow: hidden; width: 100%; max-width: 880px;
+  display: flex;
+}
+.register-left {
+  flex: 0 0 35%;
+  background: linear-gradient(-45deg, #bd895f, #CC9C75);
+  color: white; text-align: center;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  padding: 40px 20px; position: relative;
+}
+.register-right { flex: 1; padding: 30px; }
+
+/* 404 Page */
+.page-404 {
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  min-height: 100vh; background: white;
+}
+.page-404 .big-404 {
+  font-size: 120px; font-weight: bold;
+  font-style: italic; color: #666; margin: 0;
+}
+.page-404 .text-404 { font-size: 16px; color: #999; margin: 10px 0 20px; }
+
+/* Daterangepicker override */
+.daterangepicker { font-size: 12px; }

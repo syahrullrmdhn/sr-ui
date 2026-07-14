@@ -1,0 +1,57 @@
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import AdminLayout from './components/Layout/AdminLayout'
+import MasterLayout from './components/Layout/MasterLayout'
+import LoginPage from './components/Login/LoginPage'
+import RegisterPage from './components/Register/RegisterPage'
+import ResetPage from './components/Reset/ResetPage'
+import DashboardPage from './components/Dashboard/DashboardPage'
+import UsersPage from './components/Users/UsersPage'
+import SoalPage from './components/Soal/SoalPage'
+import TesPage from './components/Tes/TesPage'
+import PesertaPage from './components/Peserta/PesertaPage'
+import JadwalPage from './components/Jadwal/JadwalPage'
+import TokenPage from './components/Token/TokenPage'
+import RuangPage from './components/Ruang/RuangPage'
+import RekapPage from './components/Rekap/RekapPage'
+import ExamPage from './components/Exam/ExamPage'
+import ExamSessionPage from './components/Exam/ExamSessionPage'
+import PendaftaranPage from './components/Pendaftaran/PendaftaranPage'
+import NotFoundPage from './components/NotFound/NotFoundPage'
+
+function App() {
+  return (
+    <Router>
+      <Routes>
+        {/* Public / Peserta Routes */}
+        <Route path="/" element={<LoginPage />} />
+        <Route path="/register" element={<RegisterPage />} />
+        <Route path="/reset" element={<ResetPage />} />
+        <Route path="/pendaftaran" element={<PendaftaranPage />} />
+
+        {/* Exam Routes (Master Layout) */}
+        <Route element={<MasterLayout />}>
+          <Route path="/peserta/exam" element={<ExamPage />} />
+          <Route path="/peserta/exam/start" element={<ExamSessionPage />} />
+        </Route>
+
+        {/* Admin Routes */}
+        <Route element={<AdminLayout />}>
+          <Route path="/admin" element={<DashboardPage />} />
+          <Route path="/admin/dashboard" element={<DashboardPage />} />
+          <Route path="/admin/users" element={<UsersPage />} />
+          <Route path="/admin/soal" element={<SoalPage />} />
+          <Route path="/admin/tes" element={<TesPage />} />
+          <Route path="/admin/peserta" element={<PesertaPage />} />
+          <Route path="/admin/jadwal" element={<JadwalPage />} />
+          <Route path="/admin/token" element={<TokenPage />} />
+          <Route path="/admin/ruang" element={<RuangPage />} />
+          <Route path="/admin/rekap" element={<RekapPage />} />
+        </Route>
+
+        <Route path="*" element={<NotFoundPage />} />
+      </Routes>
+    </Router>
+  )
+}
+
+export default App
