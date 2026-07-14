@@ -1,8 +1,8 @@
 export const systemInfo = {
   title: 'Sistem Ujian Online',
   name: 'SISTEM UJIAN ONLINE',
-  organization: 'KEMENTERIAN PERTAHANAN RI',
-  office: 'SEKRETARIAT JENDERAL',
+  organization: 'PEMERINTAH REPUBLIK INDONESIA',
+  office: 'DINAS PENDIDIKAN DAN PELATIHAN',
   logo: null,
 }
 

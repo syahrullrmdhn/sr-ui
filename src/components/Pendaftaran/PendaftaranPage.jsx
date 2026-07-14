@@ -7,13 +7,13 @@ export default function PendaftaranPage() {
   const handleSubmit = (e) => { e.preventDefault(); alert('Pendaftaran berhasil!'); navigate('/') }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-[#edf2f9] p-5">
+    <div className="font-poppins min-h-screen flex items-center justify-center bg-[#edf2f9] p-5">
       <div className="bg-white rounded-xl shadow-lg overflow-hidden w-full max-w-[950px] flex max-md:flex-col">
         <div className="flex-[0_0_32%] bg-gradient-to-br from-accent to-primary-light text-white text-center flex flex-col items-center justify-center p-6 relative overflow-hidden max-md:flex-none">
           <Particles count={30} color="rgba(255,255,255,0.1)" />
           <div className="relative z-10">
             <div className="w-16 h-16 rounded-full bg-white/15 flex items-center justify-center text-3xl mb-4 mx-auto"><i className="fas fa-graduation-cap"></i></div>
-            <h2 className="text-base font-medium">KEMENTERIAN PERTAHANAN RI</h2>
+            <h2 className="text-base font-medium">PEMERINTAH REPUBLIK INDONESIA</h2>
             <h6 className="text-[10px] tracking-[3px] uppercase opacity-75 mt-1">SISTEM UJIAN ONLINE</h6>
             <button onClick={() => navigate('/')} className="mt-6 bg-transparent border border-white/60 text-white px-5 py-1.5 rounded-full text-sm hover:bg-white/10 transition">Login</button>
           </div>

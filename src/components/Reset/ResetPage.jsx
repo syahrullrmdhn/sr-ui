@@ -7,7 +7,7 @@ export default function ResetPage() {
   const handleSubmit = (e) => { e.preventDefault(); alert('Password berhasil direset!'); navigate('/') }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-[#edf2f9] p-5">
+    <div className="font-poppins min-h-screen flex items-center justify-center bg-[#edf2f9] p-5">
       <div className="bg-white rounded-xl shadow-lg overflow-hidden w-full max-w-[700px] flex max-md:flex-col">
         <div className="flex-[0_0_40%] bg-gradient-to-br from-accent to-primary-light text-white text-center flex flex-col items-center justify-center p-8 relative overflow-hidden max-md:flex-none max-md:p-6">
           <Particles count={30} color="rgba(255,255,255,0.1)" />

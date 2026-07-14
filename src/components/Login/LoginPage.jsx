@@ -15,7 +15,7 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-[#edf2f9] p-5">
+    <div className="font-poppins min-h-screen flex items-center justify-center bg-[#edf2f9] p-5">
       <div className="bg-white rounded-xl shadow-lg overflow-hidden w-full max-w-[880px] flex min-h-[500px] max-md:flex-col max-md:max-w-[450px]">
         {/* Left */}
         <div className="flex-[0_0_40%] bg-gradient-to-br from-accent to-primary-light text-white text-center flex flex-col items-center justify-center p-8 relative overflow-hidden max-md:flex-none max-md:p-6">
@@ -24,8 +24,8 @@ export default function LoginPage() {
             <div className="w-20 h-20 rounded-full bg-white/15 flex items-center justify-center text-4xl mb-5 backdrop-blur-sm">
               <i className="fas fa-graduation-cap"></i>
             </div>
-            <h2 className="text-lg font-medium m-1">KEMENTERIAN PERTAHANAN RI</h2>
-            <h2 className="text-lg font-medium m-1">SEKRETARIAT JENDERAL</h2>
+            <h2 className="text-lg font-medium m-1">PEMERINTAH REPUBLIK INDONESIA</h2>
+            <h2 className="text-lg font-medium m-1">DINAS PENDIDIKAN DAN PELATIHAN</h2>
             <h6 className="text-[11px] tracking-[3px] uppercase opacity-75 mt-2">SISTEM UJIAN ONLINE</h6>
             <div className="mt-8">
               <p className="text-sm opacity-80 mb-3">Belum Punya Akun?</p>
