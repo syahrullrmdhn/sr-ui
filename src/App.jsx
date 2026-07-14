@@ -25,7 +25,8 @@ import AccountPage from './components/Account/AccountPage'
 import ExamPage from './components/Exam/ExamPage'
 import ExamSessionPage from './components/Exam/ExamSessionPage'
 import PendaftaranPage from './components/Pendaftaran/PendaftaranPage'
-import NotFoundPage from './components/NotFound/NotFoundPage'
+import SoalEditorPage from './components/Soal/SoalEditorPage'
+import BeritaPage from './components/Berita/BeritaPage'
 
 function App() {
   return (
@@ -50,7 +51,9 @@ function App() {
             <Route path="/admin/dashboard" element={<DashboardPage />} />
             <Route path="/admin/users" element={<UsersPage />} />
             <Route path="/admin/soal" element={<SoalPage />} />
+            <Route path="/admin/soal/editor" element={<SoalEditorPage />} />
             <Route path="/admin/soal/import" element={<SoalImportPage />} />
+            <Route path="/admin/berita" element={<BeritaPage />} />
             <Route path="/admin/tes" element={<TesPage />} />
             <Route path="/admin/materi" element={<MateriPage />} />
             <Route path="/admin/paket" element={<PaketPage />} />

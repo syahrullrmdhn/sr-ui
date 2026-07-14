@@ -97,29 +97,30 @@ export default function SoalPage() {
       title="Bank Soal & Butir Ujian" 
       subtitle="Pusat penyimpanan, pengelolaan, kompilasi, dan verifikasi butir soal untuk seluruh mata ujian"
       icon="fa-question-circle"
-      bannerTheme="emerald"
+      bannerTheme="bronze"
       badge={`Total: ${soalList.reduce((s, c) => s + c.jumlahSoal, 0)} Butir Soal`}
     >
       {/* Visual Analytics Chart - Full Width */}
-      <Card className="border-none ring-1 ring-slate-200/60 w-full overflow-hidden shadow-sm">
+      <Card className="border-none ring-1 ring-slate-200/60 w-full overflow-hidden shadow-sm font-sans">
         <CardHeader>
-          <span className="flex items-center gap-2 text-slate-800 font-bold">
-            <i className="fas fa-chart-bar text-emerald-600"></i> Distribusi Butir Soal Berdasarkan Materi Ujian
-          </span>
+          Statistik Komposisi Bank Soal Aktif
         </CardHeader>
-        <CardBody className="pt-3">
+        <CardBody className="p-4 md:p-6 flex flex-col justify-between" style={{ minHeight: '300px' }}>
           <BarChart 
-            data={chartDataMateri} 
-            height={180} 
-            color="teal" 
+            data={chartData} 
+            color="bronze" 
+            height={220} 
             unit="Butir Soal" 
           />
         </CardBody>
       </Card>
 
-      <Card className="flex-1 flex flex-col w-full shadow-sm">
+      <Card className="flex-1 flex flex-col w-full shadow-sm font-sans">
         <CardHeader action={
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap items-center gap-2">
+            <Button variant="accent" size="sm" icon="fa-edit" onClick={() => navigate('/admin/soal/editor')}>
+              Buat Soal (Rich Text Editor)
+            </Button>
             <Button variant="success" size="sm" icon="fa-file-import" onClick={() => navigate('/admin/soal/import')}>
               Import Excel / Word
             </Button>

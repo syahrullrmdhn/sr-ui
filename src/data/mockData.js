@@ -29,8 +29,10 @@ export const mockMenus = [
       { menu: 'Users', icon: 'fa-users', link: '/admin/users', class: 'Users', ajax: 'Y', dialog: 'N', hasChild: false, items: [] },
       { menu: 'Soal', icon: 'fa-question-circle', link: '/admin/soal', class: 'Soal', ajax: 'Y', dialog: 'N', hasChild: true, items: [
         { menu: 'Bank Soal', link: '/admin/soal', class: 'SoalList', ajax: 'Y', dialog: 'N' },
+        { menu: 'Buat Soal (Rich Text)', link: '/admin/soal/editor', class: 'SoalEditor', ajax: 'Y', dialog: 'N' },
         { menu: 'Import Soal', link: '/admin/soal/import', class: 'SoalImport', ajax: 'Y', dialog: 'N' },
       ]},
+      { menu: 'Berita & Pengumuman', icon: 'fa-newspaper', link: '/admin/berita', class: 'Berita', ajax: 'Y', dialog: 'N', hasChild: false, items: [] },
       { menu: 'Tes / Subtes', icon: 'fa-clipboard-list', link: '/admin/tes', class: 'Tes', ajax: 'Y', dialog: 'N', hasChild: false, items: [] },
       { menu: 'Materi', icon: 'fa-book', link: '/admin/materi', class: 'Materi', ajax: 'Y', dialog: 'N', hasChild: false, items: [] },
       { menu: 'Paket Soal', icon: 'fa-box', link: '/admin/paket', class: 'Paket', ajax: 'Y', dialog: 'N', hasChild: false, items: [] },
