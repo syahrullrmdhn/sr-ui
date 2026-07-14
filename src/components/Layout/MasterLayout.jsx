@@ -5,8 +5,8 @@ export default function MasterLayout() {
   const navigate = useNavigate()
 
   return (
-    <div className="min-h-screen bg-slate-50 font-sans flex flex-col w-full">
-      <header className="bg-gradient-to-r from-teal-700 to-emerald-600 shadow-md flex items-center justify-between px-6 md:px-10 h-[72px] sticky top-0 z-50 w-full">
+    <div className="min-h-screen bg-slate-100/60 font-sans flex flex-col w-full overflow-x-hidden">
+      <header className="bg-gradient-to-r from-teal-700 via-teal-600 to-emerald-600 shadow-md flex items-center justify-between px-6 md:px-10 h-[72px] sticky top-0 z-50 w-full">
         
         {/* Logo Kiri */}
         <div className="flex items-center gap-4 text-white">
@@ -42,8 +42,8 @@ export default function MasterLayout() {
         </div>
       </header>
       
-      <main className="w-full flex-1 flex flex-col p-4 md:p-6">
-        <div className="w-full flex-1 flex flex-col">
+      <main className="w-full flex-1 flex flex-col p-4 md:p-6 overflow-y-auto">
+        <div className="w-full min-h-full flex-1 flex flex-col">
           <Outlet />
         </div>
       </main>

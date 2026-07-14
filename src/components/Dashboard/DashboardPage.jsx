@@ -23,7 +23,7 @@ export default function DashboardPage() {
   ]
 
   return (
-    <div className="space-y-6 w-full max-w-full overflow-hidden pb-6 flex-1 flex flex-col min-h-full">
+    <div className="space-y-6 w-full max-w-full overflow-x-hidden pb-6 flex-1 flex flex-col min-h-full">
       
       {/* Banner Utama - Full Width */}
       <div className="bg-gradient-to-r from-teal-500 via-emerald-500 to-teal-600 rounded-xl shadow-sm p-4 md:p-5 flex flex-col sm:flex-row items-center justify-between text-white w-full">
