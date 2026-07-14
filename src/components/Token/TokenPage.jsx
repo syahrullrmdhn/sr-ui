@@ -1,55 +1,47 @@
 import { useState } from 'react'
 import { mockToken } from '../../data/mockData'
+import { Card, CardHeader, CardBody } from '../ui/Card'
+import Button from '../ui/Button'
+import { useToast } from '../ui/Toast'
 
 export default function TokenPage() {
   const [token, setToken] = useState(mockToken.currentToken)
+  const { addToast } = useToast()
 
-  const generateToken = () => {
+  const generate = () => {
     const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'
     let result = ''
-    for (let i = 0; i < 8; i++) {
-      result += chars.charAt(Math.floor(Math.random() * chars.length))
-    }
+    for (let i = 0; i < 8; i++) result += chars[Math.floor(Math.random() * chars.length)]
     setToken(result)
+    addToast({ title: 'Token Baru', message: 'Token berhasil digenerate: ' + result, variant: 'success' })
   }
 
   return (
     <div>
-      <h4 style={{ margin: '0 0 20px', color: '#333', fontWeight: 500 }}>
-        <i className="fas fa-key" style={{ marginRight: 8 }}></i> Token Ujian
+      <h4 className="text-base font-medium text-gray-700 mb-5 flex items-center gap-2">
+        <i className="fas fa-key text-primary"></i> Token Ujian
       </h4>
-
-      <div style={{ maxWidth: 500 }}>
-        <div className="card-admin">
-          <div className="card-header">
-            <span>Token Saat Ini</span>
-          </div>
-          <div className="card-body">
-            <div style={{
-              background: '#FFFF66', padding: 20, borderRadius: 8,
-              textAlign: 'center', marginBottom: 20,
-              border: '2px solid #e6e600'
-            }}>
-              <div style={{ fontSize: 11, color: '#999', marginBottom: 5 }}>TOKEN AKTIF</div>
-              <div style={{ fontSize: 42, fontWeight: 'bold', color: '#CE0000', letterSpacing: 8, fontFamily: 'monospace' }}>
-                {token}
+      <div className="max-w-md">
+        <Card>
+          <CardHeader>Token Saat Ini</CardHeader>
+          <CardBody>
+            <div className="bg-yellow-100 border-2 border-yellow-300 p-5 rounded-xl text-center mb-5">
+              <div className="text-[11px] text-gray-500 mb-1">TOKEN AKTIF</div>
+              <div className="text-[42px] font-bold text-red-600 tracking-[8px] font-mono">{token}</div>
+            </div>
+            <div className="text-xs text-gray-500 space-y-1.5 mb-5">
+              <div className="flex justify-between py-1.5 border-b border-gray-100">
+                <span>Di-generate oleh:</span><strong className="text-gray-700">{mockToken.generatedBy}</strong>
+              </div>
+              <div className="flex justify-between py-1.5 border-b border-gray-100">
+                <span>Berlaku hingga:</span><strong className="text-gray-700">{mockToken.expiredAt}</strong>
               </div>
             </div>
-            <div style={{ fontSize: 12, color: '#666', marginBottom: 15 }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', padding: '6px 0', borderBottom: '1px solid #f0f0f0' }}>
-                <span>Di-generate oleh:</span>
-                <strong>{mockToken.generatedBy}</strong>
-              </div>
-              <div style={{ display: 'flex', justifyContent: 'space-between', padding: '6px 0', borderBottom: '1px solid #f0f0f0' }}>
-                <span>Berlaku hingga:</span>
-                <strong>{mockToken.expiredAt}</strong>
-              </div>
-            </div>
-            <button className="btn btn-primary" onClick={generateToken} style={{ width: '100%' }}>
-              <i className="fas fa-sync-alt"></i> Generate Token Baru
-            </button>
-          </div>
-        </div>
+            <Button variant="primary" icon="fa-sync-alt" onClick={generate} className="w-full">
+              Generate Token Baru
+            </Button>
+          </CardBody>
+        </Card>
       </div>
     </div>
   )

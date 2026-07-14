@@ -1,76 +1,40 @@
-import { useState } from 'react'
 import { mockUsers } from '../../data/mockData'
+import { Card, CardHeader, CardBody } from '../ui/Card'
+import DataTable from '../ui/DataTable'
+import Button from '../ui/Button'
+import Badge from '../ui/Badge'
 
 export default function UsersPage() {
-  const [search, setSearch] = useState('')
-
-  const filtered = mockUsers.filter(u =>
-    u.nama.toLowerCase().includes(search.toLowerCase()) ||
-    u.username.toLowerCase().includes(search.toLowerCase())
-  )
+  const columns = [
+    { header: 'No', render: (_, i) => i + 1 },
+    { header: 'Username', accessor: 'username', render: r => <span className="font-semibold">{r.username}</span> },
+    { header: 'Nama', accessor: 'nama' },
+    { header: 'Role', accessor: 'role', render: r => <Badge variant="primary">{r.role}</Badge> },
+    { header: 'Email', accessor: 'email' },
+    { header: 'Status', accessor: 'status', render: r => <Badge variant={r.status === 'Aktif' ? 'success' : 'danger'} dot>{r.status}</Badge> },
+    { header: 'Terakhir Login', accessor: 'lastLogin' },
+  ]
 
   return (
     <div>
-      <h4 style={{ margin: '0 0 20px', color: '#333', fontWeight: 500 }}>
-        <i className="fas fa-users" style={{ marginRight: 8 }}></i> Manajemen Users
+      <h4 className="text-base font-medium text-gray-700 mb-5 flex items-center gap-2">
+        <i className="fas fa-users text-primary"></i> Manajemen Users
       </h4>
-      <div className="card-admin">
-        <div className="card-header">
-          <span>Daftar Users</span>
-          <button className="btn btn-primary btn-sm">
-            <i className="fas fa-plus"></i> Tambah User
-          </button>
-        </div>
-        <div className="card-body">
-          <div style={{ marginBottom: 15, display: 'flex', gap: 10 }}>
-            <input
-              type="text"
-              className="form-control"
-              placeholder="Cari user..."
-              style={{ maxWidth: 300 }}
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-            />
-          </div>
-          <div style={{ overflowX: 'auto' }}>
-            <table className="data-table">
-              <thead>
-                <tr>
-                  <th>No</th>
-                  <th>Username</th>
-                  <th>Nama</th>
-                  <th>Role</th>
-                  <th>Email</th>
-                  <th>Status</th>
-                  <th>Terakhir Login</th>
-                  <th>Aksi</th>
-                </tr>
-              </thead>
-              <tbody>
-                {filtered.map((user, i) => (
-                  <tr key={user.id}>
-                    <td>{i + 1}</td>
-                    <td style={{ fontWeight: 'bold' }}>{user.username}</td>
-                    <td>{user.nama}</td>
-                    <td><span className="badge badge-primary">{user.role}</span></td>
-                    <td>{user.email}</td>
-                    <td>
-                      <span className={"badge " + (user.status === 'Aktif' ? 'badge-success' : 'badge-danger')}>
-                        {user.status}
-                      </span>
-                    </td>
-                    <td>{user.lastLogin}</td>
-                    <td>
-                      <button className="btn btn-sm btn-outline" style={{ marginRight: 4 }}><i className="fas fa-edit"></i></button>
-                      <button className="btn btn-sm btn-danger"><i className="fas fa-trash"></i></button>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
+      <Card>
+        <CardHeader action={<Button variant="primary" size="sm" icon="fa-plus">Tambah User</Button>}>
+          Daftar Users
+        </CardHeader>
+        <CardBody>
+          <DataTable columns={columns} data={mockUsers}
+            actions={row => (
+              <div className="flex gap-1">
+                <Button variant="outline" size="xs" icon="fa-edit" />
+                <Button variant="danger" size="xs" icon="fa-trash" />
+              </div>
+            )}
+          />
+        </CardBody>
+      </Card>
     </div>
   )
 }

@@ -1,49 +1,16 @@
-# SR-UI - Sistem Ujian Online (React)
+# React + Vite
 
-Remake UI dari aplikasi Sistem Ujian Online (PHP/Twig) ke React.js + Vite.
+This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
 
-## Fitur UI
+Currently, two official plugins are available:
 
-- **Login Page** - Halaman login dengan gradient card
-- **Register** - Pendaftaran akun peserta ujian
-- **Reset Password** - Reset password peserta
-- **Admin Dashboard** - Statistik, chart, aktivitas terbaru
-- **Sidebar** - Navigasi menu dengan submenu collapse
-- **Users Management** - CRUD data user
-- **Bank Soal** - Manajemen soal ujian
-- **Tes / Subtes** - Konfigurasi tes dan subtes
-- **Data Peserta** - Manajemen peserta ujian
-- **Jadwal Ujian** - Penjadwalan ujian
-- **Token** - Generate token ujian
-- **Ruang Ujian** - Manajemen ruang
-- **Rekapitulasi** - Rekap nilai peserta
-- **Exam Session** - Halaman ujian (soal, timer, navigasi)
-- **Pendaftaran** - Form pendaftaran peserta
-- **404 Page** - Halaman tidak ditemukan
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
 
-## Tech Stack
+## React Compiler
 
-- React 19
-- Vite
-- React Router DOM
-- Font Awesome 6
-- Custom CSS (matching original UI theme)
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-## Warna Tema
+## Expanding the Oxlint configuration
 
-- Primary: `#855b2f` (coklat/hijau tua)
-- Accent: `#CC9C75`
-- Background: `#F4F6F9` (admin), `#E9E9E9` (body)
-
-## Getting Started
-
-```bash
-npm install
-npm run dev
-```
-
-## Build
-
-```bash
-npm run build
-```
+If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
