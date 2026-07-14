@@ -26,9 +26,9 @@ export default function DashboardPage() {
     <div className="space-y-6 w-full max-w-full overflow-x-hidden pb-6 flex-1 flex flex-col min-h-full">
       
       {/* Banner Utama - Full Width */}
-      <div className="bg-gradient-to-r from-teal-500 via-emerald-500 to-teal-600 rounded-xl shadow-sm p-4 md:p-5 flex flex-col sm:flex-row items-center justify-between text-white w-full">
-        <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-lg bg-white/15 backdrop-blur-sm flex items-center justify-center text-lg border border-white/20 shadow-inner">
+      <div className="bg-gradient-to-r from-[#8c5822] via-[#a86e2f] to-[#d99244] rounded-xl shadow-md p-4 md:p-5 flex flex-col sm:flex-row items-center justify-between text-white w-full border border-white/10">
+        <div className="flex items-center gap-3.5">
+          <div className="w-11 h-11 rounded-xl bg-white/15 backdrop-blur-sm flex items-center justify-center text-lg border border-white/20 shadow-inner text-amber-200">
             <i className="fas fa-laptop-code text-white"></i>
           </div>
           <div>

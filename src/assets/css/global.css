@@ -1,31 +1,62 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #855b2f;
-  --color-primary-dark: #5e3f1f;
-  --color-primary-light: #CC9C75;
-  --color-accent: #bd895f;
-  --font-roboto: 'Roboto', sans-serif;
+  /* Premium Palette Specification: #a86e2f Warm Bronze & Clean Neutrals */
+  --color-primary: #a86e2f;
+  --color-secondary: #2f69a8;
+  --color-accent: #2fa86e;
+  --color-neutral: #f8f5f1;
+  --color-neutral-dark: #2c2c2c;
+  --color-subtext: #6b5e52;
+  --color-card-light: #e8d9c7;
+  --color-success-custom: #4a9c6e;
+  --color-warning-custom: #d97e2f;
+
+  --color-bronze-50: #f8f5f1;
+  --color-bronze-100: #f1e9e0;
+  --color-bronze-200: #e8d9c7;
+  --color-bronze-300: #d4ba9e;
+  --color-bronze-400: #bf9571;
+  --color-bronze-500: #a86e2f;
+  --color-bronze-600: #895823;
+  --color-bronze-700: #6b441c;
+  --color-bronze-800: #543618;
+  --color-bronze-900: #422c16;
+
+  --font-roboto: 'Plus Jakarta Sans', 'Poppins', 'Roboto', sans-serif;
   --font-poppins: 'Poppins', sans-serif;
 }
 
 @layer base {
   html, body {
     font-family: var(--font-roboto);
-    font-size: 12px;
-    color: #5A5A5A;
+    font-size: 13px;
+    color: #2c2c2c;
     margin: 0;
     padding: 0;
-    background-color: #E9E9E9;
+    background-color: #f8f5f1;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
   * { outline: none !important; box-sizing: border-box; }
   a { text-decoration: none !important; }
-  ::-webkit-scrollbar { width: 6px; }
-  ::-webkit-scrollbar-track { background: #f1f1f1; }
-  ::-webkit-scrollbar-thumb { background: #ccc; border-radius: 3px; }
-  ::-webkit-scrollbar-thumb:hover { background: #aaa; }
+  
+  /* Custom scrollbar matching Premium Warm Neutral #f8f5f1 and Bronze #a86e2f */
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: #f8f5f1; }
+  ::-webkit-scrollbar-thumb { background: #e8d9c7; border-radius: 9999px; }
+  ::-webkit-scrollbar-thumb:hover { background: #a86e2f; }
+}
+
+/* Helper background gradients using exact specification */
+.bg-gradient-bronze {
+  background: linear-gradient(135deg, #895823 0%, #a86e2f 60%, #bf9571 100%);
+}
+.bg-gradient-secondary {
+  background: linear-gradient(135deg, #224c7a 0%, #2f69a8 100%);
+}
+.bg-gradient-accent {
+  background: linear-gradient(135deg, #237d52 0%, #2fa86e 100%);
 }
