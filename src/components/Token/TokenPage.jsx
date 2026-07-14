@@ -36,13 +36,15 @@ export default function TokenPage() {
         {/* Card Generator Token - Full Width */}
         <Card className="flex-1 flex flex-col w-full shadow-sm">
           <CardHeader>Generator Token Keamanan</CardHeader>
-          <CardBody className="flex-1 flex flex-col justify-between p-6">
-            <div className="bg-gradient-to-br from-amber-50 to-orange-50 border-2 border-amber-300/80 p-6 md:p-8 rounded-2xl text-center shadow-inner my-auto">
-              <div className="text-xs font-bold tracking-widest text-amber-800 uppercase mb-2 flex items-center justify-center gap-1.5">
-                <i className="fas fa-lock text-amber-600"></i> KODE TOKEN AKTIF SESI UJIAN
+          <CardBody className="flex-1 flex flex-col justify-between p-6 font-sans">
+            {/* Clean Solid #f8f5f1 Token Box without gradient */}
+            <div className="bg-[#f8f5f1] border-2 border-[#e8d9c7] p-6 md:p-8 rounded-2xl text-center shadow-inner my-auto relative overflow-hidden">
+              <div className="absolute -top-10 -right-10 w-28 h-28 rounded-full bg-[#a86e2f]/10 blur-sm pointer-events-none"></div>
+              <div className="text-xs font-bold tracking-widest text-[#a86e2f] uppercase mb-2 flex items-center justify-center gap-1.5">
+                <i className="fas fa-lock text-[#a86e2f]"></i> KODE TOKEN AKTIF SESI UJIAN
               </div>
-              <div className="text-5xl md:text-6xl font-extrabold text-rose-600 tracking-[10px] font-mono my-4 drop-shadow-2xs">{token}</div>
-              <div className="text-xs text-amber-700/80 font-medium mt-2">
+              <div className="text-5xl md:text-6xl font-extrabold text-[#2c2c2c] tracking-[10px] font-sans my-4 drop-shadow-2xs">{token}</div>
+              <div className="text-xs text-[#6b5e52] font-bold mt-2">
                 Bagikan token ini hanya kepada peserta yang sudah hadir dan siap di dalam ruang ujian.
               </div>
             </div>

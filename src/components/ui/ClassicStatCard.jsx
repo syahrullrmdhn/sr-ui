@@ -2,44 +2,44 @@ import React from 'react'
 
 const themes = {
   bronze: {
-    bg: 'bg-gradient-to-br from-[#8c5822] to-[#a86e2f]',
-    footer: 'bg-[#3d230e]/40 hover:bg-[#3d230e]/60',
+    bg: 'bg-[#a86e2f]',
+    footer: 'bg-[#895823]/60 hover:bg-[#895823]',
   },
   gold: {
-    bg: 'bg-gradient-to-br from-[#a86e2f] to-[#d99244]',
-    footer: 'bg-[#6f4318]/40 hover:bg-[#6f4318]/60',
+    bg: 'bg-[#b36523]',
+    footer: 'bg-[#895823]/60 hover:bg-[#895823]',
   },
   blue: {
-    bg: 'bg-gradient-to-br from-blue-500 to-blue-600',
-    footer: 'bg-blue-700/30 hover:bg-blue-700/50',
+    bg: 'bg-[#2f69a8]',
+    footer: 'bg-[#224c7a]/60 hover:bg-[#224c7a]',
   },
   orange: {
-    bg: 'bg-gradient-to-br from-amber-500 to-amber-600',
-    footer: 'bg-amber-700/30 hover:bg-amber-700/50',
+    bg: 'bg-[#d97e2f]',
+    footer: 'bg-[#b36523]/60 hover:bg-[#b36523]',
   },
   red: {
-    bg: 'bg-gradient-to-br from-rose-500 to-rose-600',
-    footer: 'bg-rose-700/30 hover:bg-rose-700/50',
+    bg: 'bg-rose-600',
+    footer: 'bg-rose-800/60 hover:bg-rose-800',
   },
   green: {
-    bg: 'bg-gradient-to-br from-emerald-500 to-emerald-600',
-    footer: 'bg-emerald-700/30 hover:bg-emerald-700/50',
+    bg: 'bg-[#4a9c6e]',
+    footer: 'bg-[#3a7d57]/60 hover:bg-[#3a7d57]',
   },
   teal: {
-    bg: 'bg-gradient-to-br from-[#8c5822] to-[#a86e2f]',
-    footer: 'bg-[#3d230e]/40 hover:bg-[#3d230e]/60',
+    bg: 'bg-[#2fa86e]',
+    footer: 'bg-[#237d52]/60 hover:bg-[#237d52]',
   },
   purple: {
-    bg: 'bg-gradient-to-br from-purple-500 to-purple-600',
-    footer: 'bg-purple-700/30 hover:bg-purple-700/50',
+    bg: 'bg-purple-600',
+    footer: 'bg-purple-800/60 hover:bg-purple-800',
   },
   indigo: {
-    bg: 'bg-gradient-to-br from-indigo-500 to-indigo-600',
-    footer: 'bg-indigo-700/30 hover:bg-indigo-700/50',
+    bg: 'bg-indigo-600',
+    footer: 'bg-indigo-800/60 hover:bg-indigo-800',
   },
   cyan: {
-    bg: 'bg-gradient-to-br from-cyan-500 to-cyan-600',
-    footer: 'bg-cyan-700/30 hover:bg-cyan-700/50',
+    bg: 'bg-[#2f69a8]',
+    footer: 'bg-[#224c7a]/60 hover:bg-[#224c7a]',
   },
 }
 
@@ -55,17 +55,23 @@ export default function ClassicStatCard({
   const currentTheme = themes[colorTheme] || themes.bronze
 
   return (
-    <div className={`relative rounded-xl overflow-hidden shadow-sm ${currentTheme.bg} flex flex-col text-white transition-transform hover:-translate-y-1 duration-300 w-full border border-white/10 ${className}`}>
-      <i className={`fas ${icon} absolute -bottom-4 -right-2 text-7xl text-white opacity-20 pointer-events-none z-0`}></i>
+    <div className={`relative rounded-2xl overflow-hidden shadow-sm ${currentTheme.bg} flex flex-col text-white transition-transform hover:-translate-y-1 duration-300 w-full border border-white/15 font-sans ${className}`}>
+      {/* Decorative Bubble Effects ("bubble bubble gitu") */}
+      <div className="absolute -top-6 -right-6 w-28 h-28 rounded-full bg-white/10 blur-[2px] pointer-events-none animate-bubble"></div>
+      <div className="absolute top-10 right-1/3 w-16 h-16 rounded-full bg-white/10 blur-[1px] pointer-events-none animate-bubble-delayed"></div>
+      <div className="absolute -bottom-8 left-6 w-20 h-20 rounded-full bg-white/10 blur-[1px] pointer-events-none"></div>
+
+      <i className={`fas ${icon} absolute -bottom-4 -right-2 text-7xl text-white opacity-15 pointer-events-none z-0`}></i>
+      
       <div className="p-5 flex-1 relative z-10">
-        <div className="text-4xl font-extrabold tracking-tight mb-1 font-mono">{value}</div>
+        <div className="text-4xl font-extrabold tracking-tight mb-1 font-sans">{value}</div>
         <div className="text-white/95 text-sm font-bold truncate">{title}</div>
       </div>
       {(footerText || onClick) && (
         <button 
           onClick={onClick}
           type={onClick ? 'button' : undefined}
-          className={`w-full py-2.5 text-xs font-semibold text-white/90 flex justify-center items-center gap-1.5 transition-colors z-10 ${currentTheme.footer} ${onClick ? 'cursor-pointer' : 'cursor-default'}`}
+          className={`w-full py-2.5 text-xs font-bold text-white/95 flex justify-center items-center gap-1.5 transition-colors z-10 ${currentTheme.footer} ${onClick ? 'cursor-pointer' : 'cursor-default'}`}
         >
           {footerText} {footerText && <i className="fas fa-arrow-circle-right text-[10px]"></i>}
         </button>

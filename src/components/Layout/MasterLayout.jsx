@@ -6,7 +6,7 @@ export default function MasterLayout() {
 
   return (
     <div className="min-h-screen bg-[#f8f5f1] font-sans flex flex-col w-full overflow-x-hidden text-[#2c2c2c]">
-      <header className="bg-gradient-to-r from-[#895823] via-[#a86e2f] to-[#bf9571] shadow-md flex items-center justify-between px-6 md:px-10 h-[72px] sticky top-0 z-50 w-full border-b border-white/10">
+      <header className="bg-[#a86e2f] shadow-md flex items-center justify-between px-6 md:px-10 h-[72px] sticky top-0 z-50 w-full border-b border-white/10">
         
         {/* Logo Kiri */}
         <div className="flex items-center gap-4 text-white">

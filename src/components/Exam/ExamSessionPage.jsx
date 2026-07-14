@@ -24,25 +24,26 @@ export default function ExamSessionPage() {
   const total = examQuestions.length
 
   return (
-    <div className="flex flex-col md:flex-row flex-1 w-full min-h-[calc(100vh-72px)] bg-slate-50">
+    <div className="flex flex-col md:flex-row flex-1 w-full min-h-[calc(100vh-72px)] bg-[#f8f5f1] font-sans">
       {/* Sidebar Navigasi Soal - Full Height */}
-      <aside className="w-full md:w-[280px] bg-white border-b md:border-b-0 md:border-r border-slate-200/80 p-5 overflow-y-auto flex-shrink-0 flex flex-col justify-between shadow-xs">
+      <aside className="w-full md:w-[280px] bg-white border-b md:border-b-0 md:border-r border-[#e8d9c7] p-5 overflow-y-auto flex-shrink-0 flex flex-col justify-between shadow-xs">
         <div>
-          <div className="text-center mb-5 pb-4 border-b border-slate-100">
-            <div className="w-20 h-20 rounded-2xl border-2 border-teal-100 mx-auto mb-2.5 bg-teal-50 flex items-center justify-center text-3xl text-teal-600 shadow-inner">
+          <div className="text-center mb-5 pb-4 border-b border-[#e8d9c7]">
+            <div className="w-20 h-20 rounded-2xl border-2 border-[#e8d9c7] mx-auto mb-2.5 bg-[#f8f5f1] flex items-center justify-center text-3xl text-[#a86e2f] shadow-inner">
               <i className="fas fa-user-graduate"></i>
             </div>
-            <div className="font-bold text-base text-slate-800">Ahmad Fauzi</div>
-            <div className="text-xs text-teal-600 font-mono font-semibold bg-teal-50/80 px-3 py-0.5 rounded-full inline-block mt-1">PST-001</div>
+            <div className="font-bold text-base text-[#2c2c2c]">Ahmad Fauzi</div>
+            <div className="text-xs text-[#a86e2f] font-sans font-bold bg-[#f8f5f1] px-3 py-0.5 rounded-full inline-block mt-1 border border-[#e8d9c7]">PST-001</div>
           </div>
 
-          <div className="text-center font-extrabold text-xs py-2.5 px-3 bg-gradient-to-r from-teal-600 to-emerald-600 text-white rounded-xl mb-4 shadow-2xs tracking-wide uppercase">
+          {/* Clean Solid #a86e2f Header without gradient */}
+          <div className="text-center font-extrabold text-xs py-2.5 px-3 bg-[#a86e2f] text-white rounded-xl mb-4 shadow-2xs tracking-wide uppercase">
             Tes Kompetensi Dasar (CBT)
           </div>
 
-          <div className="text-xs font-semibold text-slate-500 mb-2.5 flex items-center justify-between">
+          <div className="text-xs font-bold text-[#6b5e52] mb-2.5 flex items-center justify-between">
             <span>NAVIGASI BUTIR SOAL</span>
-            <span className="text-teal-600">{Object.keys(answers).length} / {total} Dijawab</span>
+            <span className="text-[#a86e2f] font-extrabold">{Object.keys(answers).length} / {total} Dijawab</span>
           </div>
 
           <div className="grid grid-cols-5 gap-2">

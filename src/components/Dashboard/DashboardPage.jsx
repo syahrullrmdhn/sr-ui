@@ -25,10 +25,16 @@ export default function DashboardPage() {
   return (
     <div className="space-y-6 w-full max-w-full overflow-x-hidden pb-6 flex-1 flex flex-col min-h-full">
       
-      {/* Banner Utama - Full Width */}
-      <div className="bg-gradient-to-r from-[#8c5822] via-[#a86e2f] to-[#d99244] rounded-xl shadow-md p-4 md:p-5 flex flex-col sm:flex-row items-center justify-between text-white w-full border border-white/10">
-        <div className="flex items-center gap-3.5">
-          <div className="w-11 h-11 rounded-xl bg-white/15 backdrop-blur-sm flex items-center justify-center text-lg border border-white/20 shadow-inner text-amber-200">
+      {/* Banner Utama - Full Width (Clean Solid #a86e2f + Floating Bubbles) */}
+      <div className="bg-[#a86e2f] rounded-2xl shadow-md p-4 md:p-5 flex flex-col sm:flex-row items-center justify-between text-white w-full border border-white/10 relative overflow-hidden font-sans">
+        {/* Decorative Floating Bubble Circles ("bubble bubble gitu") */}
+        <div className="absolute -top-10 -right-10 w-44 h-44 rounded-full bg-white/10 blur-[2px] pointer-events-none animate-bubble"></div>
+        <div className="absolute top-1/2 right-1/4 w-24 h-24 rounded-full bg-white/10 blur-[1px] pointer-events-none animate-bubble-delayed"></div>
+        <div className="absolute -bottom-10 left-1/3 w-36 h-36 rounded-full bg-white/10 blur-[2px] pointer-events-none"></div>
+        <div className="absolute top-2 left-10 w-16 h-16 rounded-full bg-white/10 blur-[1px] pointer-events-none"></div>
+
+        <div className="flex items-center gap-3.5 relative z-10">
+          <div className="w-11 h-11 rounded-xl bg-white/15 backdrop-blur-sm flex items-center justify-center text-lg border border-white/20 shadow-inner text-[#f8f5f1]">
             <i className="fas fa-laptop-code text-white"></i>
           </div>
           <div>

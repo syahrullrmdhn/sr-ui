@@ -35,8 +35,8 @@ export default function Header({ collapsed, onToggle }) {
   const current = getPageInfo(location.pathname)
 
   return (
-    // PERHATIKAN: left-[260px] disamakan dengan lebar Sidebar
-    <header className={`fixed top-0 right-0 h-16 bg-gradient-to-r from-[#895823] via-[#a86e2f] to-[#bf9571] z-40 flex items-center justify-between px-4 sm:px-6 shadow-md border-b border-white/10 transition-all duration-300 ease-in-out ${collapsed ? 'left-0' : 'left-[260px]'}`}>
+    // PERHATIKAN: left-[260px] disamakan dengan lebar Sidebar - clean solid #a86e2f without gradient
+    <header className={`fixed top-0 right-0 h-16 bg-[#a86e2f] z-40 flex items-center justify-between px-4 sm:px-6 shadow-md border-b border-white/10 transition-all duration-300 ease-in-out ${collapsed ? 'left-0' : 'left-[260px]'}`}>
       
       {/* Kiri: Toggle Sidebar & Breadcrumb Navigation */}
       <div className="flex items-center gap-3 md:gap-4 overflow-hidden">
@@ -81,8 +81,8 @@ export default function Header({ collapsed, onToggle }) {
         }>
           {(close) => (
             <div className="min-w-[220px] overflow-hidden rounded-2xl shadow-xl border border-[#e8d9c7] bg-white">
-              <div className="p-5 text-center border-b border-[#e8d9c7]/80 bg-gradient-to-b from-[#f8f5f1] to-white">
-                <div className="w-14 h-14 rounded-2xl bg-[#f8f5f1] mx-auto flex items-center justify-center text-xl text-[#a86e2f] mb-2.5 shadow-xs border border-[#e8d9c7]">
+              <div className="p-5 text-center border-b border-[#e8d9c7]/80 bg-[#f8f5f1]">
+                <div className="w-14 h-14 rounded-2xl bg-white mx-auto flex items-center justify-center text-xl text-[#a86e2f] mb-2.5 shadow-xs border border-[#e8d9c7]">
                   <i className="fas fa-user-shield"></i>
                 </div>
                 <div className="font-bold text-[#2c2c2c] text-sm">{mockUser.nama}</div>

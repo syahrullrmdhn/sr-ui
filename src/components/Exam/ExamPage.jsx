@@ -10,9 +10,9 @@ export default function ExamPage() {
 
   const sidebarContent = (
     <div className="text-center py-2">
-      <Avatar name="Ahmad Fauzi" size="xl" className="mx-auto mb-3 shadow-sm ring-4 ring-teal-50" />
-      <div className="font-extrabold text-base text-slate-800">Ahmad Fauzi</div>
-      <div className="text-xs font-mono text-teal-600 bg-teal-50 px-3 py-1 rounded-full inline-block mt-1 border border-teal-100 font-semibold">PST-001</div>
+      <Avatar name="Ahmad Fauzi" size="xl" className="mx-auto mb-3 shadow-sm ring-4 ring-[#e8d9c7]" />
+      <div className="font-extrabold text-base text-[#2c2c2c]">Ahmad Fauzi</div>
+      <div className="text-xs font-sans text-[#a86e2f] bg-[#f8f5f1] px-3 py-1 rounded-full inline-block mt-1 border border-[#e8d9c7] font-bold">PST-001</div>
     </div>
   )
 
@@ -20,27 +20,28 @@ export default function ExamPage() {
     {
       id: 'home', icon: 'fa-home', label: 'Beranda Ujian',
       content: (
-        <div className="flex-1 flex flex-col justify-between space-y-6">
+        <div className="flex-1 flex flex-col justify-between space-y-6 font-sans">
           <div>
-            <h6 className="font-bold text-lg mb-4 text-slate-800 flex items-center gap-2">
-              <i className="fas fa-desktop text-teal-600"></i> Portal Ujian Aktif Peserta
+            <h6 className="font-bold text-lg mb-4 text-[#2c2c2c] flex items-center gap-2">
+              <i className="fas fa-desktop text-[#a86e2f]"></i> Portal Ujian Aktif Peserta
             </h6>
             <Alert variant="info" className="mb-6">
               Silakan periksa koneksi internet Anda dan pilih menu <strong>Jadwal Ujian</strong> atau klik tombol mulai pada kartu di bawah jika waktu pengerjaan telah dibuka.
             </Alert>
 
-            <div className="bg-gradient-to-br from-slate-50 to-teal-50/40 border border-slate-200/80 rounded-2xl p-6 flex flex-col sm:flex-row items-center justify-between gap-5 shadow-2xs">
+            {/* Clean Solid Card container (#f8f5f1) without gradient */}
+            <div className="bg-[#f8f5f1] border border-[#e8d9c7] rounded-2xl p-6 flex flex-col sm:flex-row items-center justify-between gap-5 shadow-2xs">
               <div className="flex items-center gap-5">
                 <CircularProgress value={85} variant="success" size="lg" />
                 <div>
-                  <div className="font-extrabold text-lg text-slate-800">Tes Kompetensi Dasar & Pengetahuan Umum</div>
-                  <div className="text-xs text-slate-500 flex items-center gap-2 mt-1">
-                    <span className="bg-white px-2.5 py-1 rounded-md border border-slate-200 font-medium"><i className="far fa-calendar-alt text-teal-600"></i> 20 Juli 2026</span>
-                    <span className="bg-white px-2.5 py-1 rounded-md border border-slate-200 font-medium"><i className="far fa-clock text-teal-600"></i> 120 Menit</span>
+                  <div className="font-extrabold text-lg text-[#2c2c2c]">Tes Kompetensi Dasar & Pengetahuan Umum</div>
+                  <div className="text-xs text-[#6b5e52] flex items-center gap-2 mt-1">
+                    <span className="bg-white px-2.5 py-1 rounded-md border border-[#e8d9c7] font-bold"><i className="far fa-calendar-alt text-[#a86e2f]"></i> 20 Juli 2026</span>
+                    <span className="bg-white px-2.5 py-1 rounded-md border border-[#e8d9c7] font-bold"><i className="far fa-clock text-[#a86e2f]"></i> 120 Menit</span>
                   </div>
                 </div>
               </div>
-              <Button variant="primary" size="lg" icon="fa-play" onClick={() => navigate('/peserta/exam/start')} className="px-8 py-3.5 shadow-md shadow-teal-500/20 w-full sm:w-auto font-bold">
+              <Button variant="primary" size="lg" icon="fa-play" onClick={() => navigate('/peserta/exam/start')} className="px-8 py-3.5 shadow-md w-full sm:w-auto font-bold">
                 Mulai Ujian Sekarang
               </Button>
             </div>

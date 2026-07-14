@@ -24,14 +24,19 @@ export default function ResetPage() {
   }
 
   return (
-    <div className="font-sans min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-100 via-slate-50 to-teal-50/30 p-4 sm:p-6 relative overflow-hidden">
-      <div className="absolute -top-40 -left-40 w-96 h-96 rounded-full bg-teal-500/10 blur-3xl pointer-events-none"></div>
-      <div className="absolute -bottom-40 -right-40 w-96 h-96 rounded-full bg-emerald-500/10 blur-3xl pointer-events-none"></div>
+    <div className="font-sans min-h-screen flex items-center justify-center bg-[#f8f5f1] p-4 sm:p-6 relative overflow-hidden">
+      <div className="absolute -top-40 -left-40 w-96 h-96 rounded-full bg-[#a86e2f]/10 blur-3xl pointer-events-none"></div>
+      <div className="absolute -bottom-40 -right-40 w-96 h-96 rounded-full bg-[#2f69a8]/10 blur-3xl pointer-events-none"></div>
 
-      <div className="bg-white rounded-2xl shadow-xl border border-slate-200/60 overflow-hidden w-full max-w-[800px] flex max-md:flex-col relative z-10">
-        <div className="flex-[0_0_42%] bg-gradient-to-br from-teal-600 via-emerald-600 to-teal-800 text-white text-center flex flex-col items-center justify-center p-8 relative overflow-hidden max-md:flex-none max-md:p-8">
-          <Particles count={35} color="rgba(255,255,255,0.15)" />
-          <div className="absolute top-0 right-0 -mr-16 -mt-16 w-64 h-64 rounded-full bg-white/10 blur-2xl pointer-events-none"></div>
+      <div className="bg-white rounded-2xl shadow-xl border border-[#e8d9c7] overflow-hidden w-full max-w-[800px] flex max-md:flex-col relative z-10 font-sans">
+        {/* Left Banner - Clean Solid #a86e2f + Floating Bubble Circles ("bubble bubble gitu") */}
+        <div className="flex-[0_0_42%] bg-[#a86e2f] text-white text-center flex flex-col items-center justify-center p-8 relative overflow-hidden max-md:flex-none max-md:p-8">
+          <Particles count={35} color="rgba(255,255,255,0.2)" />
+          {/* Decorative Floating Bubble Circles ("bubble bubble gitu") */}
+          <div className="absolute -top-16 -left-16 w-60 h-60 rounded-full bg-white/10 blur-[2px] pointer-events-none animate-bubble"></div>
+          <div className="absolute -bottom-20 -right-20 w-72 h-72 rounded-full bg-white/10 blur-[2px] pointer-events-none animate-bubble-delayed"></div>
+          <div className="absolute top-1/2 left-1/3 w-28 h-28 rounded-full bg-white/10 blur-[1px] pointer-events-none"></div>
+          <div className="absolute top-16 right-10 w-16 h-16 rounded-full bg-white/15 blur-[1px] pointer-events-none animate-bubble"></div>
 
           <div className="relative z-10 flex flex-col items-center">
             <div className="w-16 h-16 rounded-2xl bg-white/15 backdrop-blur-md flex items-center justify-center text-3xl mb-5 mx-auto border border-white/20 shadow-inner">

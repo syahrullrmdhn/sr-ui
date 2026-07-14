@@ -10,11 +10,11 @@ export default function Sidebar({ collapsed }) {
   const toggle = (key) => setOpenMenus(p => ({ ...p, [key]: !p[key] }))
 
   return (
-    // PERHATIKAN: w-[260px] dan -ml-[260px] disamakan
+    // PERHATIKAN: w-[260px] dan -ml-[260px] disamakan - clean solid border & background
     <aside className={`fixed top-0 bottom-0 left-0 w-[260px] bg-white z-50 overflow-y-auto border-r border-[#e8d9c7] transition-all duration-300 ease-in-out ${collapsed ? '-ml-[260px]' : ''}`}>
       
-      <div className="flex flex-col items-center justify-center py-6 px-4 border-b border-[#e8d9c7]/80 bg-gradient-to-b from-[#f8f5f1] to-white">
-        <div className="w-14 h-14 bg-gradient-to-br from-[#895823] via-[#a86e2f] to-[#bf9571] rounded-2xl flex items-center justify-center text-3xl text-white mb-3 shadow-md border border-[#e8d9c7]">
+      <div className="flex flex-col items-center justify-center py-6 px-4 border-b border-[#e8d9c7]/80 bg-[#f8f5f1]">
+        <div className="w-14 h-14 bg-[#a86e2f] rounded-2xl flex items-center justify-center text-3xl text-white mb-3 shadow-sm border border-[#e8d9c7]">
           <i className="fas fa-graduation-cap"></i>
         </div>
         <span className="text-sm font-extrabold text-[#2c2c2c] tracking-wide uppercase">{systemInfo.name}</span>
@@ -37,7 +37,7 @@ export default function Sidebar({ collapsed }) {
                     <button
                       onClick={() => item.hasChild ? toggle(key) : navigate(item.link)}
                       className={`w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-left text-[13px] transition-all duration-200 cursor-pointer ${
-                        isActive ? 'bg-gradient-to-r from-[#895823] via-[#a86e2f] to-[#bf9571] text-white font-bold shadow-md shadow-[#a86e2f]/20 ring-1 ring-[#e8d9c7]' : 'text-[#6b5e52] font-semibold hover:bg-[#f8f5f1] hover:text-[#a86e2f]'
+                        isActive ? 'bg-[#a86e2f] text-white font-bold shadow-sm ring-1 ring-[#a86e2f]/20' : 'text-[#6b5e52] font-semibold hover:bg-[#f8f5f1] hover:text-[#a86e2f]'
                       }`}
                     >
                       <i className={`fas ${item.icon} w-5 text-center text-sm ${isActive ? 'text-white' : 'text-[#6b5e52]'}`}></i>

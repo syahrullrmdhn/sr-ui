@@ -27,11 +27,15 @@ export default function LoginPage() {
       <div className="absolute -top-40 -left-40 w-96 h-96 rounded-full bg-[#a86e2f]/15 blur-3xl pointer-events-none"></div>
       <div className="absolute -bottom-40 -right-40 w-96 h-96 rounded-full bg-[#d99244]/15 blur-3xl pointer-events-none"></div>
 
-      <div className="bg-white rounded-2xl shadow-xl border border-slate-200/60 overflow-hidden w-full max-w-[920px] flex min-h-[560px] max-md:flex-col relative z-10">
-        {/* Left Panel - Premium Bronze Gold Banner */}
-        <div className="flex-[0_0_45%] bg-gradient-to-br from-[#8c5822] via-[#a86e2f] to-[#d99244] text-white flex flex-col justify-between p-8 md:p-10 relative overflow-hidden max-md:flex-none max-md:p-8">
-          <Particles count={45} color="rgba(255,255,255,0.15)" />
-          <div className="absolute top-0 right-0 -mr-16 -mt-16 w-64 h-64 rounded-full bg-white/10 blur-2xl pointer-events-none"></div>
+      <div className="bg-white rounded-2xl shadow-xl border border-[#e8d9c7] overflow-hidden w-full max-w-[920px] flex min-h-[560px] max-md:flex-col relative z-10 font-sans">
+        {/* Left Panel - Clean Solid #a86e2f + Floating Bubble Circles ("bubble bubble gitu") */}
+        <div className="flex-[0_0_45%] bg-[#a86e2f] text-white flex flex-col justify-between p-8 md:p-10 relative overflow-hidden max-md:flex-none max-md:p-8">
+          <Particles count={35} color="rgba(255,255,255,0.2)" />
+          {/* Decorative Floating Bubble Circles ("bubble bubble gitu") */}
+          <div className="absolute -top-16 -left-16 w-60 h-60 rounded-full bg-white/10 blur-[2px] pointer-events-none animate-bubble"></div>
+          <div className="absolute -bottom-20 -right-20 w-72 h-72 rounded-full bg-white/10 blur-[2px] pointer-events-none animate-bubble-delayed"></div>
+          <div className="absolute top-1/2 left-1/3 w-28 h-28 rounded-full bg-white/10 blur-[1px] pointer-events-none"></div>
+          <div className="absolute top-16 right-10 w-16 h-16 rounded-full bg-white/15 blur-[1px] pointer-events-none animate-bubble"></div>
           
           <div className="relative z-10 flex items-center gap-3">
             <div className="w-10 h-10 rounded-xl bg-white/15 backdrop-blur-md flex items-center justify-center text-lg border border-white/20 shadow-inner text-amber-200">
