@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { ToastProvider } from './components/ui/Toast'
 import AdminLayout from './components/Layout/AdminLayout'
 import MasterLayout from './components/Layout/MasterLayout'
 import LoginPage from './components/Login/LoginPage'
@@ -28,45 +29,47 @@ import NotFoundPage from './components/NotFound/NotFoundPage'
 
 function App() {
   return (
-    <Router>
-      <Routes>
-        {/* Public / Peserta Routes */}
-        <Route path="/" element={<LoginPage />} />
-        <Route path="/register" element={<RegisterPage />} />
-        <Route path="/reset" element={<ResetPage />} />
-        <Route path="/pendaftaran" element={<PendaftaranPage />} />
+    <ToastProvider position="top-right">
+      <Router>
+        <Routes>
+          {/* Public / Peserta Routes */}
+          <Route path="/" element={<LoginPage />} />
+          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/reset" element={<ResetPage />} />
+          <Route path="/pendaftaran" element={<PendaftaranPage />} />
 
-        {/* Exam Routes (Master Layout) */}
-        <Route element={<MasterLayout />}>
-          <Route path="/peserta/exam" element={<ExamPage />} />
-          <Route path="/peserta/exam/start" element={<ExamSessionPage />} />
-        </Route>
+          {/* Exam Routes (Master Layout) */}
+          <Route element={<MasterLayout />}>
+            <Route path="/peserta/exam" element={<ExamPage />} />
+            <Route path="/peserta/exam/start" element={<ExamSessionPage />} />
+          </Route>
 
-        {/* Admin Routes */}
-        <Route element={<AdminLayout />}>
-          <Route path="/admin" element={<DashboardPage />} />
-          <Route path="/admin/dashboard" element={<DashboardPage />} />
-          <Route path="/admin/users" element={<UsersPage />} />
-          <Route path="/admin/soal" element={<SoalPage />} />
-          <Route path="/admin/soal/import" element={<SoalImportPage />} />
-          <Route path="/admin/tes" element={<TesPage />} />
-          <Route path="/admin/materi" element={<MateriPage />} />
-          <Route path="/admin/paket" element={<PaketPage />} />
-          <Route path="/admin/peserta" element={<PesertaPage />} />
-          <Route path="/admin/jadwal" element={<JadwalPage />} />
-          <Route path="/admin/token" element={<TokenPage />} />
-          <Route path="/admin/ruang" element={<RuangPage />} />
-          <Route path="/admin/sesi" element={<SesiPage />} />
-          <Route path="/admin/rekap" element={<RekapPage />} />
-          <Route path="/admin/rekap/lokasi" element={<RekapLokasiPage />} />
-          <Route path="/admin/rekap/jenis" element={<RekapJenisPage />} />
-          <Route path="/admin/settings" element={<SettingsPage />} />
-          <Route path="/admin/account" element={<AccountPage />} />
-        </Route>
+          {/* Admin Routes */}
+          <Route element={<AdminLayout />}>
+            <Route path="/admin" element={<DashboardPage />} />
+            <Route path="/admin/dashboard" element={<DashboardPage />} />
+            <Route path="/admin/users" element={<UsersPage />} />
+            <Route path="/admin/soal" element={<SoalPage />} />
+            <Route path="/admin/soal/import" element={<SoalImportPage />} />
+            <Route path="/admin/tes" element={<TesPage />} />
+            <Route path="/admin/materi" element={<MateriPage />} />
+            <Route path="/admin/paket" element={<PaketPage />} />
+            <Route path="/admin/peserta" element={<PesertaPage />} />
+            <Route path="/admin/jadwal" element={<JadwalPage />} />
+            <Route path="/admin/token" element={<TokenPage />} />
+            <Route path="/admin/ruang" element={<RuangPage />} />
+            <Route path="/admin/sesi" element={<SesiPage />} />
+            <Route path="/admin/rekap" element={<RekapPage />} />
+            <Route path="/admin/rekap/lokasi" element={<RekapLokasiPage />} />
+            <Route path="/admin/rekap/jenis" element={<RekapJenisPage />} />
+            <Route path="/admin/settings" element={<SettingsPage />} />
+            <Route path="/admin/account" element={<AccountPage />} />
+          </Route>
 
-        <Route path="*" element={<NotFoundPage />} />
-      </Routes>
-    </Router>
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
+      </Router>
+    </ToastProvider>
   )
 }
 
