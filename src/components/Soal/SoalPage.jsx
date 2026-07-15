@@ -7,11 +7,14 @@ import Badge from '../ui/Badge'
 import Page from '../ui/Page'
 import Modal from '../ui/Modal'
 import Input from '../ui/Input'
+import Select from '../ui/Select'
 import { BarChart } from '../ui/Chart'
 import { useToast } from '../ui/Toast'
+import { useMessageBox } from '../ui/MessageBox'
 import { useNavigate } from 'react-router-dom'
 
 export default function SoalPage() {
+  const { confirm } = useMessageBox()
   const { addToast } = useToast()
   const navigate = useNavigate()
   const [soalList, setSoalList] = useState(mockSoal)
@@ -44,8 +47,9 @@ export default function SoalPage() {
     setModalOpen(true)
   }
 
-  const handleDelete = (id, kode) => {
-    if (window.confirm(`Hapus paket soal "${kode}"?`)) {
+  const handleDelete = async (id, kode) => {
+    const confirmed = await confirm({ title: 'Konfirmasi Hapus', message: `Hapus paket soal "${kode}"?`, variant: 'danger', confirmText: 'Ya, Hapus' })
+    if (confirmed) {
       setSoalList(soalList.filter(s => s.id !== id))
       addToast({ title: 'Paket Soal Dihapus', message: `Paket soal "${kode}" berhasil dihapus dari bank soal.`, variant: 'danger' })
     }
@@ -184,45 +188,39 @@ export default function SoalPage() {
             />
           </div>
 
-          <div className="space-y-1.5">
-            <label className="block text-xs font-semibold text-slate-700 tracking-wide uppercase">Mata Pelajaran / Materi</label>
-            <select 
-              value={formData.materi}
-              onChange={e => setFormData({...formData, materi: e.target.value})}
-              className="w-full px-4 py-2.5 text-sm bg-slate-50 border border-slate-200/80 rounded-xl focus:border-teal-500 outline-none font-medium text-slate-800"
-            >
-              <option value="Pengetahuan Umum">Pengetahuan Umum & Wawasan</option>
-              <option value="Bahasa Indonesia">Bahasa Indonesia & Komunikasi</option>
-              <option value="Bahasa Inggris">Bahasa Inggris Kedinasan</option>
-              <option value="Logika & Tes Potensi">Analisis Logika & Pemecahan Masalah</option>
-            </select>
-          </div>
+          <Select
+            label="Mata Pelajaran / Materi"
+            value={formData.materi}
+            onChange={e => setFormData({...formData, materi: e.target.value})}
+            options={[
+              { key: 'Pengetahuan Umum', value: 'Pengetahuan Umum & Wawasan' },
+              { key: 'Bahasa Indonesia', value: 'Bahasa Indonesia & Komunikasi' },
+              { key: 'Bahasa Inggris', value: 'Bahasa Inggris Kedinasan' },
+              { key: 'Logika & Tes Potensi', value: 'Analisis Logika & Pemecahan Masalah' },
+            ]}
+          />
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-1">
-            <div className="space-y-1.5">
-              <label className="block text-xs font-semibold text-slate-700 tracking-wide uppercase">Tipe Soal</label>
-              <select 
-                value={formData.tipe}
-                onChange={e => setFormData({...formData, tipe: e.target.value})}
-                className="w-full px-4 py-2.5 text-sm bg-slate-50 border border-slate-200/80 rounded-xl focus:border-teal-500 outline-none font-medium text-slate-800"
-              >
-                <option value="Pilihan Ganda">Pilihan Ganda (A - E)</option>
-                <option value="Benar / Salah">Benar / Salah (B/S)</option>
-                <option value="Essay Singkat">Essay Singkat</option>
-              </select>
-            </div>
+            <Select
+              label="Tipe Soal"
+              value={formData.tipe}
+              onChange={e => setFormData({...formData, tipe: e.target.value})}
+              options={[
+                { key: 'Pilihan Ganda', value: 'Pilihan Ganda (A - E)' },
+                { key: 'Benar / Salah', value: 'Benar / Salah (B/S)' },
+                { key: 'Essay Singkat', value: 'Essay Singkat' },
+              ]}
+            />
 
-            <div className="space-y-1.5">
-              <label className="block text-xs font-semibold text-slate-700 tracking-wide uppercase">Status Bank</label>
-              <select 
-                value={formData.status}
-                onChange={e => setFormData({...formData, status: e.target.value})}
-                className="w-full px-4 py-2.5 text-sm bg-slate-50 border border-slate-200/80 rounded-xl focus:border-teal-500 outline-none font-medium text-slate-800"
-              >
-                <option value="Aktif">Aktif (Siap Dirakit)</option>
-                <option value="Draft">Draft (Belum Selesai)</option>
-              </select>
-            </div>
+            <Select
+              label="Status Bank"
+              value={formData.status}
+              onChange={e => setFormData({...formData, status: e.target.value})}
+              options={[
+                { key: 'Aktif', value: 'Aktif (Siap Dirakit)' },
+                { key: 'Draft', value: 'Draft (Belum Selesai)' },
+              ]}
+            />
           </div>
         </form>
       </Modal>

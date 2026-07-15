@@ -7,9 +7,12 @@ import Badge from '../ui/Badge'
 import Page from '../ui/Page'
 import Modal from '../ui/Modal'
 import Input from '../ui/Input'
+import Select from '../ui/Select'
 import { useToast } from '../ui/Toast'
+import { useMessageBox } from '../ui/MessageBox'
 
 export default function JadwalPage() {
+  const { confirm } = useMessageBox()
   const { addToast } = useToast()
   const [jadwalList, setJadwalList] = useState(mockJadwal)
   const [modalOpen, setModalOpen] = useState(false)
@@ -45,8 +48,9 @@ export default function JadwalPage() {
     setModalOpen(true)
   }
 
-  const handleDelete = (id, nama) => {
-    if (window.confirm(`Hapus jadwal sesi "${nama}"?`)) {
+  const handleDelete = async (id, nama) => {
+    const confirmed = await confirm({ title: 'Konfirmasi Hapus', message: `Hapus jadwal sesi "${nama}"?`, variant: 'danger', confirmText: 'Ya, Hapus' })
+    if (confirmed) {
       setJadwalList(jadwalList.filter(j => j.id !== id))
       addToast({ title: 'Jadwal Dihapus', message: `Jadwal ujian "${nama}" berhasil dihapus.`, variant: 'danger' })
     }
@@ -136,14 +140,16 @@ export default function JadwalPage() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <Input label="Tanggal Pelaksanaan" value={formData.tanggal} onChange={e => setFormData({...formData, tanggal: e.target.value})} icon="fa-calendar" placeholder="22 Juli 2026" required />
-            <div className="space-y-1.5">
-              <label className="block text-xs font-semibold text-slate-700 tracking-wide uppercase">Sesi Ujian</label>
-              <select value={formData.sesi} onChange={e => setFormData({...formData, sesi: e.target.value})} className="w-full px-4 py-2.5 text-sm bg-slate-50 border border-slate-200/80 rounded-xl focus:border-teal-500 outline-none font-medium text-slate-800">
-                <option value="1">Sesi 1 (08:00 - 10:00 WIB)</option>
-                <option value="2">Sesi 2 (10:30 - 12:30 WIB)</option>
-                <option value="3">Sesi 3 (13:30 - 15:30 WIB)</option>
-              </select>
-            </div>
+            <Select
+              label="Sesi Ujian"
+              value={formData.sesi}
+              onChange={e => setFormData({...formData, sesi: e.target.value})}
+              options={[
+                { key: '1', value: 'Sesi 1 (08:00 - 10:00 WIB)' },
+                { key: '2', value: 'Sesi 2 (10:30 - 12:30 WIB)' },
+                { key: '3', value: 'Sesi 3 (13:30 - 15:30 WIB)' },
+              ]}
+            />
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -152,22 +158,26 @@ export default function JadwalPage() {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div className="space-y-1.5">
-              <label className="block text-xs font-semibold text-slate-700 tracking-wide uppercase">Lokasi / Laboratorium</label>
-              <select value={formData.lokasi} onChange={e => setFormData({...formData, lokasi: e.target.value})} className="w-full px-4 py-2.5 text-sm bg-slate-50 border border-slate-200/80 rounded-xl focus:border-teal-500 outline-none font-medium text-slate-800">
-                <option value="Lab Komputer Utama (Lab 1)">Lab Komputer Utama (Lab 1)</option>
-                <option value="Lab Multimedia (Lab 2)">Lab Multimedia (Lab 2)</option>
-                <option value="Ruang Ujian Terpadu A">Ruang Ujian Terpadu A</option>
-              </select>
-            </div>
+            <Select
+              label="Lokasi / Laboratorium"
+              value={formData.lokasi}
+              onChange={e => setFormData({...formData, lokasi: e.target.value})}
+              options={[
+                { key: 'Lab Komputer Utama (Lab 1)', value: 'Lab Komputer Utama (Lab 1)' },
+                { key: 'Lab Multimedia (Lab 2)', value: 'Lab Multimedia (Lab 2)' },
+                { key: 'Ruang Ujian Terpadu A', value: 'Ruang Ujian Terpadu A' },
+              ]}
+            />
 
-            <div className="space-y-1.5">
-              <label className="block text-xs font-semibold text-slate-700 tracking-wide uppercase">Status Sesi</label>
-              <select value={formData.status} onChange={e => setFormData({...formData, status: e.target.value})} className="w-full px-4 py-2.5 text-sm bg-slate-50 border border-slate-200/80 rounded-xl focus:border-teal-500 outline-none font-medium text-slate-800">
-                <option value="Terjadwal">Terjadwal (Siap Dilaksanakan)</option>
-                <option value="Ditunda">Ditunda / Reschedule</option>
-              </select>
-            </div>
+            <Select
+              label="Status Sesi"
+              value={formData.status}
+              onChange={e => setFormData({...formData, status: e.target.value})}
+              options={[
+                { key: 'Terjadwal', value: 'Terjadwal (Siap Dilaksanakan)' },
+                { key: 'Ditunda', value: 'Ditunda / Reschedule' },
+              ]}
+            />
           </div>
         </form>
       </Modal>

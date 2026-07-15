@@ -1,15 +1,14 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Page from '../ui/Page'
 import { Card, CardHeader, CardBody } from '../ui/Card'
 import Button from '../ui/Button'
 import { useToast } from '../ui/Toast'
 import { useNavigate } from 'react-router-dom'
+import FileUpload from '../ui/FileUpload'
 
 export default function SoalImportPage() {
   const { addToast } = useToast()
   const navigate = useNavigate()
-  const [dragActive, setDragActive] = useState(false)
-
   const handleSimulateImport = () => {
     addToast({ title: 'Impor Berhasil', message: '50 butir soal berhasil diimpor ke dalam bank soal active.', variant: 'success' })
     setTimeout(() => navigate('/admin/soal'), 1000)
@@ -34,29 +33,7 @@ export default function SoalImportPage() {
             Area Unggah Dokumen Soal
           </CardHeader>
           <CardBody className="flex-1 flex flex-col justify-center items-center p-8">
-            <div 
-              onDragOver={e => { e.preventDefault(); setDragActive(true) }}
-              onDragLeave={() => setDragActive(false)}
-              onDrop={e => { e.preventDefault(); setDragActive(false); handleSimulateImport() }}
-              className={`w-full flex-1 min-h-[300px] border-2 border-dashed rounded-2xl flex flex-col items-center justify-center p-8 transition-all duration-300 ${
-                dragActive ? 'border-emerald-500 bg-emerald-50/50 scale-[0.99]' : 'border-slate-300 bg-slate-50/50 hover:bg-slate-50 hover:border-emerald-400'
-              }`}
-            >
-              <div className="w-20 h-20 bg-white text-emerald-600 rounded-2xl flex items-center justify-center text-4xl mb-4 shadow-sm border border-emerald-100">
-                <i className="fas fa-cloud-upload-alt"></i>
-              </div>
-              <h4 className="text-base font-bold text-slate-800">Seret & Lepaskan File Excel / Word di Sini</h4>
-              <p className="text-xs text-slate-500 max-w-sm text-center mt-1">
-                Format yang didukung: .xlsx, .xls, atau .docx dengan struktur tabel yang sesuai dengan format resmi CBT.
-              </p>
-
-              <div className="mt-6 flex items-center gap-3">
-                <label className="bg-emerald-600 hover:bg-emerald-700 text-white font-semibold px-6 py-2.5 rounded-xl cursor-pointer shadow-sm text-xs md:text-sm flex items-center gap-2 transition-colors">
-                  <i className="fas fa-folder-open"></i> Pilih Berkas dari Komputer
-                  <input type="file" className="hidden" onChange={handleSimulateImport} />
-                </label>
-              </div>
-            </div>
+            <FileUpload name="file" label="Import Soal" accept=".xlsx,.xls,.csv" onFileChange={(f) => { console.log(f); handleSimulateImport() }} />
           </CardBody>
         </Card>
 

@@ -7,9 +7,12 @@ import Badge from '../ui/Badge'
 import ClassicStatCard from '../ui/ClassicStatCard'
 import Modal from '../ui/Modal'
 import Input from '../ui/Input'
+import Select from '../ui/Select'
 import { useToast } from '../ui/Toast'
+import { useMessageBox } from '../ui/MessageBox'
 
 export default function PaketPage() {
+  const { confirm } = useMessageBox()
   const { addToast } = useToast()
   const [modalOpen, setModalOpen] = useState(false)
   const [paketList, setPaketList] = useState([
@@ -44,8 +47,9 @@ export default function PaketPage() {
     setFormData({ kode: `PKT-NEW-0${paketList.length + 2}`, nama: '', jumlahSoal: 100, durasi: '120 Menit', status: 'Verifikasi Lolos' })
   }
 
-  const handleDelete = (id, nama) => {
-    if (window.confirm(`Hapus paket ujian "${nama}"?`)) {
+  const handleDelete = async (id, nama) => {
+    const confirmed = await confirm({ title: 'Konfirmasi Hapus', message: `Hapus paket ujian "${nama}"?`, variant: 'danger', confirmText: 'Ya, Hapus' })
+    if (confirmed) {
       setPaketList(paketList.filter(p => p.id !== id))
       addToast({ title: 'Paket Dihapus', message: `Paket berhasil dihapus dari sistem.`, variant: 'danger' })
     }
@@ -121,13 +125,15 @@ export default function PaketPage() {
             <Input label="Durasi Waktu Pengerjaan" value={formData.durasi} onChange={e => setFormData({...formData, durasi: e.target.value})} icon="fa-clock" placeholder="120 Menit" required />
           </div>
 
-          <div className="space-y-1.5">
-            <label className="block text-xs font-semibold text-slate-700 tracking-wide uppercase">Status Rakitan</label>
-            <select value={formData.status} onChange={e => setFormData({...formData, status: e.target.value})} className="w-full px-4 py-2.5 text-sm bg-slate-50 border border-slate-200/80 rounded-xl focus:border-teal-500 outline-none font-medium text-slate-800">
-              <option value="Verifikasi Lolos">Verifikasi Lolos (Siap Digunakan)</option>
-              <option value="Draft Review">Draft Review (Dalam Pengecekan)</option>
-            </select>
-          </div>
+          <Select
+            label="Status Rakitan"
+            value={formData.status}
+            onChange={e => setFormData({...formData, status: e.target.value})}
+            options={[
+              { key: 'Verifikasi Lolos', value: 'Verifikasi Lolos (Siap Digunakan)' },
+              { key: 'Draft Review', value: 'Draft Review (Dalam Pengecekan)' },
+            ]}
+          />
         </form>
       </Modal>
     </Page>

@@ -8,8 +8,10 @@ import ClassicStatCard from '../ui/ClassicStatCard'
 import Modal from '../ui/Modal'
 import Input from '../ui/Input'
 import { useToast } from '../ui/Toast'
+import { useMessageBox } from '../ui/MessageBox'
 
 export default function SesiPage() {
+  const { confirm } = useMessageBox()
   const { addToast } = useToast()
   const [modalOpen, setModalOpen] = useState(false)
   const [sesiList, setSesiList] = useState([
@@ -44,8 +46,9 @@ export default function SesiPage() {
     setFormData({ namaSesi: `Sesi ${sesiList.length + 2}`, jamMulai: '18:30 WIB', jamSelesai: '20:30 WIB', kapasitas: '50 Peserta', jeda: '15 Menit', status: 'Aktif' })
   }
 
-  const handleDelete = (id, nama) => {
-    if (window.confirm(`Hapus rotasi sesi "${nama}"?`)) {
+  const handleDelete = async (id, nama) => {
+    const confirmed = await confirm({ title: 'Konfirmasi Hapus', message: `Hapus rotasi sesi "${nama}"?`, variant: 'danger', confirmText: 'Ya, Hapus' })
+    if (confirmed) {
       setSesiList(sesiList.filter(s => s.id !== id))
       addToast({ title: 'Sesi Dihapus', message: `Sesi rotasi berhasil dihapus.`, variant: 'danger' })
     }

@@ -7,9 +7,12 @@ import Badge from '../ui/Badge'
 import Page from '../ui/Page'
 import Modal from '../ui/Modal'
 import Input from '../ui/Input'
+import Select from '../ui/Select'
 import { useToast } from '../ui/Toast'
+import { useMessageBox } from '../ui/MessageBox'
 
 export default function TesPage() {
+  const { confirm } = useMessageBox()
   const { addToast } = useToast()
   const [tesList, setTesList] = useState(mockTes)
   const [modalOpen, setModalOpen] = useState(false)
@@ -43,8 +46,9 @@ export default function TesPage() {
     setModalOpen(true)
   }
 
-  const handleDelete = (id, nama) => {
-    if (window.confirm(`Hapus konfigurasi tes "${nama}"?`)) {
+  const handleDelete = async (id, nama) => {
+    const confirmed = await confirm({ title: 'Konfirmasi Hapus', message: `Hapus konfigurasi tes "${nama}"?`, variant: 'danger', confirmText: 'Ya, Hapus' })
+    if (confirmed) {
       setTesList(tesList.filter(t => t.id !== id))
       addToast({ title: 'Tes Dihapus', message: `Konfigurasi tes "${nama}" berhasil dihapus.`, variant: 'danger' })
     }
@@ -134,15 +138,17 @@ export default function TesPage() {
         <form onSubmit={handleSubmit} className="space-y-4">
           <Input label="Nama Tes / Subtes" value={formData.namaTes} onChange={e => setFormData({...formData, namaTes: e.target.value})} icon="fa-clipboard" placeholder="Contoh: Tes Wawasan Kebangsaan (TWK)" required />
 
-          <div className="space-y-1.5">
-            <label className="block text-xs font-semibold text-slate-700 tracking-wide uppercase">Materi Uji Terkait</label>
-            <select value={formData.materi} onChange={e => setFormData({...formData, materi: e.target.value})} className="w-full px-4 py-2.5 text-sm bg-slate-50 border border-slate-200/80 rounded-xl focus:border-teal-500 outline-none font-medium text-slate-800">
-              <option value="Pengetahuan Umum">Pengetahuan Umum</option>
-              <option value="Bahasa Indonesia">Bahasa Indonesia</option>
-              <option value="Bahasa Inggris">Bahasa Inggris Kedinasan</option>
-              <option value="Logika & Tes Potensi">Logika & Tes Potensi</option>
-            </select>
-          </div>
+          <Select
+            label="Materi Uji Terkait"
+            value={formData.materi}
+            onChange={e => setFormData({...formData, materi: e.target.value})}
+            options={[
+              { key: 'Pengetahuan Umum', value: 'Pengetahuan Umum' },
+              { key: 'Bahasa Indonesia', value: 'Bahasa Indonesia' },
+              { key: 'Bahasa Inggris', value: 'Bahasa Inggris Kedinasan' },
+              { key: 'Logika & Tes Potensi', value: 'Logika & Tes Potensi' },
+            ]}
+          />
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <Input label="Alamat Soal (Jumlah Item)" type="number" value={formData.jumlahSoal} onChange={e => setFormData({...formData, jumlahSoal: e.target.value})} icon="fa-list-ol" required />
@@ -151,13 +157,15 @@ export default function TesPage() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <Input label="Jadwal Pelaksanaan" value={formData.tanggal} onChange={e => setFormData({...formData, tanggal: e.target.value})} icon="fa-calendar" required />
-            <div className="space-y-1.5">
-              <label className="block text-xs font-semibold text-slate-700 tracking-wide uppercase">Status Tes</label>
-              <select value={formData.status} onChange={e => setFormData({...formData, status: e.target.value})} className="w-full px-4 py-2.5 text-sm bg-slate-50 border border-slate-200/80 rounded-xl focus:border-teal-500 outline-none font-medium text-slate-800">
-                <option value="Aktif">Aktif (Dapat Dikerjakan)</option>
-                <option value="Draft">Draft (Disembunyikan)</option>
-              </select>
-            </div>
+            <Select
+              label="Status Tes"
+              value={formData.status}
+              onChange={e => setFormData({...formData, status: e.target.value})}
+              options={[
+                { key: 'Aktif', value: 'Aktif (Dapat Dikerjakan)' },
+                { key: 'Draft', value: 'Draft (Disembunyikan)' },
+              ]}
+            />
           </div>
         </form>
       </Modal>

@@ -5,6 +5,7 @@ import Button from '../ui/Button'
 import Badge from '../ui/Badge'
 import Page from '../ui/Page'
 import Modal from '../ui/Modal'
+import Select from '../ui/Select'
 import { BarChart, DonutChart } from '../ui/Chart'
 import { useToast } from '../ui/Toast'
 
@@ -95,11 +96,14 @@ export default function RekapPage() {
         <CardBody className="flex-1 flex flex-col space-y-4">
           <div className="flex flex-col sm:flex-row justify-between items-stretch sm:items-center gap-3">
             <div className="flex items-center gap-3 w-full sm:w-auto">
-              <select className="px-3.5 py-2 text-sm bg-slate-50 border border-slate-200/80 rounded-xl focus:border-teal-500 outline-none font-medium text-slate-700">
-                <option>Semua Gelombang Ujian</option>
-                <option>Ujian Penyesuaian Kenaikan Pangkat</option>
-                <option>Ujian Dinas Tingkat I & II</option>
-              </select>
+              <Select
+                label=""
+                options={[
+                  { key: 'all', value: 'Semua Gelombang Ujian' },
+                  { key: 'kenaikan', value: 'Ujian Penyesuaian Kenaikan Pangkat' },
+                  { key: 'dinas', value: 'Ujian Dinas Tingkat I & II' },
+                ]}
+              />
             </div>
             <div className="relative w-full sm:w-72">
               <i className="fas fa-search absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
@@ -114,49 +118,49 @@ export default function RekapPage() {
           </div>
 
           <div className="overflow-x-auto rounded-xl border border-slate-200/60 shadow-2xs flex-1">
-            <table className="w-full text-sm">
-              <thead>
-                <tr className="bg-slate-50/90 border-b border-slate-200/60">
-                  <th rowSpan="2" className="px-4 py-3 text-left font-bold text-slate-700 text-xs uppercase align-middle">No</th>
-                  <th rowSpan="2" className="px-4 py-3 text-left font-bold text-slate-700 text-xs uppercase align-middle">Nama Lengkap</th>
-                  <th rowSpan="2" className="px-4 py-3 text-left font-bold text-slate-700 text-xs uppercase align-middle">NIP / Identitas</th>
-                  <th rowSpan="2" className="px-4 py-3 text-left font-bold text-slate-700 text-xs uppercase align-middle">Pangkat</th>
-                  <th colSpan="3" className="px-4 py-3 text-center font-bold text-slate-700 text-xs uppercase border-b border-slate-200/60">Nilai Subtes Mata Ujian</th>
-                  <th rowSpan="2" className="px-4 py-3 text-center font-bold text-slate-700 text-xs uppercase align-middle">Rata-rata</th>
-                  <th rowSpan="2" className="px-4 py-3 text-center font-bold text-slate-700 text-xs uppercase align-middle">Status Akhir</th>
-                  <th rowSpan="2" className="px-4 py-3 text-center font-bold text-slate-700 text-xs uppercase align-middle">Aksi</th>
+            <table className="w-full text-sm whitespace-nowrap">
+              <thead className="bg-slate-50/80 border-b border-slate-200/60">
+                <tr>
+                  <th rowSpan="2" className="px-5 py-3.5 text-left font-semibold text-slate-700 text-xs tracking-wide uppercase align-middle">No</th>
+                  <th rowSpan="2" className="px-5 py-3.5 text-left font-semibold text-slate-700 text-xs tracking-wide uppercase align-middle">Nama Lengkap</th>
+                  <th rowSpan="2" className="px-5 py-3.5 text-left font-semibold text-slate-700 text-xs tracking-wide uppercase align-middle">NIP / Identitas</th>
+                  <th rowSpan="2" className="px-5 py-3.5 text-left font-semibold text-slate-700 text-xs tracking-wide uppercase align-middle">Pangkat</th>
+                  <th colSpan="3" className="px-5 py-3.5 text-center font-semibold text-slate-700 text-xs tracking-wide uppercase border-b border-slate-200/60">Nilai Subtes Mata Ujian</th>
+                  <th rowSpan="2" className="px-5 py-3.5 text-center font-semibold text-slate-700 text-xs tracking-wide uppercase align-middle">Rata-rata</th>
+                  <th rowSpan="2" className="px-5 py-3.5 text-center font-semibold text-slate-700 text-xs tracking-wide uppercase align-middle">Status Akhir</th>
+                  <th rowSpan="2" className="px-5 py-3.5 text-center font-semibold text-slate-700 text-xs tracking-wide uppercase align-middle">Aksi</th>
                 </tr>
-                <tr className="bg-slate-50/90 border-b border-slate-200/60">
-                  <th className="px-3 py-2.5 text-left text-xs font-semibold text-slate-600">Pengetahuan Umum</th>
-                  <th className="px-3 py-2.5 text-left text-xs font-semibold text-slate-600">Bahasa Indonesia</th>
-                  <th className="px-3 py-2.5 text-left text-xs font-semibold text-slate-600">Matematika / Logika</th>
+                <tr>
+                  <th className="px-5 py-3.5 text-left text-xs font-semibold text-slate-600 tracking-wide uppercase">Pengetahuan Umum</th>
+                  <th className="px-5 py-3.5 text-left text-xs font-semibold text-slate-600 tracking-wide uppercase">Bahasa Indonesia</th>
+                  <th className="px-5 py-3.5 text-left text-xs font-semibold text-slate-600 tracking-wide uppercase">Matematika / Logika</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-100 bg-white">
+              <tbody className="divide-y divide-slate-100 bg-white whitespace-nowrap">
                 {filtered.map((p, i) => {
                   const avg = Math.round(p.tes.reduce((s, t) => s + t.nilai, 0) / p.tes.length)
                   return (
                     <tr key={p.id} className="hover:bg-slate-50/80 transition-colors">
-                      <td className="px-4 py-3.5 text-slate-600">{i + 1}</td>
-                      <td className="px-4 py-3.5 font-extrabold text-slate-800 uppercase">{p.nama}</td>
-                      <td className="px-4 py-3.5 text-xs font-mono text-slate-500">{p.nip}</td>
-                      <td className="px-4 py-3.5 text-slate-700 font-medium">{p.pangkat}</td>
+                      <td className="px-5 py-3.5 text-slate-600">{i + 1}</td>
+                      <td className="px-5 py-3.5 font-extrabold text-slate-800 uppercase">{p.nama}</td>
+                      <td className="px-5 py-3.5 text-xs font-mono text-slate-500">{p.nip}</td>
+                      <td className="px-5 py-3.5 text-slate-700 font-medium">{p.pangkat}</td>
                       {p.tes.map((t, ti) => (
-                        <td key={ti} className="px-3 py-3.5">
+                        <td key={ti} className="px-5 py-3.5">
                           <span className={`font-extrabold px-2.5 py-1 rounded-md text-xs ${t.nilai >= 70 ? 'bg-emerald-50 text-emerald-700 border border-emerald-200/60' : 'bg-rose-50 text-rose-700 border border-rose-200/60'}`}>
                             {t.nilai}
                           </span>
                         </td>
                       ))}
-                      <td className="px-4 py-3.5 text-center">
+                      <td className="px-5 py-3.5 text-center">
                         <strong className="text-base font-extrabold text-teal-600 font-mono">{avg}</strong>
                       </td>
-                      <td className="px-4 py-3.5 text-center">
+                      <td className="px-5 py-3.5 text-center">
                         <Badge variant={avg >= 70 ? 'success' : 'danger'} dot>
                           {avg >= 70 ? 'Lulus' : 'Tidak Lulus'}
                         </Badge>
                       </td>
-                      <td className="px-4 py-3.5 text-center">
+                      <td className="px-5 py-3.5 text-center">
                         <Button variant="outline" size="xs" icon="fa-id-card" onClick={() => handleOpenDetail(p)}>
                           Detail Transkrip
                         </Button>

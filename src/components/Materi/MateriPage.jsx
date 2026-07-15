@@ -7,9 +7,13 @@ import Badge from '../ui/Badge'
 import ClassicStatCard from '../ui/ClassicStatCard'
 import Modal from '../ui/Modal'
 import Input from '../ui/Input'
+import FileUpload from '../ui/FileUpload'
+import Select from '../ui/Select'
 import { useToast } from '../ui/Toast'
+import { useMessageBox } from '../ui/MessageBox'
 
 export default function MateriPage() {
+  const { confirm } = useMessageBox()
   const { addToast } = useToast()
   const [modalOpen, setModalOpen] = useState(false)
   const [materiList, setMateriList] = useState([
@@ -44,8 +48,9 @@ export default function MateriPage() {
     setFormData({ kode: `MAT-0${materiList.length + 2}`, judul: '', kategori: 'Wajib Dasar', berkas: 'Dokumen_Silabus.pdf' })
   }
 
-  const handleDelete = (id, judul) => {
-    if (window.confirm(`Hapus materi silabus "${judul}"?`)) {
+  const handleDelete = async (id, judul) => {
+    const confirmed = await confirm({ title: 'Konfirmasi Hapus', message: `Hapus materi silabus "${judul}"?`, variant: 'danger', confirmText: 'Ya, Hapus' })
+    if (confirmed) {
       setMateriList(materiList.filter(m => m.id !== id))
       addToast({ title: 'Materi Dihapus', message: `Dokumen silabus berhasil dihapus.`, variant: 'danger' })
     }
@@ -115,24 +120,19 @@ export default function MateriPage() {
           <Input label="Kode Referensi Materi" value={formData.kode} onChange={e => setFormData({...formData, kode: e.target.value})} icon="fa-hashtag" required />
           <Input label="Judul Silabus / Referensi Pembelajaran" value={formData.judul} onChange={e => setFormData({...formData, judul: e.target.value})} icon="fa-book" placeholder="Contoh: Silabus Tes Pengetahuan Dasar 2026" required />
 
-          <div className="space-y-1.5">
-            <label className="block text-xs font-semibold text-slate-700 tracking-wide uppercase">Kategori Mata Ujian</label>
-            <select value={formData.kategori} onChange={e => setFormData({...formData, kategori: e.target.value})} className="w-full px-4 py-2.5 text-sm bg-slate-50 border border-slate-200/80 rounded-xl focus:border-teal-500 outline-none font-medium text-slate-800">
-              <option value="Wajib Dasar">Wajib Dasar</option>
-              <option value="Kuantitatif">Kuantitatif & Numerik</option>
-              <option value="Bahasa">Bahasa & Komunikasi</option>
-              <option value="Khusus Instansi">Khusus Instansi / Kejuruan</option>
-            </select>
-          </div>
+          <Select
+            label="Kategori Mata Ujian"
+            value={formData.kategori}
+            onChange={e => setFormData({...formData, kategori: e.target.value})}
+            options={[
+              { key: 'Wajib Dasar', value: 'Wajib Dasar' },
+              { key: 'Kuantitatif', value: 'Kuantitatif & Numerik' },
+              { key: 'Bahasa', value: 'Bahasa & Komunikasi' },
+              { key: 'Khusus Instansi', value: 'Khusus Instansi / Kejuruan' },
+            ]}
+          />
 
-          <div className="space-y-1.5">
-            <label className="block text-xs font-semibold text-slate-700 tracking-wide uppercase">Pilih Berkas (.pdf / .docx)</label>
-            <div className="border-2 border-dashed border-slate-300 rounded-xl p-6 text-center bg-slate-50/50 hover:bg-slate-50 cursor-pointer transition">
-              <i className="fas fa-file-upload text-2xl text-teal-600 mb-2"></i>
-              <div className="text-xs font-bold text-slate-700">Klik atau seret file dokumen silabus ke sini</div>
-              <div className="text-[10px] text-slate-400 mt-0.5">Maksimal ukuran berkas 15 MB</div>
-            </div>
-          </div>
+          <FileUpload name="file" label="Upload Materi" accept=".pdf,.doc,.docx,.pptx" onFileChange={(f) => console.log(f)} />
         </form>
       </Modal>
     </Page>

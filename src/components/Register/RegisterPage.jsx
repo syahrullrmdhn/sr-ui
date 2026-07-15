@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import Particles from '../ui/Particles'
 import Button from '../ui/Button'
 import Input from '../ui/Input'
+import Select from '../ui/Select'
 
 export default function RegisterPage() {
   const [formData, setFormData] = useState({
@@ -107,59 +108,47 @@ export default function RegisterPage() {
 
             <Input label="NIP / NIS / No. Identitas" name="nip" icon="fa-hashtag" placeholder="Masukkan NIP atau nomor identitas" value={formData.nip} onChange={handleChange} required />
 
-            <div className="space-y-1.5">
-              <label className="block text-xs font-semibold text-slate-700 tracking-wide uppercase">Jenis Ujian</label>
-              <div className="relative rounded-xl shadow-2xs">
-                <i className="fas fa-clipboard-list absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-sm pointer-events-none"></i>
-                <select 
-                  name="jenisUjian"
-                  value={formData.jenisUjian}
-                  onChange={handleChange}
-                  className="w-full pl-10 pr-4 py-2.5 text-sm bg-slate-50/60 border border-slate-200/80 rounded-xl text-slate-800 focus:bg-white focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 outline-none transition-all duration-200"
-                  required
-                >
-                  <option value="">-- Pilih Jenis Ujian --</option>
-                  <option value="Ujian Penyesuaian Kenaikan Pangkat">Ujian Penyesuaian Kenaikan Pangkat</option>
-                  <option value="Ujian Dinas">Ujian Dinas</option>
-                  <option value="Ujian Mandiri / Penilaian Akhir">Ujian Mandiri / Penilaian Akhir</option>
-                </select>
-              </div>
-            </div>
+            <Select
+              label="Jenis Ujian"
+              name="jenisUjian"
+              icon="fa-clipboard-list"
+              value={formData.jenisUjian}
+              onChange={handleChange}
+              emptyText="-- Pilih Jenis Ujian --"
+              required
+              options={[
+                { key: 'Ujian Penyesuaian Kenaikan Pangkat', value: 'Ujian Penyesuaian Kenaikan Pangkat' },
+                { key: 'Ujian Dinas', value: 'Ujian Dinas' },
+                { key: 'Ujian Mandiri / Penilaian Akhir', value: 'Ujian Mandiri / Penilaian Akhir' },
+              ]}
+            />
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div className="space-y-1.5">
-                <label className="block text-xs font-semibold text-slate-700 tracking-wide uppercase">UO / Kotama</label>
-                <div className="relative rounded-xl shadow-2xs">
-                  <i className="fas fa-building absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-sm pointer-events-none"></i>
-                  <select 
-                    name="kotama"
-                    value={formData.kotama}
-                    onChange={handleChange}
-                    className="w-full pl-10 pr-4 py-2.5 text-sm bg-slate-50/60 border border-slate-200/80 rounded-xl text-slate-800 focus:bg-white focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 outline-none transition-all duration-200"
-                  >
-                    <option value="">-- Pilih Kotama --</option>
-                    <option value="Kotama A">Kotama A</option>
-                    <option value="Kotama B">Kotama B</option>
-                  </select>
-                </div>
-              </div>
+              <Select
+                label="UO / Kotama"
+                name="kotama"
+                icon="fa-building"
+                value={formData.kotama}
+                onChange={handleChange}
+                emptyText="-- Pilih Kotama --"
+                options={[
+                  { key: 'Kotama A', value: 'Kotama A' },
+                  { key: 'Kotama B', value: 'Kotama B' },
+                ]}
+              />
 
-              <div className="space-y-1.5">
-                <label className="block text-xs font-semibold text-slate-700 tracking-wide uppercase">Satker / Unit</label>
-                <div className="relative rounded-xl shadow-2xs">
-                  <i className="fas fa-sitemap absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-sm pointer-events-none"></i>
-                  <select 
-                    name="satker"
-                    value={formData.satker}
-                    onChange={handleChange}
-                    className="w-full pl-10 pr-4 py-2.5 text-sm bg-slate-50/60 border border-slate-200/80 rounded-xl text-slate-800 focus:bg-white focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 outline-none transition-all duration-200"
-                  >
-                    <option value="">-- Pilih Satker --</option>
-                    <option value="Satker 1">Satker 1</option>
-                    <option value="Satker 2">Satker 2</option>
-                  </select>
-                </div>
-              </div>
+              <Select
+                label="Satker / Unit"
+                name="satker"
+                icon="fa-sitemap"
+                value={formData.satker}
+                onChange={handleChange}
+                emptyText="-- Pilih Satker --"
+                options={[
+                  { key: 'Satker 1', value: 'Satker 1' },
+                  { key: 'Satker 2', value: 'Satker 2' },
+                ]}
+              />
             </div>
 
             <div className="pt-3">

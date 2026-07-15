@@ -3,6 +3,7 @@ import Page from '../ui/Page'
 import { Card, CardHeader, CardBody } from '../ui/Card'
 import Button from '../ui/Button'
 import Input from '../ui/Input'
+import Select from '../ui/Select'
 import { useToast } from '../ui/Toast'
 
 export default function SettingsPage() {
@@ -43,29 +44,25 @@ export default function SettingsPage() {
               <Input label="URL Endpoint Server Utama CBT" value={config.serverUjian} onChange={e => setConfig({...config, serverUjian: e.target.value})} icon="fa-server" />
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
-                <div className="space-y-1.5">
-                  <label className="block text-xs font-semibold text-slate-700 tracking-wide uppercase">Tampilkan Nilai ke Peserta Selesai Ujian</label>
-                  <select 
-                    value={config.kunciJawabanAktif ? 'ya' : 'tidak'} 
-                    onChange={e => setConfig({...config, kunciJawabanAktif: e.target.value === 'ya'})}
-                    className="w-full px-4 py-2.5 text-sm bg-slate-50 border border-slate-200/80 rounded-xl focus:border-teal-500 outline-none font-medium text-slate-800"
-                  >
-                    <option value="ya">Ya, langsung tampilkan skor akhir</option>
-                    <option value="tidak">Tidak, sembunyikan nilai (hanya di rekap admin)</option>
-                  </select>
-                </div>
+                <Select
+                  label="Tampilkan Nilai ke Peserta Selesai Ujian"
+                  value={config.kunciJawabanAktif ? 'ya' : 'tidak'}
+                  onChange={e => setConfig({...config, kunciJawabanAktif: e.target.value === 'ya'})}
+                  options={[
+                    { key: 'ya', value: 'Ya, langsung tampilkan skor akhir' },
+                    { key: 'tidak', value: 'Tidak, sembunyikan nilai (hanya di rekap admin)' },
+                  ]}
+                />
 
-                <div className="space-y-1.5">
-                  <label className="block text-xs font-semibold text-slate-700 tracking-wide uppercase">Pencadangan Database (Auto-Backup)</label>
-                  <select 
-                    value={config.autoBackup ? 'aktif' : 'nonaktif'} 
-                    onChange={e => setConfig({...config, autoBackup: e.target.value === 'aktif'})}
-                    className="w-full px-4 py-2.5 text-sm bg-slate-50 border border-slate-200/80 rounded-xl focus:border-teal-500 outline-none font-medium text-slate-800"
-                  >
-                    <option value="aktif">Aktif (Otomatis setiap 30 menit)</option>
-                    <option value="nonaktif">Nonaktif (Hanya cadangan manual)</option>
-                  </select>
-                </div>
+                <Select
+                  label="Pencadangan Database (Auto-Backup)"
+                  value={config.autoBackup ? 'aktif' : 'nonaktif'}
+                  onChange={e => setConfig({...config, autoBackup: e.target.value === 'aktif'})}
+                  options={[
+                    { key: 'aktif', value: 'Aktif (Otomatis setiap 30 menit)' },
+                    { key: 'nonaktif', value: 'Nonaktif (Hanya cadangan manual)' },
+                  ]}
+                />
               </div>
 
               <div className="pt-4 flex justify-end">

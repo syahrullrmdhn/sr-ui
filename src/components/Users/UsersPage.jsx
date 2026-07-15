@@ -7,9 +7,12 @@ import Badge from '../ui/Badge'
 import Page from '../ui/Page'
 import Modal from '../ui/Modal'
 import Input from '../ui/Input'
+import Select from '../ui/Select'
 import { useToast } from '../ui/Toast'
+import { useMessageBox } from '../ui/MessageBox'
 
 export default function UsersPage() {
+  const { confirm } = useMessageBox()
   const { addToast } = useToast()
   const [users, setUsers] = useState(mockUsers)
   const [modalOpen, setModalOpen] = useState(false)
@@ -41,8 +44,9 @@ export default function UsersPage() {
     setModalOpen(true)
   }
 
-  const handleDelete = (id, nama) => {
-    if (window.confirm(`Apakah Anda yakin ingin menghapus user "${nama}"?`)) {
+  const handleDelete = async (id, nama) => {
+    const confirmed = await confirm({ title: 'Konfirmasi Hapus', message: `Apakah Anda yakin ingin menghapus user "${nama}"?`, variant: 'danger', confirmText: 'Ya, Hapus' })
+    if (confirmed) {
       setUsers(users.filter(u => u.id !== id))
       addToast({ title: 'User Dihapus', message: `Akun pengguna "${nama}" berhasil dihapus dari sistem.`, variant: 'danger' })
     }
@@ -158,30 +162,26 @@ export default function UsersPage() {
           />
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-1">
-            <div className="space-y-1.5">
-              <label className="block text-xs font-semibold text-slate-700 tracking-wide uppercase">Role Akses</label>
-              <select 
-                value={formData.role}
-                onChange={e => setFormData({...formData, role: e.target.value})}
-                className="w-full px-4 py-2.5 text-sm bg-slate-50 border border-slate-200/80 rounded-xl focus:border-teal-500 outline-none font-medium text-slate-800"
-              >
-                <option value="Administrator">Administrator</option>
-                <option value="Guru">Guru / Pengampu Soal</option>
-                <option value="Operator">Operator Ruang Lab</option>
-              </select>
-            </div>
+            <Select
+              label="Role Akses"
+              value={formData.role}
+              onChange={e => setFormData({...formData, role: e.target.value})}
+              options={[
+                { key: 'Administrator', value: 'Administrator' },
+                { key: 'Guru', value: 'Guru / Pengampu Soal' },
+                { key: 'Operator', value: 'Operator Ruang Lab' },
+              ]}
+            />
 
-            <div className="space-y-1.5">
-              <label className="block text-xs font-semibold text-slate-700 tracking-wide uppercase">Status Akun</label>
-              <select 
-                value={formData.status}
-                onChange={e => setFormData({...formData, status: e.target.value})}
-                className="w-full px-4 py-2.5 text-sm bg-slate-50 border border-slate-200/80 rounded-xl focus:border-teal-500 outline-none font-medium text-slate-800"
-              >
-                <option value="Aktif">Aktif</option>
-                <option value="Nonaktif">Nonaktif</option>
-              </select>
-            </div>
+            <Select
+              label="Status Akun"
+              value={formData.status}
+              onChange={e => setFormData({...formData, status: e.target.value})}
+              options={[
+                { key: 'Aktif', value: 'Aktif' },
+                { key: 'Nonaktif', value: 'Nonaktif' },
+              ]}
+            />
           </div>
         </form>
       </Modal>
