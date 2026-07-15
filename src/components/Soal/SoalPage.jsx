@@ -107,7 +107,7 @@ export default function SoalPage() {
         </CardHeader>
         <CardBody className="p-4 md:p-6 flex flex-col justify-between" style={{ minHeight: '300px' }}>
           <BarChart 
-            data={chartData} 
+            data={chartDataMateri} 
             color="bronze" 
             height={220} 
             unit="Butir Soal" 

@@ -9,13 +9,14 @@ export function Card({ children, className = '', ...props }) {
   )
 }
 
-export function CardHeader({ children, className = '', action }) {
+export function CardHeader({ children, className = '', action, actions }) {
+  const headerAction = action || actions
   return (
     <div 
       className={`flex items-center justify-between px-5 py-4 border-b border-[#e8d9c7]/60 bg-[#f8f5f1]/70 w-full ${className}`}
     >
       <div className="font-extrabold text-sm text-[#2c2c2c] tracking-tight flex items-center gap-2.5">{children}</div>
-      {action && <div className="flex items-center gap-1.5">{action}</div>}
+      {headerAction && <div className="flex items-center gap-1.5">{headerAction}</div>}
     </div>
   )
 }
