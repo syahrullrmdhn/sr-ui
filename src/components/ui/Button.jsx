@@ -1,15 +1,15 @@
 import React from 'react'
 
 const variants = {
-  primary:   'bg-[#a86e2f] text-white shadow-sm hover:bg-[#895823] hover:shadow ring-1 ring-[#a86e2f]/20',
+  primary:   'bg-[#855b2f] text-white shadow-sm hover:bg-[#5e3f1f] hover:shadow ring-1 ring-[#855b2f]/20',
   secondary: 'bg-[#2f69a8] text-white shadow-sm hover:bg-[#224c7a] hover:shadow ring-1 ring-[#2f69a8]/20',
-  accent:    'bg-[#2fa86e] text-white shadow-sm hover:bg-[#237d52] hover:shadow ring-1 ring-[#2fa86e]/20',
+  accent:    'bg-[#4caf50] text-white shadow-sm hover:bg-[#237d52] hover:shadow ring-1 ring-[#4caf50]/20',
   success:   'bg-[#4a9c6e] text-white shadow-sm hover:bg-[#3a7d57] hover:shadow ring-1 ring-[#4a9c6e]/20',
-  warning:   'bg-[#d97e2f] text-white shadow-sm hover:bg-[#b36523] hover:shadow ring-1 ring-[#d97e2f]/20',
+  warning:   'bg-[#ff9800] text-white shadow-sm hover:bg-[#b36523] hover:shadow ring-1 ring-[#ff9800]/20',
   danger:    'bg-rose-600 text-white shadow-sm hover:bg-rose-700 hover:shadow ring-1 ring-rose-400/20',
   info:      'bg-[#2f69a8] text-white shadow-sm hover:bg-[#224c7a] hover:shadow ring-1 ring-[#2f69a8]/20',
-  outline:   'bg-white border border-[#e8d9c7] text-[#2c2c2c] hover:bg-[#f8f5f1] hover:border-[#a86e2f] hover:text-[#a86e2f] shadow-2xs',
-  ghost:     'bg-transparent text-[#6b5e52] hover:bg-[#f8f5f1] hover:text-[#a86e2f]',
+  outline:   'bg-white border border-[#d4c4ab] text-[#333333] hover:bg-[#F4F6F9] hover:border-[#855b2f] hover:text-[#855b2f] shadow-2xs',
+  ghost:     'bg-transparent text-[#5A5A5A] hover:bg-[#F4F6F9] hover:text-[#855b2f]',
 }
 
 const sizes = {

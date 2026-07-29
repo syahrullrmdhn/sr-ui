@@ -22,7 +22,7 @@ const positionClasses = {
 const variantStyles = {
   info:    'bg-[#2f69a8] text-white',
   success: 'bg-[#4a9c6e] text-white',
-  warning: 'bg-[#d97e2f] text-white',
+  warning: 'bg-[#ff9800] text-white',
   danger:  'bg-rose-600 text-white',
 }
 

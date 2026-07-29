@@ -12,7 +12,7 @@ import React, { useState, useEffect, useCallback } from 'react'
  */
 
 const variantColors = {
-  primary: 'accent-[#a86e2f]',
+  primary: 'accent-[#855b2f]',
   success: 'accent-[#4a9c6e]',
   danger: 'accent-rose-600',
   info: 'accent-[#2f69a8]',
@@ -99,7 +99,7 @@ export default function CheckBox({
         ) : (
           <i className="fas fa-times-circle text-rose-400"></i>
         )}
-        {label && <span className="text-sm text-[#2c2c2c]">{label}</span>}
+        {label && <span className="text-sm text-[#333333]">{label}</span>}
       </span>
     )
   }
@@ -124,7 +124,7 @@ export default function CheckBox({
     return (
       <div className={'space-y-1.5 w-full ' + className}>
         {label && (
-          <label className="block text-xs font-semibold text-[#2c2c2c] tracking-wide uppercase">
+          <label className="block text-xs font-semibold text-[#333333] tracking-wide uppercase">
             {label}
             {required && <span className="text-rose-500 ml-0.5">*</span>}
           </label>
@@ -147,9 +147,9 @@ export default function CheckBox({
                   checked={isChecked}
                   disabled={disabled}
                   onChange={(e) => handleOptionChange(optKey, e.target.checked)}
-                  className={'w-4 h-4 rounded border-slate-300 ' + (variantColors[variant] || variantColors.primary) + ' focus:ring-[#a86e2f]/20 focus:ring-2 transition-colors'}
+                  className={'w-4 h-4 rounded border-slate-300 ' + (variantColors[variant] || variantColors.primary) + ' focus:ring-[#855b2f]/20 focus:ring-2 transition-colors'}
                 />
-                <span className="text-sm text-[#2c2c2c]">{optLabel}</span>
+                <span className="text-sm text-[#333333]">{optLabel}</span>
               </label>
             )
           })}
@@ -178,13 +178,13 @@ export default function CheckBox({
             className="sr-only peer"
             {...props}
           />
-          <div className="w-10 h-5 bg-slate-200 rounded-full peer-checked:bg-[#a86e2f] transition-colors duration-200" />
+          <div className="w-10 h-5 bg-slate-200 rounded-full peer-checked:bg-[#855b2f] transition-colors duration-200" />
           <div className="absolute left-0.5 top-0.5 w-4 h-4 bg-white rounded-full shadow-xs peer-checked:translate-x-5 transition-transform duration-200" />
         </div>
         {label && (
           <div className="flex flex-col">
-            <span className="text-sm font-medium text-[#2c2c2c]">{label}</span>
-            {description && <span className="text-xs text-[#6b5e52] mt-0.5">{description}</span>}
+            <span className="text-sm font-medium text-[#333333]">{label}</span>
+            {description && <span className="text-xs text-[#5A5A5A] mt-0.5">{description}</span>}
           </div>
         )}
       </label>
@@ -207,13 +207,13 @@ export default function CheckBox({
         onChange={onChange}
         disabled={disabled}
         required={required}
-        className={'mt-0.5 w-4 h-4 rounded border-slate-300 ' + (variantColors[variant] || variantColors.primary) + ' focus:ring-[#a86e2f]/20 focus:ring-2 transition-colors'}
+        className={'mt-0.5 w-4 h-4 rounded border-slate-300 ' + (variantColors[variant] || variantColors.primary) + ' focus:ring-[#855b2f]/20 focus:ring-2 transition-colors'}
         {...props}
       />
       {label && (
         <div className="flex flex-col">
-          <span className="text-sm font-medium text-[#2c2c2c]">{label}</span>
-          {description && <span className="text-xs text-[#6b5e52] mt-0.5">{description}</span>}
+          <span className="text-sm font-medium text-[#333333]">{label}</span>
+          {description && <span className="text-xs text-[#5A5A5A] mt-0.5">{description}</span>}
         </div>
       )}
     </label>

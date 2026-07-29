@@ -1,13 +1,21 @@
 import { useNavigate } from 'react-router-dom'
-import Button from '../ui/Button'
 
 export default function NotFoundPage() {
   const navigate = useNavigate()
+
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-white">
-      <p className="text-[120px] font-bold italic text-gray-400 m-0 leading-none">404</p>
-      <p className="text-base text-gray-400 mt-2 mb-5">Maaf, halaman tidak ditemukan</p>
-      <Button variant="primary" icon="fa-arrow-left" onClick={() => navigate('/')}>Kembali</Button>
+    <div className="min-h-screen flex items-center justify-center bg-gray-100" style={{fontFamily:"'Roboto', sans-serif"}}>
+      <div className="text-center">
+        <div className="text-8xl font-bold text-[#855b2f] mb-4">404</div>
+        <h2 className="text-xl font-bold text-gray-800 mb-2">Halaman Tidak Ditemukan</h2>
+        <p className="text-sm text-gray-500 mb-6">Maaf, halaman yang Anda cari tidak tersedia.</p>
+        <button
+          onClick={() => navigate('/')}
+          className="px-6 py-2.5 bg-[#855b2f] hover:bg-[#5e3f1f] text-white font-bold rounded text-sm transition-colors"
+        >
+          <i className="fas fa-home mr-2"></i> Kembali ke Beranda
+        </button>
+      </div>
     </div>
   )
 }

@@ -146,7 +146,7 @@ export default function FileUpload({
   return (
     <div className={`space-y-1.5 w-full ${className}`}>
       {label && (
-        <label className="block text-xs font-semibold text-[#2c2c2c] tracking-wide uppercase">
+        <label className="block text-xs font-semibold text-[#333333] tracking-wide uppercase">
           {label}
           {required && <span className="text-rose-500 ml-0.5">*</span>}
         </label>
@@ -154,10 +154,10 @@ export default function FileUpload({
 
       <div
         className={`
-          flex items-center gap-2 w-full px-3 py-2.5 text-sm bg-[#f8f5f1] border rounded-xl transition-all duration-200 cursor-pointer
-          ${dragOver ? 'border-[#a86e2f] bg-[#a86e2f]/5 ring-2 ring-[#a86e2f]/20' : 'border-[#e8d9c7]'}
+          flex items-center gap-2 w-full px-3 py-2.5 text-sm bg-[#F4F6F9] border rounded-xl transition-all duration-200 cursor-pointer
+          ${dragOver ? 'border-[#855b2f] bg-[#855b2f]/5 ring-2 ring-[#855b2f]/20' : 'border-[#d4c4ab]'}
           ${displayError ? 'border-rose-500' : ''}
-          ${disabled ? 'opacity-50 cursor-not-allowed' : 'hover:border-[#a86e2f]/50'}
+          ${disabled ? 'opacity-50 cursor-not-allowed' : 'hover:border-[#855b2f]/50'}
         `}
         onClick={handleBrowse}
         onDrop={handleDrop}
@@ -179,12 +179,12 @@ export default function FileUpload({
 
         {/* Preview or Icon */}
         {preview ? (
-          <div className="w-10 h-10 rounded-lg overflow-hidden flex-shrink-0 border border-[#e8d9c7]">
+          <div className="w-10 h-10 rounded-lg overflow-hidden flex-shrink-0 border border-[#d4c4ab]">
             <img src={preview} alt="" className="w-full h-full object-cover" />
           </div>
         ) : (
-          <div className="w-10 h-10 rounded-lg bg-white border border-[#e8d9c7] flex items-center justify-center flex-shrink-0">
-            <i className={`fas ${selectedFile ? 'fa-file text-[#a86e2f]' : 'fa-folder-open text-[#6b5e52]/50'} text-sm`}></i>
+          <div className="w-10 h-10 rounded-lg bg-white border border-[#d4c4ab] flex items-center justify-center flex-shrink-0">
+            <i className={`fas ${selectedFile ? 'fa-file text-[#855b2f]' : 'fa-folder-open text-[#5A5A5A]/50'} text-sm`}></i>
           </div>
         )}
 
@@ -192,11 +192,11 @@ export default function FileUpload({
         <div className="flex-1 min-w-0">
           {selectedFile ? (
             <div className="truncate">
-              <span className="text-sm text-[#2c2c2c] font-medium">{selectedFile.name}</span>
-              <span className="text-xs text-[#6b5e52] ml-2">{formatFileSize(selectedFile.size)}</span>
+              <span className="text-sm text-[#333333] font-medium">{selectedFile.name}</span>
+              <span className="text-xs text-[#5A5A5A] ml-2">{formatFileSize(selectedFile.size)}</span>
             </div>
           ) : (
-            <span className="text-sm text-[#6b5e52]/50">
+            <span className="text-sm text-[#5A5A5A]/50">
               {dragOver ? 'Lepaskan file di sini' : 'Pilih file atau drag & drop'}
             </span>
           )}
@@ -208,7 +208,7 @@ export default function FileUpload({
             <button
               type="button"
               onClick={handleClear}
-              className="w-7 h-7 rounded-lg flex items-center justify-center text-[#6b5e52] hover:text-rose-600 hover:bg-rose-50 transition-colors cursor-pointer"
+              className="w-7 h-7 rounded-lg flex items-center justify-center text-[#5A5A5A] hover:text-rose-600 hover:bg-rose-50 transition-colors cursor-pointer"
               title="Hapus file"
             >
               <i className="fas fa-times text-xs"></i>
@@ -218,7 +218,7 @@ export default function FileUpload({
             type="button"
             onClick={(e) => { e.stopPropagation(); handleBrowse() }}
             disabled={disabled}
-            className="px-3 py-1.5 text-xs font-bold bg-white border border-[#e8d9c7] text-[#2c2c2c] rounded-lg hover:bg-[#f8f5f1] hover:border-[#a86e2f] transition-colors cursor-pointer disabled:opacity-50"
+            className="px-3 py-1.5 text-xs font-bold bg-white border border-[#d4c4ab] text-[#333333] rounded-lg hover:bg-[#F4F6F9] hover:border-[#855b2f] transition-colors cursor-pointer disabled:opacity-50"
           >
             Browse
           </button>
@@ -231,7 +231,7 @@ export default function FileUpload({
           type="button"
           onClick={handleUpload}
           disabled={uploading}
-          className="flex items-center gap-2 px-4 py-2 text-sm font-bold bg-[#a86e2f] text-white rounded-xl hover:bg-[#895823] transition-colors cursor-pointer disabled:opacity-50"
+          className="flex items-center gap-2 px-4 py-2 text-sm font-bold bg-[#855b2f] text-white rounded-xl hover:bg-[#5e3f1f] transition-colors cursor-pointer disabled:opacity-50"
         >
           {uploading ? (
             <><i className="fas fa-spinner fa-spin"></i> Mengupload...</>

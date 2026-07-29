@@ -54,9 +54,9 @@ export default function Thumbnails({
 
   if (images.length === 0) {
     return (
-      <div className={`flex flex-col items-center justify-center py-16 text-[#6b5e52]/50 ${className}`}>
-        <div className="w-16 h-16 bg-[#f8f5f1] rounded-full flex items-center justify-center mb-3 border border-[#e8d9c7]">
-          <i className="fas fa-images text-xl text-[#e8d9c7]"></i>
+      <div className={`flex flex-col items-center justify-center py-16 text-[#5A5A5A]/50 ${className}`}>
+        <div className="w-16 h-16 bg-[#F4F6F9] rounded-full flex items-center justify-center mb-3 border border-[#d4c4ab]">
+          <i className="fas fa-images text-xl text-[#d4c4ab]"></i>
         </div>
         <p className="text-sm font-medium">{emptyText}</p>
       </div>
@@ -79,8 +79,8 @@ export default function Thumbnails({
               className={`
                 group cursor-pointer rounded-xl overflow-hidden border transition-all duration-200
                 ${isSelected
-                  ? 'border-[#a86e2f] ring-2 ring-[#a86e2f]/20 shadow-lg'
-                  : 'border-[#e8d9c7] hover:border-[#a86e2f]/50 hover:shadow-md'
+                  ? 'border-[#855b2f] ring-2 ring-[#855b2f]/20 shadow-lg'
+                  : 'border-[#d4c4ab] hover:border-[#855b2f]/50 hover:shadow-md'
                 }
               `}
               style={{ width: imageWidth, height: imageHeight + 40 }}
@@ -94,12 +94,12 @@ export default function Thumbnails({
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   onError={(e) => {
                     e.target.src = ''
-                    e.target.className = 'w-full h-full flex items-center justify-center bg-[#f8f5f1]'
+                    e.target.className = 'w-full h-full flex items-center justify-center bg-[#F4F6F9]'
                   }}
                 />
               </div>
               {cap && (
-                <div className="px-2 py-1.5 text-[11px] text-[#2c2c2c] font-medium text-center truncate bg-white">
+                <div className="px-2 py-1.5 text-[11px] text-[#333333] font-medium text-center truncate bg-white">
                   {cap}
                 </div>
               )}
@@ -110,15 +110,15 @@ export default function Thumbnails({
 
       {/* Pagination */}
       {totalPages > 1 && (
-        <div className="flex items-center justify-between text-xs text-[#6b5e52]">
+        <div className="flex items-center justify-between text-xs text-[#5A5A5A]">
           <span className="font-medium">
-            Menampilkan data <span className="text-[#2c2c2c] font-semibold">{rangeStart}</span> - <span className="text-[#2c2c2c] font-semibold">{rangeEnd}</span> dari <span className="text-[#2c2c2c] font-semibold">{images.length}</span>
+            Menampilkan data <span className="text-[#333333] font-semibold">{rangeStart}</span> - <span className="text-[#333333] font-semibold">{rangeEnd}</span> dari <span className="text-[#333333] font-semibold">{images.length}</span>
           </span>
           <div className="flex items-center gap-1">
             <button
               onClick={() => setPage(Math.max(1, page - 1))}
               disabled={currentPage === 1}
-              className="px-2.5 py-1.5 border border-[#e8d9c7] rounded-lg hover:bg-[#f8f5f1] disabled:opacity-40 disabled:hover:bg-transparent transition-colors cursor-pointer"
+              className="px-2.5 py-1.5 border border-[#d4c4ab] rounded-lg hover:bg-[#F4F6F9] disabled:opacity-40 disabled:hover:bg-transparent transition-colors cursor-pointer"
             >
               <i className="fas fa-chevron-left text-[10px]"></i>
             </button>
@@ -134,8 +134,8 @@ export default function Thumbnails({
                   onClick={() => setPage(p)}
                   className={`px-3 py-1.5 border rounded-lg font-semibold transition-colors cursor-pointer ${
                     p === currentPage
-                      ? 'bg-[#a86e2f] text-white border-[#a86e2f] shadow-2xs'
-                      : 'border-[#e8d9c7] hover:bg-[#f8f5f1] text-[#2c2c2c]'
+                      ? 'bg-[#855b2f] text-white border-[#855b2f] shadow-2xs'
+                      : 'border-[#d4c4ab] hover:bg-[#F4F6F9] text-[#333333]'
                   }`}
                 >
                   {p}
@@ -145,7 +145,7 @@ export default function Thumbnails({
             <button
               onClick={() => setPage(Math.min(totalPages, page + 1))}
               disabled={currentPage === totalPages}
-              className="px-2.5 py-1.5 border border-[#e8d9c7] rounded-lg hover:bg-[#f8f5f1] disabled:opacity-40 disabled:hover:bg-transparent transition-colors cursor-pointer"
+              className="px-2.5 py-1.5 border border-[#d4c4ab] rounded-lg hover:bg-[#F4F6F9] disabled:opacity-40 disabled:hover:bg-transparent transition-colors cursor-pointer"
             >
               <i className="fas fa-chevron-right text-[10px]"></i>
             </button>

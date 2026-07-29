@@ -23,27 +23,27 @@ export default function Modal({ open, onClose, title, children, size = 'md', foo
   if (!open) return null
 
   const modalContent = (
-    <div className="fixed inset-0 z-[999999] flex items-center justify-center p-4 overflow-y-auto font-sans">
+    <div className="fixed inset-0 z-[999999] flex items-center justify-center p-4 overflow-y-auto font-['Roboto']">
       {/* Backdrop overlay full screen dengan blur di SELURUH layar (Sidebar, Header, Konten) */}
       <div 
         className="fixed inset-0 bg-slate-900/65 backdrop-blur-md transition-opacity animate-[fadeIn_0.2s_ease-out]" 
         onClick={onClose}
       ></div>
       
-      <div className={`relative bg-white rounded-2xl shadow-2xl border border-[#e8d9c7] w-full ${sizes[size] || sizes.md} animate-[modalIn_0.25s_cubic-bezier(0.16,1,0.3,1)] max-h-[90vh] flex flex-col z-10 overflow-hidden my-auto font-sans`}>
-        {/* Header Modal - Clean Solid Neutral #f8f5f1 */}
-        <div className="flex items-center justify-between px-6 py-4 bg-[#f8f5f1] border-b border-[#e8d9c7]">
+      <div className={`relative bg-white rounded-2xl shadow-2xl border border-[#d4c4ab] w-full ${sizes[size] || sizes.md} animate-[modalIn_0.25s_cubic-bezier(0.16,1,0.3,1)] max-h-[90vh] flex flex-col z-10 overflow-hidden my-auto font-['Roboto']`}>
+        {/* Header Modal - Clean Solid Neutral #F4F6F9 */}
+        <div className="flex items-center justify-between px-6 py-4 bg-[#F4F6F9] border-b border-[#d4c4ab]">
           <div className="flex items-center gap-3">
             {icon && (
-              <div className="w-10 h-10 rounded-xl bg-white text-[#a86e2f] flex items-center justify-center text-sm border border-[#e8d9c7] shadow-xs">
+              <div className="w-10 h-10 rounded-xl bg-white text-[#855b2f] flex items-center justify-center text-sm border border-[#d4c4ab] shadow-xs">
                 <i className={`fas ${icon}`}></i>
               </div>
             )}
-            <h3 className="font-bold text-base md:text-lg text-[#2c2c2c] tracking-tight m-0">{title}</h3>
+            <h3 className="font-bold text-base md:text-lg text-[#333333] tracking-tight m-0">{title}</h3>
           </div>
           <button 
             onClick={onClose} 
-            className="w-8 h-8 flex items-center justify-center rounded-xl bg-white hover:bg-rose-50 text-[#6b5e52] hover:text-rose-600 border border-[#e8d9c7] transition-colors cursor-pointer"
+            className="w-8 h-8 flex items-center justify-center rounded-xl bg-white hover:bg-rose-50 text-[#5A5A5A] hover:text-rose-600 border border-[#d4c4ab] transition-colors cursor-pointer"
             title="Tutup Modal"
           >
             <i className="fas fa-xmark text-base"></i>
@@ -51,13 +51,13 @@ export default function Modal({ open, onClose, title, children, size = 'md', foo
         </div>
 
         {/* Body Modal */}
-        <div className="p-6 overflow-y-auto flex-1 text-[#2c2c2c]">
+        <div className="p-6 overflow-y-auto flex-1 text-[#333333]">
           {children}
         </div>
 
         {/* Footer Modal */}
         {footer && (
-          <div className="flex items-center justify-end gap-3 px-6 py-4 bg-[#f8f5f1]/80 border-t border-[#e8d9c7]">
+          <div className="flex items-center justify-end gap-3 px-6 py-4 bg-[#F4F6F9]/80 border-t border-[#d4c4ab]">
             {footer}
           </div>
         )}

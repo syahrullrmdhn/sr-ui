@@ -1,70 +1,107 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700&display=swap');
-@import "tailwindcss";
-
-@theme {
-  /* Premium Palette Specification: #a86e2f Warm Bronze & Clean Neutrals */
-  --color-primary: #a86e2f;
-  --color-secondary: #2f69a8;
-  --color-accent: #2fa86e;
-  --color-neutral: #f8f5f1;
-  --color-neutral-dark: #2c2c2c;
-  --color-subtext: #6b5e52;
-  --color-card-light: #e8d9c7;
-  --color-success-custom: #4a9c6e;
-  --color-warning-custom: #d97e2f;
-
-  --color-bronze-50: #f8f5f1;
-  --color-bronze-100: #f1e9e0;
-  --color-bronze-200: #e8d9c7;
-  --color-bronze-300: #d4ba9e;
-  --color-bronze-400: #bf9571;
-  --color-bronze-500: #a86e2f;
-  --color-bronze-600: #895823;
-  --color-bronze-700: #6b441c;
-  --color-bronze-800: #543618;
-  --color-bronze-900: #422c16;
-
-  /* Universal Poppins Font Setting */
-  --font-sans: 'Poppins', sans-serif;
-  --font-poppins: 'Poppins', sans-serif;
-  --font-roboto: 'Poppins', sans-serif;
-}
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700;800&display=swap');
 
 @layer base {
   html, body {
-    font-family: 'Poppins', sans-serif !important;
+    font-family: 'Roboto', sans-serif;
     font-size: 13px;
-    color: #2c2c2c;
+    color: #5A5A5A;
     margin: 0;
     padding: 0;
-    background-color: #f8f5f1;
+    background-color: #E9E9E9;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    height: 100%;
   }
-  * { 
-    font-family: 'Poppins', sans-serif;
-    outline: none !important; 
-    box-sizing: border-box; 
+  * {
+    font-family: 'Roboto', sans-serif;
+    outline: none !important;
+    box-sizing: border-box;
   }
   a { text-decoration: none !important; }
   
-  /* Custom scrollbar matching Premium Warm Neutral #f8f5f1 and Bronze #a86e2f */
   ::-webkit-scrollbar { width: 6px; height: 6px; }
-  ::-webkit-scrollbar-track { background: #f8f5f1; }
-  ::-webkit-scrollbar-thumb { background: #e8d9c7; border-radius: 9999px; }
-  ::-webkit-scrollbar-thumb:hover { background: #a86e2f; }
+  ::-webkit-scrollbar-track { background: #F4F6F9; }
+  ::-webkit-scrollbar-thumb { background: #ccc; border-radius: 9999px; }
+  ::-webkit-scrollbar-thumb:hover { background: #855b2f; }
 }
 
-/* Decorative Bubble Animations & Classes for Banners ("bubble bubble gitu") */
+/* Utility classes matching source */
+.bg-admin { background-color: #855b2f; }
+.bg-admin-body { background-color: #F4F6F9; }
+.bg-master-body { background-color: #E9E9E9; }
+.text-admin { color: #855b2f; }
+.border-admin { border-color: #855b2f; }
+
+/* Login page blue */
+.bg-login { background-color: #00B2FF; }
+
+/* Card styles matching source */
+.card {
+  border: 0 solid #edf2f9;
+  border-radius: .375rem;
+  box-shadow: 0 7px 14px 0 rgba(65,69,88,0.1), 0 3px 6px 0 rgba(0,0,0,0.07);
+  overflow: hidden;
+  background: #fff;
+}
+
+/* Pendaftaran gradient */
+.bg-card-gradient {
+  background: linear-gradient(-45deg, #bd895f, #CC9C75);
+}
+
+/* Form styles from source */
+.form-label-group {
+  position: relative;
+  margin-bottom: 1rem;
+}
+.form-label-group > input,
+.form-label-group > label {
+  padding: .75rem .75rem;
+}
+.form-label-group > label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  margin-bottom: 0;
+  line-height: 1.5;
+  color: #495057;
+  border: 1px solid transparent;
+  border-radius: .25rem;
+  transition: all .1s ease-in-out;
+}
+.form-label-group input::placeholder { color: transparent; }
+.form-label-group input:not(:placeholder-shown) {
+  padding-top: calc(.75rem + .75rem * (2/3));
+  padding-bottom: calc(.75rem / 3);
+}
+.form-label-group input:not(:placeholder-shown) ~ label {
+  padding-top: calc(.75rem / 3);
+  padding-bottom: calc(.75rem / 3);
+  font-size: 12px;
+  color: #777;
+}
+
+/* Notify toast */
+.notify {
+  position: absolute;
+  right: 20px;
+  min-width: 200px;
+  z-index: 999999;
+  text-align: center;
+  transition: all 0.6s ease-in-out;
+  top: -20px;
+  opacity: 0;
+}
+.notify .fa { font-size: 18px; }
+.notify.show { top: 20px; opacity: .8; }
+
+/* Animation for bubbles */
 @keyframes floatBubble {
   0%, 100% { transform: translateY(0) scale(1); }
   50% { transform: translateY(-10px) scale(1.05); }
 }
-
-.animate-bubble {
-  animation: floatBubble 5s ease-in-out infinite;
-}
-
-.animate-bubble-delayed {
-  animation: floatBubble 6s ease-in-out 2s infinite;
-}
+.animate-bubble { animation: floatBubble 5s ease-in-out infinite; }
+.animate-bubble-delayed { animation: floatBubble 6s ease-in-out 2s infinite; }

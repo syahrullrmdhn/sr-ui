@@ -81,14 +81,14 @@ export function LoadingProvider({ children, autoIntercept = false }) {
     <LoadingCtx.Provider value={{ loading, showLoading, hideLoading }}>
       {children}
       {loading && (
-        <div className="fixed inset-0 z-[999998] flex items-center justify-center font-sans">
-          <div className="fixed inset-0 bg-[#2c2c2c]/40 backdrop-blur-sm animate-[fadeIn_0.15s_ease-out]" />
-          <div className="relative flex flex-col items-center gap-4 p-8 bg-white rounded-2xl shadow-2xl border border-[#e8d9c7] animate-[scaleIn_0.2s_cubic-bezier(0.16,1,0.3,1)]">
+        <div className="fixed inset-0 z-[999998] flex items-center justify-center font-['Roboto']">
+          <div className="fixed inset-0 bg-[#333333]/40 backdrop-blur-sm animate-[fadeIn_0.15s_ease-out]" />
+          <div className="relative flex flex-col items-center gap-4 p-8 bg-white rounded-2xl shadow-2xl border border-[#d4c4ab] animate-[scaleIn_0.2s_cubic-bezier(0.16,1,0.3,1)]">
             <div className="relative w-12 h-12">
-              <div className="absolute inset-0 rounded-full border-4 border-[#e8d9c7]" />
-              <div className="absolute inset-0 rounded-full border-4 border-transparent border-t-[#a86e2f] animate-spin" />
+              <div className="absolute inset-0 rounded-full border-4 border-[#d4c4ab]" />
+              <div className="absolute inset-0 rounded-full border-4 border-transparent border-t-[#855b2f] animate-spin" />
             </div>
-            {text && <span className="text-sm font-medium text-[#6b5e52]">{text}</span>}
+            {text && <span className="text-sm font-medium text-[#5A5A5A]">{text}</span>}
           </div>
           <style>{`
             @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
@@ -115,6 +115,6 @@ export function Spinner({ size = 'md', className = '' }) {
   }
 
   return (
-    <div className={(sizes[size] || sizes.md) + ' rounded-full border-[#e8d9c7] border-t-[#a86e2f] animate-spin ' + className} />
+    <div className={(sizes[size] || sizes.md) + ' rounded-full border-[#d4c4ab] border-t-[#855b2f] animate-spin ' + className} />
   )
 }

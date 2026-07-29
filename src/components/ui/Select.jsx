@@ -146,51 +146,51 @@ export default function Select({
     return (
       <div className="space-y-1.5 w-full" ref={containerRef}>
         {label && (
-          <label htmlFor={selectId} className="block text-xs font-semibold text-[#2c2c2c] tracking-wide uppercase">
+          <label htmlFor={selectId} className="block text-xs font-semibold text-[#333333] tracking-wide uppercase">
             {label}
             {required && <span className="text-rose-500 ml-0.5">*</span>}
           </label>
         )}
         <div className="relative rounded-xl shadow-2xs">
           {icon && (
-            <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-[#6b5e52] text-sm z-10">
+            <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-[#5A5A5A] text-sm z-10">
               <i className={'fas ' + icon}></i>
             </div>
           )}
           <div
-            className={'w-full ' + (icon ? 'pl-10' : 'pl-3.5') + ' pr-10 py-2.5 text-sm bg-[#f8f5f1] border rounded-xl cursor-pointer transition-all duration-200 ' +
-              (error ? 'border-rose-500 ' : 'border-[#e8d9c7] hover:border-[#a86e2f]/50 ') +
-              (isOpen ? 'border-[#a86e2f] ring-2 ring-[#a86e2f]/20 bg-white ' : '') +
+            className={'w-full ' + (icon ? 'pl-10' : 'pl-3.5') + ' pr-10 py-2.5 text-sm bg-[#F4F6F9] border rounded-xl cursor-pointer transition-all duration-200 ' +
+              (error ? 'border-rose-500 ' : 'border-[#d4c4ab] hover:border-[#855b2f]/50 ') +
+              (isOpen ? 'border-[#855b2f] ring-2 ring-[#855b2f]/20 bg-white ' : '') +
               className}
             onClick={() => !disabled && setIsOpen(!isOpen)}
           >
             {loading ? (
-              <span className="text-[#6b5e52]/50"><i className="fas fa-spinner fa-spin mr-2"></i>Memuat...</span>
+              <span className="text-[#5A5A5A]/50"><i className="fas fa-spinner fa-spin mr-2"></i>Memuat...</span>
             ) : (
-              <span className={value ? 'text-[#2c2c2c]' : 'text-[#6b5e52]/50'}>{selectedLabel}</span>
+              <span className={value ? 'text-[#333333]' : 'text-[#5A5A5A]/50'}>{selectedLabel}</span>
             )}
           </div>
 
-          <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none text-[#6b5e52] text-xs">
+          <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none text-[#5A5A5A] text-xs">
             <i className={'fas ' + (isOpen ? 'fa-chevron-up' : 'fa-chevron-down')}></i>
           </div>
 
           {isOpen && !disabled && (
-            <div className="absolute top-full left-0 right-0 mt-1 bg-white border border-[#e8d9c7] rounded-xl shadow-xl z-50 overflow-hidden animate-[fadeIn_0.15s_ease-out]">
-              <div className="p-2 border-b border-[#e8d9c7]/60">
+            <div className="absolute top-full left-0 right-0 mt-1 bg-white border border-[#d4c4ab] rounded-xl shadow-xl z-50 overflow-hidden animate-[fadeIn_0.15s_ease-out]">
+              <div className="p-2 border-b border-[#d4c4ab]/60">
                 <input
                   type="text"
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
                   placeholder="Cari..."
-                  className="w-full px-3 py-1.5 text-xs bg-[#f8f5f1] border border-[#e8d9c7] rounded-lg outline-none focus:border-[#a86e2f]"
+                  className="w-full px-3 py-1.5 text-xs bg-[#F4F6F9] border border-[#d4c4ab] rounded-lg outline-none focus:border-[#855b2f]"
                   autoFocus
                 />
               </div>
               <div className="max-h-48 overflow-y-auto">
                 {emptyText && (
                   <div
-                    className={'px-3 py-2 text-xs cursor-pointer hover:bg-[#f8f5f1] ' + (!value ? 'bg-[#a86e2f]/10 text-[#a86e2f] font-semibold' : 'text-[#6b5e52]/50')}
+                    className={'px-3 py-2 text-xs cursor-pointer hover:bg-[#F4F6F9] ' + (!value ? 'bg-[#855b2f]/10 text-[#855b2f] font-semibold' : 'text-[#5A5A5A]/50')}
                     onClick={() => { handleChange({ target: { value: '', name } }); setIsOpen(false); setSearch('') }}
                   >
                     {emptyText}
@@ -199,15 +199,15 @@ export default function Select({
                 {filteredOptions.map((opt, i) => (
                   <div
                     key={i}
-                    className={'px-3 py-2 text-xs cursor-pointer hover:bg-[#f8f5f1] ' +
-                      (String(opt.key) === String(value) ? 'bg-[#a86e2f]/10 text-[#a86e2f] font-semibold' : 'text-[#2c2c2c]')}
+                    className={'px-3 py-2 text-xs cursor-pointer hover:bg-[#F4F6F9] ' +
+                      (String(opt.key) === String(value) ? 'bg-[#855b2f]/10 text-[#855b2f] font-semibold' : 'text-[#333333]')}
                     onClick={() => { handleChange({ target: { value: opt.key, name } }); setIsOpen(false); setSearch('') }}
                   >
                     {format ? format(opt.key, opt.value) : opt.value}
                   </div>
                 ))}
                 {filteredOptions.length === 0 && (
-                  <div className="px-3 py-4 text-xs text-[#6b5e52]/50 text-center">Tidak ada data</div>
+                  <div className="px-3 py-4 text-xs text-[#5A5A5A]/50 text-center">Tidak ada data</div>
                 )}
               </div>
             </div>
@@ -223,14 +223,14 @@ export default function Select({
   return (
     <div className="space-y-1.5 w-full">
       {label && (
-        <label htmlFor={selectId} className="block text-xs font-semibold text-[#2c2c2c] tracking-wide uppercase">
+        <label htmlFor={selectId} className="block text-xs font-semibold text-[#333333] tracking-wide uppercase">
           {label}
           {required && <span className="text-rose-500 ml-0.5">*</span>}
         </label>
       )}
       <div className="relative rounded-xl shadow-2xs">
         {icon && (
-          <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-[#6b5e52] text-sm">
+          <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-[#5A5A5A] text-sm">
             <i className={'fas ' + icon}></i>
           </div>
         )}
@@ -243,7 +243,7 @@ export default function Select({
           onChange={handleChange}
           onBlur={validate}
           disabled={disabled || loading}
-          className={'w-full ' + (icon ? 'pl-10' : 'pl-3.5') + ' pr-10 py-2.5 text-sm bg-[#f8f5f1] border border-[#e8d9c7] rounded-xl text-[#2c2c2c] focus:bg-white focus:border-[#a86e2f] focus:ring-2 focus:ring-[#a86e2f]/20 outline-none transition-all duration-200 cursor-pointer ' +
+          className={'w-full ' + (icon ? 'pl-10' : 'pl-3.5') + ' pr-10 py-2.5 text-sm bg-[#F4F6F9] border border-[#d4c4ab] rounded-xl text-[#333333] focus:bg-white focus:border-[#855b2f] focus:ring-2 focus:ring-[#855b2f]/20 outline-none transition-all duration-200 cursor-pointer ' +
             ((error || externalError) ? 'border-rose-500 focus:border-rose-500 focus:ring-rose-500/20 ' : '') +
             (loading ? 'opacity-60 ' : '') + className}
           {...props}
@@ -255,7 +255,7 @@ export default function Select({
             </option>
           ))}
         </select>
-        <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none text-[#6b5e52] text-xs">
+        <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none text-[#5A5A5A] text-xs">
           {loading ? <i className="fas fa-spinner fa-spin"></i> : <i className="fas fa-chevron-down"></i>}
         </div>
       </div>

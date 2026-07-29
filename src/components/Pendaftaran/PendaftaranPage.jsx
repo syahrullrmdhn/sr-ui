@@ -40,13 +40,13 @@ export default function PendaftaranPage() {
   }
 
   return (
-    <div className="font-sans min-h-screen flex items-center justify-center bg-[#f8f5f1] p-4 sm:p-6 relative overflow-hidden py-10">
-      <div className="absolute -top-40 -left-40 w-96 h-96 rounded-full bg-[#a86e2f]/10 blur-3xl pointer-events-none"></div>
+    <div className="font-['Roboto'] min-h-screen flex items-center justify-center bg-[#F4F6F9] p-4 sm:p-6 relative overflow-hidden py-10">
+      <div className="absolute -top-40 -left-40 w-96 h-96 rounded-full bg-[#855b2f]/10 blur-3xl pointer-events-none"></div>
       <div className="absolute -bottom-40 -right-40 w-96 h-96 rounded-full bg-[#2f69a8]/10 blur-3xl pointer-events-none"></div>
 
-      <div className="bg-white rounded-2xl shadow-xl border border-[#e8d9c7] overflow-hidden w-full max-w-[1020px] flex max-md:flex-col relative z-10 font-sans">
-        {/* Left Banner - Clean Solid #a86e2f + Floating Bubble Circles ("bubble bubble gitu") */}
-        <div className="flex-[0_0_35%] bg-[#a86e2f] text-white flex flex-col justify-between p-8 md:p-10 relative overflow-hidden max-md:flex-none max-md:p-8">
+      <div className="bg-white rounded-2xl shadow-xl border border-[#d4c4ab] overflow-hidden w-full max-w-[1020px] flex max-md:flex-col relative z-10 font-['Roboto']">
+        {/* Left Banner - Clean Solid #855b2f + Floating Bubble Circles ("bubble bubble gitu") */}
+        <div className="flex-[0_0_35%] bg-[#855b2f] text-white flex flex-col justify-between p-8 md:p-10 relative overflow-hidden max-md:flex-none max-md:p-8">
           <Particles count={35} color="rgba(255,255,255,0.2)" />
           {/* Decorative Floating Bubble Circles ("bubble bubble gitu") */}
           <div className="absolute -top-16 -left-16 w-60 h-60 rounded-full bg-white/10 blur-[2px] pointer-events-none animate-bubble"></div>

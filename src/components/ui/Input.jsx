@@ -129,7 +129,7 @@ export default function Input({
         {label && (
           <label className="block text-xs font-semibold text-slate-700 tracking-wide uppercase">{label}</label>
         )}
-        <p className="px-3.5 py-2.5 text-sm text-[#2c2c2c] bg-[#f8f5f1]/60 border border-[#e8d9c7]/40 rounded-xl min-h-[38px]" style={{ textAlign: align }}>
+        <p className="px-3.5 py-2.5 text-sm text-[#333333] bg-[#F4F6F9]/60 border border-[#d4c4ab]/40 rounded-xl min-h-[38px]" style={{ textAlign: align }}>
           {localValue || <span className="text-slate-400">-</span>}
         </p>
       </div>
@@ -159,7 +159,7 @@ export default function Input({
           readOnly={readOnly}
           rows={rows}
           maxLength={maxLength}
-          className={'w-full px-3.5 py-2.5 text-sm bg-slate-50/60 border border-slate-200/80 rounded-xl text-slate-800 placeholder:text-slate-400 focus:bg-white focus:border-[#a86e2f] focus:ring-2 focus:ring-[#a86e2f]/20 outline-none transition-all duration-200 resize-y ' +
+          className={'w-full px-3.5 py-2.5 text-sm bg-slate-50/60 border border-slate-200/80 rounded-xl text-slate-800 placeholder:text-slate-400 focus:bg-white focus:border-[#855b2f] focus:ring-2 focus:ring-[#855b2f]/20 outline-none transition-all duration-200 resize-y ' +
             (error ? 'border-rose-500 focus:border-rose-500 focus:ring-rose-500/20 ' : '') +
             (readOnly ? 'bg-slate-100 cursor-default ' : '') + className}
           style={{ textAlign: align, overflow: autoGrow ? 'hidden' : undefined }}
@@ -193,7 +193,7 @@ export default function Input({
       minLength={minLength}
       maxLength={maxLength}
       required={required}
-      className={'w-full ' + (icon || leftAddon ? 'pl-10' : 'pl-3.5') + ' ' + (rightAction || rightAddon ? 'pr-10' : 'pr-3.5') + ' py-2.5 text-sm bg-slate-50/60 border border-slate-200/80 rounded-xl text-slate-800 placeholder:text-slate-400 focus:bg-white focus:border-[#a86e2f] focus:ring-2 focus:ring-[#a86e2f]/20 outline-none transition-all duration-200 ' +
+      className={'w-full ' + (icon || leftAddon ? 'pl-10' : 'pl-3.5') + ' ' + (rightAction || rightAddon ? 'pr-10' : 'pr-3.5') + ' py-2.5 text-sm bg-slate-50/60 border border-slate-200/80 rounded-xl text-slate-800 placeholder:text-slate-400 focus:bg-white focus:border-[#855b2f] focus:ring-2 focus:ring-[#855b2f]/20 outline-none transition-all duration-200 ' +
         (error ? 'border-rose-500 focus:border-rose-500 focus:ring-rose-500/20 ' : '') +
         (readOnly ? 'bg-slate-100 cursor-default ' : '') + className}
       style={{ textAlign: align }}

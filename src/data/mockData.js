@@ -1,8 +1,8 @@
 export const systemInfo = {
-  title: 'Sistem Ujian Online',
-  name: 'SISTEM UJIAN ONLINE',
-  organization: 'PEMERINTAH REPUBLIK INDONESIA',
-  office: 'DINAS PENDIDIKAN DAN PELATIHAN',
+  title: 'CAT Kemhan - Sistem Informasi CAT',
+  name: 'SISTEM INFORMASI CAT',
+  organization: 'BIRO KEPEGAWAIAN',
+  office: 'KEMENTERIAN PERTAHANAN',
   logo: null,
 }
 
@@ -10,7 +10,7 @@ export const mockUser = {
   id: 1,
   nama: 'Administrator',
   username: 'admin',
-  role: 'super_admin',
+  role: 'Super Admin',
   avatar: null,
 }
 

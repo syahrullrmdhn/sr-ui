@@ -23,8 +23,8 @@ export default function BeritaPage() {
         <h3>Panduan Resmi Peserta Ujian</h3>
         <p>Dengan hormat disampaikan kepada seluruh peserta seleksi berbasis komputer (CBT) bahwa pelaksanaan ujian Gelombang I akan dilaksanakan secara serentak di seluruh laboratorium yang telah ditentukan.</p>
         
-        <div style="background-color: #f8f5f1; border-left: 4px solid #a86e2f; padding: 12px 16px; border-radius: 8px; margin: 14px 0;">
-          <strong style="color: #a86e2f;"><i class="fas fa-exclamation-triangle"></i> Ketentuan Wajib Hadir:</strong> Peserta diwajibkan hadir 30 menit sebelum sesi dimulai untuk verifikasi biometrik dan pemeriksaan berkas fisik.
+        <div style="background-color: #F4F6F9; border-left: 4px solid #855b2f; padding: 12px 16px; border-radius: 8px; margin: 14px 0;">
+          <strong style="color: #855b2f;"><i class="fas fa-exclamation-triangle"></i> Ketentuan Wajib Hadir:</strong> Peserta diwajibkan hadir 30 menit sebelum sesi dimulai untuk verifikasi biometrik dan pemeriksaan berkas fisik.
         </div>
 
         <h4>Daftar Barang yang Dilarang Masuk Ruang Ujian:</h4>
@@ -76,7 +76,7 @@ export default function BeritaPage() {
   }
 
   return (
-    <div className="space-y-6 w-full font-sans text-[#2c2c2c] pb-10">
+    <div className="space-y-6 w-full font-['Roboto'] text-[#333333] pb-10">
       <PageBanner
         title="Manajemen Pengumuman & Berita Portal (Rich Text)"
         subtitle="Publikasikan instruksi ujian, silabus, maupun pengumuman resmi ke halaman utama peserta menggunakan editor berformat lengkap."
@@ -92,7 +92,7 @@ export default function BeritaPage() {
       <div className="flex flex-col lg:flex-row gap-6">
         {/* Daftar Artikel Kiri */}
         <div className="w-full lg:w-1/3 flex flex-col space-y-4">
-          <Card className="shadow-sm border border-[#e8d9c7]">
+          <Card className="shadow-sm border border-[#d4c4ab]">
             <CardHeader actions={<Badge variant="primary">{articles.length} Artikel</Badge>}>
               Daftar Pengumuman CBT
             </CardHeader>
@@ -104,17 +104,17 @@ export default function BeritaPage() {
                     key={art.id}
                     onClick={() => { setSelectedArticle(art); setIsEditing(false) }}
                     className={`p-4 rounded-2xl border transition-all cursor-pointer ${
-                      isActive ? 'bg-[#a86e2f] text-white shadow-sm border-[#a86e2f]' : 'bg-white hover:bg-[#f8f5f1] border-[#e8d9c7] text-[#2c2c2c]'
+                      isActive ? 'bg-[#855b2f] text-white shadow-sm border-[#855b2f]' : 'bg-white hover:bg-[#F4F6F9] border-[#d4c4ab] text-[#333333]'
                     }`}
                   >
                     <div className="flex items-center justify-between mb-1.5">
-                      <Badge variant={isActive ? 'primary' : (art.status === 'Published' ? 'success' : 'warning')} className={isActive ? 'bg-white text-[#a86e2f]' : ''}>
+                      <Badge variant={isActive ? 'primary' : (art.status === 'Published' ? 'success' : 'warning')} className={isActive ? 'bg-white text-[#855b2f]' : ''}>
                         {art.status}
                       </Badge>
-                      <span className={`text-[11px] ${isActive ? 'text-white/80' : 'text-[#6b5e52]'}`}>{art.tanggal}</span>
+                      <span className={`text-[11px] ${isActive ? 'text-white/80' : 'text-[#5A5A5A]'}`}>{art.tanggal}</span>
                     </div>
                     <div className="font-bold text-sm leading-tight mb-1 line-clamp-2">{art.judul}</div>
-                    <div className={`text-xs flex items-center gap-1.5 ${isActive ? 'text-white/90' : 'text-[#6b5e52]'}`}>
+                    <div className={`text-xs flex items-center gap-1.5 ${isActive ? 'text-white/90' : 'text-[#5A5A5A]'}`}>
                       <i className="fas fa-folder-open text-[10px]"></i> {art.kategori}
                     </div>
                   </div>
@@ -126,7 +126,7 @@ export default function BeritaPage() {
 
         {/* Panel Editor & Detail Kanan */}
         <div className="w-full lg:w-2/3 flex flex-col space-y-6">
-          <Card className="shadow-sm border border-[#e8d9c7]">
+          <Card className="shadow-sm border border-[#d4c4ab]">
             <CardHeader actions={
               <div className="flex items-center gap-2">
                 {!isEditing ? (
@@ -187,22 +187,22 @@ export default function BeritaPage() {
                 </>
               ) : (
                 <div className="space-y-6">
-                  <div className="border-b border-[#e8d9c7] pb-4">
+                  <div className="border-b border-[#d4c4ab] pb-4">
                     <div className="flex items-center gap-2 mb-2">
                       <Badge variant={selectedArticle.status === 'Published' ? 'success' : 'warning'} dot>
                         {selectedArticle.status}
                       </Badge>
                       <Badge variant="secondary">{selectedArticle.kategori}</Badge>
                     </div>
-                    <h2 className="text-xl md:text-2xl font-extrabold text-[#2c2c2c] m-0">{selectedArticle.judul}</h2>
-                    <div className="flex items-center gap-4 text-xs text-[#6b5e52] mt-2">
-                      <span><i className="fas fa-user-edit mr-1 text-[#a86e2f]"></i> {selectedArticle.penulis}</span>
+                    <h2 className="text-xl md:text-2xl font-extrabold text-[#333333] m-0">{selectedArticle.judul}</h2>
+                    <div className="flex items-center gap-4 text-xs text-[#5A5A5A] mt-2">
+                      <span><i className="fas fa-user-edit mr-1 text-[#855b2f]"></i> {selectedArticle.penulis}</span>
                       <span><i className="far fa-calendar-alt mr-1 text-[#2f69a8]"></i> {selectedArticle.tanggal}</span>
                     </div>
                   </div>
 
                   <div 
-                    className="prose prose-sm max-w-none text-[#2c2c2c] leading-relaxed p-6 bg-[#f8f5f1] rounded-2xl border border-[#e8d9c7] shadow-inner"
+                    className="prose prose-sm max-w-none text-[#333333] leading-relaxed p-6 bg-[#F4F6F9] rounded-2xl border border-[#d4c4ab] shadow-inner"
                     dangerouslySetInnerHTML={{ __html: selectedArticle.konten }}
                   />
                 </div>

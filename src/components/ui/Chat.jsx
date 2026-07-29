@@ -115,7 +115,7 @@ export default function Chat({
   }, [sendMessage])
 
   return (
-    <div className={`flex flex-col border border-[#e8d9c7] rounded-xl overflow-hidden bg-white ${className}`}>
+    <div className={`flex flex-col border border-[#d4c4ab] rounded-xl overflow-hidden bg-white ${className}`}>
       {/* Messages container */}
       <div
         ref={containerRef}
@@ -123,7 +123,7 @@ export default function Chat({
         style={{ height }}
       >
         {chatMessages.length === 0 && (
-          <div className="flex flex-col items-center justify-center h-full text-[#6b5e52]/50">
+          <div className="flex flex-col items-center justify-center h-full text-[#5A5A5A]/50">
             <i className="fas fa-comments text-3xl mb-2"></i>
             <span className="text-sm">Belum ada pesan</span>
           </div>
@@ -134,23 +134,23 @@ export default function Chat({
             key={msg.id || i}
             className={`flex gap-3 ${msg.direction === 'right' ? 'flex-row-reverse' : 'flex-row'}`}
           >
-            <div className="flex-shrink-0 w-8 h-8 rounded-full bg-[#f8f5f1] border border-[#e8d9c7] flex items-center justify-center overflow-hidden">
+            <div className="flex-shrink-0 w-8 h-8 rounded-full bg-[#F4F6F9] border border-[#d4c4ab] flex items-center justify-center overflow-hidden">
               {msg.avatar ? (
                 <img src={msg.avatar} alt="" className="w-full h-full object-cover" />
               ) : (
-                <i className="fas fa-user text-xs text-[#6b5e52]"></i>
+                <i className="fas fa-user text-xs text-[#5A5A5A]"></i>
               )}
             </div>
             <div className={`max-w-[70%] ${msg.direction === 'right' ? 'items-end' : 'items-start'} flex flex-col gap-0.5`}>
               <div className="flex items-center gap-2">
-                <span className="text-[11px] font-bold text-[#2c2c2c]">{msg.name}</span>
-                <span className="text-[10px] text-[#6b5e52]/60">{msg.time}</span>
+                <span className="text-[11px] font-bold text-[#333333]">{msg.name}</span>
+                <span className="text-[10px] text-[#5A5A5A]/60">{msg.time}</span>
               </div>
               <div
                 className={`text-sm px-3.5 py-2 rounded-xl ${
                   msg.direction === 'right'
-                    ? 'bg-[#a86e2f] text-white rounded-tr-sm'
-                    : 'bg-[#f8f5f1] text-[#2c2c2c] border border-[#e8d9c7] rounded-tl-sm'
+                    ? 'bg-[#855b2f] text-white rounded-tr-sm'
+                    : 'bg-[#F4F6F9] text-[#333333] border border-[#d4c4ab] rounded-tl-sm'
                 }`}
               >
                 {msg.message}
@@ -161,19 +161,19 @@ export default function Chat({
       </div>
 
       {/* Input area */}
-      <div className="flex items-center gap-2 p-3 border-t border-[#e8d9c7] bg-[#f8f5f1]/50">
+      <div className="flex items-center gap-2 p-3 border-t border-[#d4c4ab] bg-[#F4F6F9]/50">
         <input
           type="text"
           value={inputValue}
           onChange={(e) => setInputValue(e.target.value)}
           onKeyDown={handleKeyDown}
           placeholder="Tulis pesan..."
-          className="flex-1 px-4 py-2.5 text-sm bg-white border border-[#e8d9c7] rounded-xl text-[#2c2c2c] placeholder:text-[#6b5e52]/50 focus:border-[#a86e2f] focus:ring-2 focus:ring-[#a86e2f]/20 outline-none transition-all"
+          className="flex-1 px-4 py-2.5 text-sm bg-white border border-[#d4c4ab] rounded-xl text-[#333333] placeholder:text-[#5A5A5A]/50 focus:border-[#855b2f] focus:ring-2 focus:ring-[#855b2f]/20 outline-none transition-all"
         />
         <button
           onClick={sendMessage}
           disabled={!inputValue.trim()}
-          className="w-10 h-10 flex items-center justify-center rounded-xl bg-[#a86e2f] text-white hover:bg-[#895823] disabled:opacity-40 disabled:cursor-not-allowed transition-colors cursor-pointer"
+          className="w-10 h-10 flex items-center justify-center rounded-xl bg-[#855b2f] text-white hover:bg-[#5e3f1f] disabled:opacity-40 disabled:cursor-not-allowed transition-colors cursor-pointer"
         >
           <i className="fas fa-paper-plane text-sm"></i>
         </button>

@@ -27,6 +27,7 @@ import ExamSessionPage from './components/Exam/ExamSessionPage'
 import PendaftaranPage from './components/Pendaftaran/PendaftaranPage'
 import SoalEditorPage from './components/Soal/SoalEditorPage'
 import BeritaPage from './components/Berita/BeritaPage'
+import NotFoundPage from './components/NotFound/NotFoundPage'
 
 function App() {
   return (

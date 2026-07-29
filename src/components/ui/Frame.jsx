@@ -74,24 +74,24 @@ const Frame = forwardRef(function Frame({
   }, [onError])
 
   return (
-    <div className={'relative rounded-xl overflow-hidden border border-[#e8d9c7] ' + className} style={{ width, height }}>
+    <div className={'relative rounded-xl overflow-hidden border border-[#d4c4ab] ' + className} style={{ width, height }}>
       {loading && (
-        <div className="absolute inset-0 flex items-center justify-center bg-[#f8f5f1] z-10">
+        <div className="absolute inset-0 flex items-center justify-center bg-[#F4F6F9] z-10">
           <div className="flex flex-col items-center gap-3">
-            <div className="w-8 h-8 rounded-full border-4 border-[#e8d9c7] border-t-[#a86e2f] animate-spin" />
-            <span className="text-xs text-[#6b5e52]">Memuat...</span>
+            <div className="w-8 h-8 rounded-full border-4 border-[#d4c4ab] border-t-[#855b2f] animate-spin" />
+            <span className="text-xs text-[#5A5A5A]">Memuat...</span>
           </div>
         </div>
       )}
 
       {error && (
-        <div className="absolute inset-0 flex items-center justify-center bg-[#f8f5f1] z-10">
-          <div className="flex flex-col items-center gap-2 text-[#6b5e52]/60">
-            <i className="fas fa-exclamation-triangle text-2xl text-[#d97e2f]"></i>
+        <div className="absolute inset-0 flex items-center justify-center bg-[#F4F6F9] z-10">
+          <div className="flex flex-col items-center gap-2 text-[#5A5A5A]/60">
+            <i className="fas fa-exclamation-triangle text-2xl text-[#ff9800]"></i>
             <span className="text-sm font-medium">Gagal memuat konten</span>
             <button
               onClick={() => { setError(false); setLoading(true); setSrc(''); setTimeout(() => setSrc(initialSrc), 50) }}
-              className="text-xs text-[#a86e2f] hover:underline cursor-pointer"
+              className="text-xs text-[#855b2f] hover:underline cursor-pointer"
             >
               Coba lagi
             </button>

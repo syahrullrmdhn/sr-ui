@@ -1,172 +1,261 @@
+import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { VerticalTabs } from '../ui/Tabs'
-import Alert from '../ui/Alert'
-import Button from '../ui/Button'
-import { CircularProgress } from '../ui/Progress'
-import Avatar from '../ui/Avatar'
+import { systemInfo } from '../../data/mockData'
 
 export default function ExamPage() {
   const navigate = useNavigate()
-
-  const sidebarContent = (
-    <div className="text-center py-2">
-      <Avatar name="Ahmad Fauzi" size="xl" className="mx-auto mb-3 shadow-sm ring-4 ring-[#e8d9c7]" />
-      <div className="font-extrabold text-base text-[#2c2c2c]">Ahmad Fauzi</div>
-      <div className="text-xs font-sans text-[#a86e2f] bg-[#f8f5f1] px-3 py-1 rounded-full inline-block mt-1 border border-[#e8d9c7] font-bold">PST-001</div>
-    </div>
-  )
+  const [activeTab, setActiveTab] = useState('home')
 
   const tabs = [
-    {
-      id: 'home', icon: 'fa-home', label: 'Beranda Ujian',
-      content: (
-        <div className="flex-1 flex flex-col justify-between space-y-6 font-sans">
-          <div>
-            <h6 className="font-bold text-lg mb-4 text-[#2c2c2c] flex items-center gap-2">
-              <i className="fas fa-desktop text-[#a86e2f]"></i> Portal Ujian Aktif Peserta
-            </h6>
-            <Alert variant="info" className="mb-6">
-              Silakan periksa koneksi internet Anda dan pilih menu <strong>Jadwal Ujian</strong> atau klik tombol mulai pada kartu di bawah jika waktu pengerjaan telah dibuka.
-            </Alert>
+    { id: 'home', icon: 'fa-home', label: 'Home' },
+    { id: 'profile', icon: 'fa-user', label: 'Profile' },
+    { id: 'jadwal', icon: 'fa-calendar', label: 'Jadwal Ujian' },
+    { id: 'kartu', icon: 'fa-id-card', label: 'Kartu Peserta' },
+  ]
 
-            {/* Clean Solid Card container (#f8f5f1) without gradient */}
-            <div className="bg-[#f8f5f1] border border-[#e8d9c7] rounded-2xl p-6 flex flex-col sm:flex-row items-center justify-between gap-5 shadow-2xs">
-              <div className="flex items-center gap-5">
-                <CircularProgress value={85} variant="success" size="lg" />
-                <div>
-                  <div className="font-extrabold text-lg text-[#2c2c2c]">Tes Kompetensi Dasar & Pengetahuan Umum</div>
-                  <div className="text-xs text-[#6b5e52] flex items-center gap-2 mt-1">
-                    <span className="bg-white px-2.5 py-1 rounded-md border border-[#e8d9c7] font-bold"><i className="far fa-calendar-alt text-[#a86e2f]"></i> 20 Juli 2026</span>
-                    <span className="bg-white px-2.5 py-1 rounded-md border border-[#e8d9c7] font-bold"><i className="far fa-clock text-[#a86e2f]"></i> 120 Menit</span>
-                  </div>
-                </div>
-              </div>
-              <Button variant="primary" size="lg" icon="fa-play" onClick={() => navigate('/peserta/exam/start')} className="px-8 py-3.5 shadow-md w-full sm:w-auto font-bold">
-                Mulai Ujian Sekarang
-              </Button>
-            </div>
-          </div>
+  const peserta = {
+    nopes: 'PST-001',
+    nama: 'AHMAD FAUZI',
+    nip: '198501012010011001',
+    tmp_lahir: 'Jakarta',
+    tgl_lahir: '1 Januari 1985',
+    gender: 'Laki-laki',
+    nama_kotama: 'Kotama A - Sekretariat Jenderal',
+    nama_ou: 'Satker 1 - Biro SDM dan Organisasi',
+    pangkat: 'Pembina / IV-a',
+    jabatan: 'Analis Kepegawaian Madya',
+  }
 
-          <div className="p-4 bg-amber-50/60 rounded-xl border border-amber-200/60 text-xs text-amber-800 flex items-center gap-3">
-            <i className="fas fa-shield-alt text-xl text-amber-600 flex-shrink-0"></i>
-            <span>Sistem dilengkapi dengan pemantauan tab browser aktif. Dilarang membuka halaman lain selama sesi berlangsung.</span>
-          </div>
-        </div>
-      )
-    },
-    {
-      id: 'profile', icon: 'fa-user-check', label: 'Biodata Peserta',
-      content: (
-        <div className="flex-1 flex flex-col">
-          <h6 className="font-bold text-lg mb-6 text-slate-800 flex items-center gap-2 border-b border-slate-100 pb-3">
-            <i className="fas fa-id-card text-teal-600"></i> Verifikasi Data Diri Peserta
-          </h6>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4 flex-1">
-            {[
-              ['Nomor Induk Pegawai (NIP)', '198501012010011001'], ['Nama Lengkap', 'AHMAD FAUZI, S.Kom.'],
-              ['Tempat, Tanggal Lahir', 'Jakarta, 1 Januari 1985'], ['Jenis Kelamin', 'Laki-laki'],
-              ['UO / Kotama', 'Kotama A - Sekretariat Jenderal'], ['Satker / Unit Kerja', 'Satker 1 - Biro SDM dan Organisasi'],
-              ['Pangkat / Golongan Ruang', 'Pembina / IV-a'], ['Status Pendaftaran', 'Terverifikasi & Siap Ujian'],
-            ].map(([label, val]) => (
-              <div key={label} className="flex flex-col justify-center border-b border-slate-100/80 py-2.5">
-                <span className="text-xs text-slate-400 font-semibold uppercase tracking-wider">{label}</span>
-                <span className="text-sm font-bold text-slate-800 mt-0.5">{val}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      )
-    },
-    {
-      id: 'jadwal', icon: 'fa-calendar-check', label: 'Jadwal Sesi Ujian',
-      content: (
-        <div className="flex-1 flex flex-col">
-          <h6 className="font-bold text-lg mb-6 text-slate-800 flex items-center gap-2 border-b border-slate-100 pb-3">
-            <i className="fas fa-calendar-alt text-teal-600"></i> Daftar Mata Ujian Terjadwal
-          </h6>
-          <div className="space-y-4 flex-1">
-            {[
-              { nama: 'Tes Kompetensi Dasar & Wawasan Kebangsaan', waktu: '08:00 - 10:00 WIB', tgl: '20 Juli 2026', status: 'Siap Dikerjakan', variant: 'success' },
-              { nama: 'Tes Bahasa Indonesia & Bahasa Inggris Kedinasan', waktu: '10:30 - 12:00 WIB', tgl: '20 Juli 2026', status: 'Menunggu Sesi', variant: 'info' },
-              { nama: 'Tes Analisis Logika & Pemecahan Masalah', waktu: '13:00 - 14:30 WIB', tgl: '21 Juli 2026', status: 'Terjadwal', variant: 'warning' },
-            ].map((j, i) => (
-              <div key={i} className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 p-5 bg-slate-50/80 hover:bg-slate-50 rounded-2xl border border-slate-200/60 transition-all">
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-xl bg-teal-600 text-white flex items-center justify-center text-lg shadow-sm">
-                    <i className="fas fa-clipboard-list"></i>
-                  </div>
-                  <div>
-                    <div className="font-extrabold text-base text-slate-800">{j.nama}</div>
-                    <div className="text-xs text-slate-500 flex items-center gap-3 mt-1 font-medium">
-                      <span><i className="far fa-calendar text-teal-600"></i> {j.tgl}</span>
-                      <span><i className="far fa-clock text-teal-600"></i> {j.waktu}</span>
-                    </div>
-                  </div>
-                </div>
-                <span className={`text-xs px-3.5 py-1.5 rounded-full font-bold uppercase tracking-wider ${j.variant === 'success' ? 'bg-emerald-100 text-emerald-800 border border-emerald-300' : j.variant === 'info' ? 'bg-blue-100 text-blue-800 border border-blue-300' : 'bg-amber-100 text-amber-800 border border-amber-300'}`}>
-                  {j.status}
-                </span>
-              </div>
-            ))}
-          </div>
-        </div>
-      )
-    },
-    {
-      id: 'kartu', icon: 'fa-id-badge', label: 'Kartu Peserta Digital',
-      content: (
-        <div className="flex-1 flex flex-col items-center justify-center py-6">
-          <div className="border-2 border-slate-200 rounded-3xl p-8 w-full max-w-lg bg-gradient-to-br from-white via-slate-50 to-teal-50/30 shadow-md relative overflow-hidden">
-            <div className="absolute top-0 right-0 -mr-12 -mt-12 w-32 h-32 bg-teal-500/10 rounded-full blur-xl pointer-events-none"></div>
-            
-            <div className="text-center border-b-2 border-dashed border-slate-200 pb-4 mb-6">
-              <div className="w-10 h-10 rounded-xl bg-teal-600 text-white flex items-center justify-center text-lg mx-auto mb-2 shadow-2xs">
-                <i className="fas fa-graduation-cap"></i>
-              </div>
-              <div className="text-base font-extrabold tracking-wider uppercase text-slate-800">KARTU PESERTA UJIAN DIGITAL</div>
-              <div className="text-xs text-teal-700 font-semibold mt-0.5">SISTEM UJIAN BERBASIS KOMPUTER (CBT) 2026</div>
-            </div>
-
-            <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6">
-              <div className="w-28 h-36 bg-slate-200/80 rounded-2xl flex flex-col items-center justify-center text-slate-400 text-4xl border-2 border-white shadow-md flex-shrink-0">
-                <i className="fas fa-user mb-1"></i>
-                <span className="text-[10px] font-bold text-slate-500 uppercase tracking-tight">Pas Foto 3x4</span>
-              </div>
-              <div className="text-sm space-y-2.5 flex-1 w-full">
-                <div className="border-b border-slate-100 pb-1">
-                  <span className="text-xs text-slate-400 block font-semibold">NAMA LENGKAP PESERTA</span>
-                  <span className="font-extrabold text-slate-800 uppercase">AHMAD FAUZI, S.Kom.</span>
-                </div>
-                <div className="border-b border-slate-100 pb-1">
-                  <span className="text-xs text-slate-400 block font-semibold">NOMOR INDUK PEGAWAI (NIP)</span>
-                  <span className="font-bold text-slate-800 font-mono">198501012010011001</span>
-                </div>
-                <div className="grid grid-cols-2 gap-2 pt-1">
-                  <div>
-                    <span className="text-xs text-slate-400 block font-semibold">USERNAME LOGIN</span>
-                    <span className="font-extrabold text-teal-700 font-mono text-base">PST-001</span>
-                  </div>
-                  <div>
-                    <span className="text-xs text-slate-400 block font-semibold">KODE RUANG LAB</span>
-                    <span className="font-extrabold text-slate-800 font-mono text-base">LOK-01</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="mt-8 pt-4 border-t border-slate-200/80 flex justify-between items-center text-xs text-slate-500">
-              <span>Dicetak secara digital oleh sistem CBT</span>
-              <Button variant="outline" size="xs" icon="fa-print">Cetak Kartu Ujian</Button>
-            </div>
-          </div>
-        </div>
-      )
-    },
+  const tes = [
+    { nama_tes: 'Tes Kompetensi Dasar & Pengetahuan Umum', tanggal: '20 Juli 2026', benar: 85, persen: 85 },
+    { nama_tes: 'Tes Bahasa Indonesia & Bahasa Inggris', tanggal: '20 Juli 2026', benar: 78, persen: 78 },
   ]
 
   return (
-    <div className="w-full flex-1 flex flex-col">
-      <VerticalTabs tabs={tabs} sidebarContent={sidebarContent} className="flex-1" />
+    <div className="container mx-auto">
+      <div className="bg-white rounded-lg shadow-md overflow-hidden">
+        <div className="flex flex-col md:flex-row">
+          {/* Left Sidebar - Photo + Nav Pills */}
+          <div className="w-full md:w-1/4 p-4 border-r border-gray-200">
+            {/* Photo */}
+            <div className="w-[150px] h-[150px] rounded-full overflow-hidden bg-gray-100 border-4 border-gray-200 mx-auto mb-3 mt-2">
+              <div className="w-full h-full flex items-center justify-center text-5xl text-gray-300">
+                <i className="fas fa-user"></i>
+              </div>
+            </div>
+            <div className="text-center font-bold text-sm mt-1">{peserta.nopes}</div>
+            <div className="text-center text-sm text-gray-600 mb-4">{peserta.nama}</div>
+
+            {/* Nav Pills */}
+            <div className="flex flex-col gap-1">
+              {tabs.map(tab => (
+                <a
+                  key={tab.id}
+                  href="javascript:void(0)"
+                  onClick={() => setActiveTab(tab.id)}
+                  className="flex items-center gap-3 px-4 py-2.5 rounded text-sm transition-all duration-200"
+                  style={{
+                    color: activeTab === tab.id ? '#fff' : '#855b2f',
+                    backgroundColor: activeTab === tab.id ? '#855b2f' : 'transparent',
+                    fontWeight: activeTab === tab.id ? '600' : '400',
+                  }}
+                >
+                  <span className={`fas ${tab.icon} w-5`}></span>
+                  {tab.label}
+                </a>
+              ))}
+            </div>
+          </div>
+
+          {/* Right Content */}
+          <div className="w-full md:w-3/4 p-4">
+            <div className="border border-gray-200 rounded-lg p-4 min-h-[400px]">
+              
+              {/* Home Tab */}
+              {activeTab === 'home' && (
+                <div>
+                  <h6 className="font-bold text-base mb-4 flex items-center gap-2">
+                    <span className="fas fa-comments mr-2 text-[#855b2f]"></span>
+                    Selamat Datang {peserta.nama}
+                  </h6>
+
+                  {/* Alert info */}
+                  <div className="bg-blue-50 border border-blue-200 text-blue-800 px-4 py-3 rounded text-sm mb-4">
+                    Peserta {peserta.nopes} sudah diterima. Silakan cek jadwal ujian di menu Jadwal Ujian.
+                  </div>
+
+                  {/* Score Cards */}
+                  {tes.map((row, i) => (
+                    <div key={i} className="bg-white border border-gray-200 rounded-lg shadow-sm p-4 mb-4 flex items-center gap-4">
+                      {/* Circular Progress */}
+                      <div className="relative w-20 h-20 flex-shrink-0">
+                        <svg className="w-20 h-20 transform -rotate-90" viewBox="0 0 36 36">
+                          <path
+                            d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                            fill="none"
+                            stroke="#e5e7eb"
+                            strokeWidth="3"
+                          />
+                          <path
+                            d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                            fill="none"
+                            stroke="#855b2f"
+                            strokeWidth="3"
+                            strokeDasharray={`${row.persen}, 100`}
+                          />
+                        </svg>
+                        <div className="absolute inset-0 flex items-center justify-center">
+                          <span className="text-lg font-bold text-[#855b2f]">{row.benar}</span>
+                        </div>
+                      </div>
+
+                      <div>
+                        <div className="font-bold text-sm text-gray-800">{row.nama_tes}</div>
+                        <div className="text-xs text-gray-500 mt-1">{row.tanggal}</div>
+                      </div>
+                    </div>
+                  ))}
+
+                  {/* Start Exam Button */}
+                  <div className="bg-gray-50 border border-gray-200 rounded-lg p-5 flex flex-col sm:flex-row items-center justify-between gap-4 mt-4">
+                    <div>
+                      <div className="font-bold text-base text-gray-800">Tes Kompetensi Dasar (CBT)</div>
+                      <div className="text-xs text-gray-500 mt-1 flex items-center gap-3">
+                        <span><i className="far fa-calendar-alt text-[#855b2f]"></i> 20 Juli 2026</span>
+                        <span><i className="far fa-clock text-[#855b2f]"></i> 120 Menit</span>
+                      </div>
+                    </div>
+                    <button
+                      onClick={() => navigate('/peserta/exam/start')}
+                      className="px-8 py-3 bg-[#855b2f] hover:bg-[#5e3f1f] text-white font-bold rounded text-sm transition-colors flex items-center gap-2 shadow-md"
+                    >
+                      <i className="fas fa-play text-xs"></i> Mulai Ujian Sekarang
+                    </button>
+                  </div>
+                </div>
+              )}
+
+              {/* Profile Tab */}
+              {activeTab === 'profile' && (
+                <div>
+                  <h6 className="font-bold text-base mb-4 flex items-center gap-2">
+                    <span className="fas fa-user mr-2 text-[#855b2f]"></span>
+                    Profil Peserta
+                  </h6>
+                  <div className="space-y-3">
+                    {[
+                      ['NIP', peserta.nip],
+                      ['Nama Peserta', peserta.nama],
+                      ['Tempat Lahir', peserta.tmp_lahir],
+                      ['Tanggal Lahir', peserta.tgl_lahir],
+                      ['Jenis Kelamin', peserta.gender],
+                      ['Kotama/UO', peserta.nama_kotama],
+                      ['Satker/Balakpus', peserta.nama_ou],
+                      ['Golongan / Pangkat', peserta.pangkat],
+                      ['Jabatan', peserta.jabatan],
+                    ].map(([label, value]) => (
+                      <div key={label} className="flex flex-col sm:flex-row sm:items-center border-b border-gray-100 pb-2">
+                        <label className="text-xs text-gray-500 font-semibold sm:w-40 flex-shrink-0">{label}</label>
+                        <p className="text-sm text-gray-800 m-0">{value}&nbsp;</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Jadwal Tab */}
+              {activeTab === 'jadwal' && (
+                <div>
+                  <h6 className="font-bold text-base mb-4 flex items-center gap-2">
+                    <span className="fas fa-calendar mr-2 text-[#855b2f]"></span>
+                    Jadwal Ujian
+                  </h6>
+                  <div className="space-y-3">
+                    {[
+                      { nama: 'Tes Kompetensi Dasar & Wawasan Kebangsaan', waktu: '08:00 - 10:00 WIB', tgl: '20 Juli 2026', status: 'Siap Dikerjakan' },
+                      { nama: 'Tes Bahasa Indonesia & Bahasa Inggris Kedinasan', waktu: '10:30 - 12:00 WIB', tgl: '20 Juli 2026', status: 'Menunggu Sesi' },
+                      { nama: 'Tes Analisis Logika & Pemecahan Masalah', waktu: '13:00 - 14:30 WIB', tgl: '21 Juli 2026', status: 'Terjadwal' },
+                    ].map((j, i) => (
+                      <div key={i} className="bg-gray-50 border border-gray-200 rounded-lg p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+                        <div className="flex items-center gap-3">
+                          <div className="w-10 h-10 rounded bg-[#855b2f] text-white flex items-center justify-center text-sm">
+                            <i className="fas fa-clipboard-list"></i>
+                          </div>
+                          <div>
+                            <div className="font-bold text-sm text-gray-800">{j.nama}</div>
+                            <div className="text-xs text-gray-500 flex items-center gap-3 mt-1">
+                              <span><i className="far fa-calendar text-[#855b2f]"></i> {j.tgl}</span>
+                              <span><i className="far fa-clock text-[#855b2f]"></i> {j.waktu}</span>
+                            </div>
+                          </div>
+                        </div>
+                        <span className="text-xs px-3 py-1 rounded-full font-bold bg-green-100 text-green-800 border border-green-300">
+                          {j.status}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Kartu Tab */}
+              {activeTab === 'kartu' && (
+                <div>
+                  <h6 className="font-bold text-base mb-4 flex items-center gap-2">
+                    <span className="fas fa-id-card mr-2 text-[#855b2f]"></span>
+                    Kartu Peserta
+                  </h6>
+                  <div className="max-w-md mx-auto border-2 border-gray-200 rounded-lg p-6 bg-white">
+                    <div className="text-center border-b-2 border-dashed border-gray-200 pb-4 mb-4">
+                      <div className="w-10 h-10 rounded bg-[#855b2f] text-white flex items-center justify-center text-lg mx-auto mb-2">
+                        <i className="fas fa-graduation-cap"></i>
+                      </div>
+                      <div className="text-sm font-bold uppercase tracking-wider text-gray-800">KARTU PESERTA UJIAN</div>
+                      <div className="text-xs text-[#855b2f] font-semibold mt-1">SISTEM CAT KEMHAN 2026</div>
+                    </div>
+
+                    <div className="flex items-start gap-4">
+                      <div className="w-24 h-32 bg-gray-100 rounded flex flex-col items-center justify-center text-gray-400 border-2 border-gray-200 flex-shrink-0">
+                        <i className="fas fa-user text-3xl mb-1"></i>
+                        <span className="text-[9px] font-bold text-gray-500">Pas Foto 3x4</span>
+                      </div>
+                      <div className="text-xs space-y-2 flex-1">
+                        <div className="border-b border-gray-100 pb-1">
+                          <span className="text-gray-400 block font-semibold text-[10px]">NAMA LENGKAP</span>
+                          <span className="font-bold text-gray-800">{peserta.nama}</span>
+                        </div>
+                        <div className="border-b border-gray-100 pb-1">
+                          <span className="text-gray-400 block font-semibold text-[10px]">NIP</span>
+                          <span className="font-bold text-gray-800 font-mono">{peserta.nip}</span>
+                        </div>
+                        <div className="grid grid-cols-2 gap-2">
+                          <div>
+                            <span className="text-gray-400 block font-semibold text-[10px]">USERNAME</span>
+                            <span className="font-bold text-[#855b2f] font-mono">{peserta.nopes}</span>
+                          </div>
+                          <div>
+                            <span className="text-gray-400 block font-semibold text-[10px]">RUANG</span>
+                            <span className="font-bold text-gray-800 font-mono">LOK-01</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="mt-4 pt-3 border-t border-gray-200 text-center">
+                      <button 
+                        onClick={() => window.print()}
+                        className="px-4 py-2 border border-[#855b2f] text-[#855b2f] rounded text-xs font-bold hover:bg-[#855b2f] hover:text-white transition-colors"
+                      >
+                        <i className="fas fa-print mr-1"></i> Cetak Kartu Ujian
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   )
 }

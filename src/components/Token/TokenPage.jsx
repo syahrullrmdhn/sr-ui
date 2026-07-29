@@ -36,15 +36,15 @@ export default function TokenPage() {
         {/* Card Generator Token - Full Width */}
         <Card className="flex-1 flex flex-col w-full shadow-sm">
           <CardHeader>Generator Token Keamanan</CardHeader>
-          <CardBody className="flex-1 flex flex-col justify-between p-6 font-sans">
-            {/* Clean Solid #f8f5f1 Token Box without gradient */}
-            <div className="bg-[#f8f5f1] border-2 border-[#e8d9c7] p-6 md:p-8 rounded-2xl text-center shadow-inner my-auto relative overflow-hidden">
-              <div className="absolute -top-10 -right-10 w-28 h-28 rounded-full bg-[#a86e2f]/10 blur-sm pointer-events-none"></div>
-              <div className="text-xs font-bold tracking-widest text-[#a86e2f] uppercase mb-2 flex items-center justify-center gap-1.5">
-                <i className="fas fa-lock text-[#a86e2f]"></i> KODE TOKEN AKTIF SESI UJIAN
+          <CardBody className="flex-1 flex flex-col justify-between p-6 font-['Roboto']">
+            {/* Clean Solid #F4F6F9 Token Box without gradient */}
+            <div className="bg-[#F4F6F9] border-2 border-[#d4c4ab] p-6 md:p-8 rounded-2xl text-center shadow-inner my-auto relative overflow-hidden">
+              <div className="absolute -top-10 -right-10 w-28 h-28 rounded-full bg-[#855b2f]/10 blur-sm pointer-events-none"></div>
+              <div className="text-xs font-bold tracking-widest text-[#855b2f] uppercase mb-2 flex items-center justify-center gap-1.5">
+                <i className="fas fa-lock text-[#855b2f]"></i> KODE TOKEN AKTIF SESI UJIAN
               </div>
-              <div className="text-5xl md:text-6xl font-extrabold text-[#2c2c2c] tracking-[10px] font-sans my-4 drop-shadow-2xs">{token}</div>
-              <div className="text-xs text-[#6b5e52] font-bold mt-2">
+              <div className="text-5xl md:text-6xl font-extrabold text-[#333333] tracking-[10px] font-['Roboto'] my-4 drop-shadow-2xs">{token}</div>
+              <div className="text-xs text-[#5A5A5A] font-bold mt-2">
                 Bagikan token ini hanya kepada peserta yang sudah hadir dan siap di dalam ruang ujian.
               </div>
             </div>

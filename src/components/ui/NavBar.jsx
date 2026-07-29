@@ -32,8 +32,8 @@ export default function NavBar({
 }) {
   return (
     <nav
-      className={'flex items-center justify-between gap-3 px-4 py-2.5 bg-[#f8f5f1]/70 ' +
-        (bordered ? 'border border-[#e8d9c7]/60 rounded-xl ' : '') + className}
+      className={'flex items-center justify-between gap-3 px-4 py-2.5 bg-[#F4F6F9]/70 ' +
+        (bordered ? 'border border-[#d4c4ab]/60 rounded-xl ' : '') + className}
       {...props}
     >
       {/* Left items */}

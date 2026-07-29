@@ -28,9 +28,9 @@ const MsgCtx = createContext()
 const variantConfig = {
   success: { icon: 'fa-circle-check', color: 'text-[#4a9c6e]', bg: 'bg-[#4a9c6e]/10', border: 'border-[#4a9c6e]/20', btnVariant: 'success' },
   danger:  { icon: 'fa-circle-xmark', color: 'text-rose-600', bg: 'bg-rose-50', border: 'border-rose-200', btnVariant: 'danger' },
-  warning: { icon: 'fa-triangle-exclamation', color: 'text-[#d97e2f]', bg: 'bg-[#d97e2f]/10', border: 'border-[#d97e2f]/20', btnVariant: 'warning' },
+  warning: { icon: 'fa-triangle-exclamation', color: 'text-[#ff9800]', bg: 'bg-[#ff9800]/10', border: 'border-[#ff9800]/20', btnVariant: 'warning' },
   info:    { icon: 'fa-circle-info', color: 'text-[#2f69a8]', bg: 'bg-[#2f69a8]/10', border: 'border-[#2f69a8]/20', btnVariant: 'info' },
-  question:{ icon: 'fa-circle-question', color: 'text-[#a86e2f]', bg: 'bg-[#a86e2f]/10', border: 'border-[#a86e2f]/20', btnVariant: 'primary' },
+  question:{ icon: 'fa-circle-question', color: 'text-[#855b2f]', bg: 'bg-[#855b2f]/10', border: 'border-[#855b2f]/20', btnVariant: 'primary' },
 }
 
 export function MessageBoxProvider({ children }) {
@@ -65,10 +65,10 @@ export function MessageBoxProvider({ children }) {
     <MsgCtx.Provider value={{ confirm, alert }}>
       {children}
       {state && createPortal(
-        <div className="fixed inset-0 z-[999997] flex items-center justify-center p-4 font-sans">
-          <div className="fixed inset-0 bg-[#2c2c2c]/50 backdrop-blur-sm animate-[fadeIn_0.15s_ease-out]" onClick={() => state.type === 'confirm' && handleClose(false)} />
+        <div className="fixed inset-0 z-[999997] flex items-center justify-center p-4 font-['Roboto']">
+          <div className="fixed inset-0 bg-[#333333]/50 backdrop-blur-sm animate-[fadeIn_0.15s_ease-out]" onClick={() => state.type === 'confirm' && handleClose(false)} />
 
-          <div className="relative bg-white rounded-2xl shadow-2xl border border-[#e8d9c7] w-full max-w-sm animate-[modalIn_0.25s_cubic-bezier(0.16,1,0.3,1)] overflow-hidden">
+          <div className="relative bg-white rounded-2xl shadow-2xl border border-[#d4c4ab] w-full max-w-sm animate-[modalIn_0.25s_cubic-bezier(0.16,1,0.3,1)] overflow-hidden">
             {/* Content */}
             <div className="p-6 flex flex-col items-center text-center gap-4">
               {displayIcon && (
@@ -77,8 +77,8 @@ export function MessageBoxProvider({ children }) {
                 </div>
               )}
               <div>
-                <h3 className="font-bold text-lg text-[#2c2c2c] tracking-tight mb-2">{state.title}</h3>
-                <p className="text-sm text-[#6b5e52] leading-relaxed">{state.message}</p>
+                <h3 className="font-bold text-lg text-[#333333] tracking-tight mb-2">{state.title}</h3>
+                <p className="text-sm text-[#5A5A5A] leading-relaxed">{state.message}</p>
               </div>
             </div>
 

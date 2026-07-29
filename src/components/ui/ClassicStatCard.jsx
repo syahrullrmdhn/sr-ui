@@ -2,19 +2,19 @@ import React from 'react'
 
 const themes = {
   bronze: {
-    bg: 'bg-[#a86e2f]',
-    footer: 'bg-[#895823]/60 hover:bg-[#895823]',
+    bg: 'bg-[#855b2f]',
+    footer: 'bg-[#5e3f1f]/60 hover:bg-[#5e3f1f]',
   },
   gold: {
     bg: 'bg-[#b36523]',
-    footer: 'bg-[#895823]/60 hover:bg-[#895823]',
+    footer: 'bg-[#5e3f1f]/60 hover:bg-[#5e3f1f]',
   },
   blue: {
     bg: 'bg-[#2f69a8]',
     footer: 'bg-[#224c7a]/60 hover:bg-[#224c7a]',
   },
   orange: {
-    bg: 'bg-[#d97e2f]',
+    bg: 'bg-[#ff9800]',
     footer: 'bg-[#b36523]/60 hover:bg-[#b36523]',
   },
   red: {
@@ -26,7 +26,7 @@ const themes = {
     footer: 'bg-[#3a7d57]/60 hover:bg-[#3a7d57]',
   },
   teal: {
-    bg: 'bg-[#2fa86e]',
+    bg: 'bg-[#4caf50]',
     footer: 'bg-[#237d52]/60 hover:bg-[#237d52]',
   },
   purple: {
@@ -55,7 +55,7 @@ export default function ClassicStatCard({
   const currentTheme = themes[colorTheme] || themes.bronze
 
   return (
-    <div className={`relative rounded-2xl overflow-hidden shadow-sm ${currentTheme.bg} flex flex-col text-white transition-transform hover:-translate-y-1 duration-300 w-full border border-white/15 font-sans ${className}`}>
+    <div className={`relative rounded-2xl overflow-hidden shadow-sm ${currentTheme.bg} flex flex-col text-white transition-transform hover:-translate-y-1 duration-300 w-full border border-white/15 font-['Roboto'] ${className}`}>
       {/* Decorative Bubble Effects ("bubble bubble gitu") */}
       <div className="absolute -top-6 -right-6 w-28 h-28 rounded-full bg-white/10 blur-[2px] pointer-events-none animate-bubble"></div>
       <div className="absolute top-10 right-1/3 w-16 h-16 rounded-full bg-white/10 blur-[1px] pointer-events-none animate-bubble-delayed"></div>
@@ -64,7 +64,7 @@ export default function ClassicStatCard({
       <i className={`fas ${icon} absolute -bottom-4 -right-2 text-7xl text-white opacity-15 pointer-events-none z-0`}></i>
       
       <div className="p-5 flex-1 relative z-10">
-        <div className="text-4xl font-extrabold tracking-tight mb-1 font-sans">{value}</div>
+        <div className="text-4xl font-extrabold tracking-tight mb-1 font-['Roboto']">{value}</div>
         <div className="text-white/95 text-sm font-bold truncate">{title}</div>
       </div>
       {(footerText || onClick) && (

@@ -37,7 +37,7 @@ const InlineEditor = ({ type, value, options, onChange, onBlur, autoFocus, align
         type="checkbox"
         defaultChecked={value === true || value === '1' || value === 1}
         onChange={(e) => onChange(e.target.checked)}
-        className="w-4 h-4 rounded border-slate-300 accent-[#a86e2f] cursor-pointer"
+        className="w-4 h-4 rounded border-slate-300 accent-[#855b2f] cursor-pointer"
       />
     )
   }
@@ -48,7 +48,7 @@ const InlineEditor = ({ type, value, options, onChange, onBlur, autoFocus, align
         ref={ref}
         defaultValue={value || ''}
         onChange={(e) => { onChange(e.target.value); if (onBlur) onBlur(e.target.value) }}
-        className="w-full px-2 py-1 text-xs bg-white border border-[#a86e2f] rounded-lg outline-none focus:ring-2 focus:ring-[#a86e2f]/20"
+        className="w-full px-2 py-1 text-xs bg-white border border-[#855b2f] rounded-lg outline-none focus:ring-2 focus:ring-[#855b2f]/20"
         style={{ textAlign: align || 'left' }}
       >
         <option value="">-</option>
@@ -65,7 +65,7 @@ const InlineEditor = ({ type, value, options, onChange, onBlur, autoFocus, align
         <div className="flex-1 h-2 bg-slate-200 rounded-full overflow-hidden">
           <div
             className={`h-full rounded-full transition-all ${
-              value < 25 ? 'bg-rose-500' : value <= 75 ? 'bg-[#d97e2f]' : 'bg-[#4a9c6e]'
+              value < 25 ? 'bg-rose-500' : value <= 75 ? 'bg-[#ff9800]' : 'bg-[#4a9c6e]'
             }`}
             style={{ width: (value || 0) + '%' }}
           />
@@ -86,7 +86,7 @@ const InlineEditor = ({ type, value, options, onChange, onBlur, autoFocus, align
         if (e.key === 'Enter') { e.target.blur() }
         if (e.key === 'Escape') { e.target.value = value || ''; e.target.blur() }
       }}
-      className="w-full px-2 py-1 text-xs bg-white border border-[#a86e2f] rounded-lg outline-none focus:ring-2 focus:ring-[#a86e2f]/20"
+      className="w-full px-2 py-1 text-xs bg-white border border-[#855b2f] rounded-lg outline-none focus:ring-2 focus:ring-[#855b2f]/20"
       style={{ textAlign: align || 'left' }}
     />
   )
@@ -363,7 +363,7 @@ const DataTable = forwardRef(function DataTable({
           checked={!!row[col.accessor]}
           onChange={(e) => handleCellChange(actualIndex, colIndex, col.accessor, e.target.checked)}
           disabled={isLocked || isCellDisabled}
-          className="w-4 h-4 rounded border-slate-300 accent-[#a86e2f] cursor-pointer"
+          className="w-4 h-4 rounded border-slate-300 accent-[#855b2f] cursor-pointer"
         />
       )
     }
@@ -385,7 +385,7 @@ const DataTable = forwardRef(function DataTable({
             <i className="fas fa-search absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
             <input
               type="text"
-              className="w-full pl-9 pr-4 py-2 text-xs md:text-sm bg-slate-50/60 border border-slate-200/80 rounded-xl focus:bg-white focus:border-[#a86e2f] focus:ring-2 focus:ring-[#a86e2f]/20 transition-all outline-none text-slate-700 placeholder:text-slate-400"
+              className="w-full pl-9 pr-4 py-2 text-xs md:text-sm bg-slate-50/60 border border-slate-200/80 rounded-xl focus:bg-white focus:border-[#855b2f] focus:ring-2 focus:ring-[#855b2f]/20 transition-all outline-none text-slate-700 placeholder:text-slate-400"
               placeholder="Cari data..."
               value={search}
               onChange={(e) => { setSearch(e.target.value); setPage(1) }}
@@ -398,7 +398,7 @@ const DataTable = forwardRef(function DataTable({
                 <select
                   value={limit}
                   onChange={(e) => handleLimitChange(Number(e.target.value))}
-                  className="px-2 py-1.5 text-xs bg-white border border-slate-200/80 rounded-lg focus:border-[#a86e2f] outline-none font-semibold text-slate-700 cursor-pointer"
+                  className="px-2 py-1.5 text-xs bg-white border border-slate-200/80 rounded-lg focus:border-[#855b2f] outline-none font-semibold text-slate-700 cursor-pointer"
                 >
                   {pageSizeOptions.map(opt => <option key={opt} value={opt}>{opt}</option>)}
                 </select>
@@ -430,7 +430,7 @@ const DataTable = forwardRef(function DataTable({
                       <div className="flex items-center gap-1.5" style={{ justifyContent: headerAlign === 'right' ? 'flex-end' : headerAlign === 'center' ? 'center' : 'flex-start' }}>
                         <span>{col.header}</span>
                         {isSortable && orderBy === (col.dataIndex || col.accessor) && (
-                          <i className={'fas ' + (sortBy === 'ASC' ? 'fa-caret-up' : 'fa-caret-down') + ' text-[#a86e2f] text-xs'}></i>
+                          <i className={'fas ' + (sortBy === 'ASC' ? 'fa-caret-up' : 'fa-caret-down') + ' text-[#855b2f] text-xs'}></i>
                         )}
                       </div>
                     </th>
@@ -452,7 +452,7 @@ const DataTable = forwardRef(function DataTable({
                   key={row.id || ri}
                   className={
                     (onRowClick || onRowDblClick ? 'cursor-pointer ' : '') +
-                    (isSelected ? 'bg-[#a86e2f]/5 ring-1 ring-[#a86e2f]/20 ' : isError ? 'bg-rose-50 ' : 'hover:bg-slate-50/80 ') +
+                    (isSelected ? 'bg-[#855b2f]/5 ring-1 ring-[#855b2f]/20 ' : isError ? 'bg-rose-50 ' : 'hover:bg-slate-50/80 ') +
                     highlightClass + ' transition-colors'
                   }
                   onClick={() => handleRowSelect(row, actualIndex)}
@@ -513,7 +513,7 @@ const DataTable = forwardRef(function DataTable({
               </button>
               {pageNumbers[0] > 1 && <span className="px-1.5 text-slate-400">...</span>}
               {pageNumbers.map((p) => (
-                <button key={p} onClick={() => goToPage(p)} className={'px-3 py-1.5 border rounded-lg font-semibold transition-colors ' + (p === currentPage ? 'bg-[#a86e2f] text-white border-[#a86e2f] shadow-2xs' : 'border-slate-200/80 hover:bg-slate-50 text-slate-700')}>
+                <button key={p} onClick={() => goToPage(p)} className={'px-3 py-1.5 border rounded-lg font-semibold transition-colors ' + (p === currentPage ? 'bg-[#855b2f] text-white border-[#855b2f] shadow-2xs' : 'border-slate-200/80 hover:bg-slate-50 text-slate-700')}>
                   {p}
                 </button>
               ))}

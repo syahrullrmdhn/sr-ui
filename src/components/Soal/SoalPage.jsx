@@ -105,7 +105,7 @@ export default function SoalPage() {
       badge={`Total: ${soalList.reduce((s, c) => s + c.jumlahSoal, 0)} Butir Soal`}
     >
       {/* Visual Analytics Chart - Full Width */}
-      <Card className="border-none ring-1 ring-slate-200/60 w-full overflow-hidden shadow-sm font-sans">
+      <Card className="border-none ring-1 ring-slate-200/60 w-full overflow-hidden shadow-sm font-['Roboto']">
         <CardHeader>
           Statistik Komposisi Bank Soal Aktif
         </CardHeader>
@@ -119,7 +119,7 @@ export default function SoalPage() {
         </CardBody>
       </Card>
 
-      <Card className="flex-1 flex flex-col w-full shadow-sm font-sans">
+      <Card className="flex-1 flex flex-col w-full shadow-sm font-['Roboto']">
         <CardHeader action={
           <div className="flex flex-wrap items-center gap-2">
             <Button variant="accent" size="sm" icon="fa-edit" onClick={() => navigate('/admin/soal/editor')}>

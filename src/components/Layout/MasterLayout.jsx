@@ -5,44 +5,44 @@ export default function MasterLayout() {
   const navigate = useNavigate()
 
   return (
-    <div className="min-h-screen bg-[#f8f5f1] font-sans flex flex-col w-full overflow-x-hidden text-[#2c2c2c]">
-      <header className="bg-[#a86e2f] shadow-md flex items-center justify-between px-6 md:px-10 h-[72px] sticky top-0 z-50 w-full border-b border-white/10">
-        
-        {/* Logo Kiri */}
-        <div className="flex items-center gap-4 text-white">
-          <div className="w-12 h-12 bg-white/15 backdrop-blur-sm rounded-xl flex items-center justify-center text-2xl shadow-inner border border-white/20 text-[#e8d9c7]">
-            <i className="fas fa-graduation-cap"></i>
+    <div className="min-h-screen flex flex-col w-full overflow-x-hidden" style={{fontFamily:"'Roboto', sans-serif", backgroundColor:'#E9E9E9'}}>
+      {/* Background header strip */}
+      <div className="fixed top-0 left-0 right-0 h-[197px] z-[-1]" style={{backgroundColor:'#855b2f', backgroundImage:'url(/assets/img/bg-header-new.png)'}}></div>
+      
+      {/* Header */}
+      <header className="flex items-center justify-between px-5 md:px-10 pt-6 pb-6 w-full mx-5 max-w-none" style={{color:'#fff'}}>
+        {/* Logo Left */}
+        <div className="flex items-center">
+          <div className="w-[70px] h-[70px] mr-5 bg-white/20 rounded-lg flex items-center justify-center">
+            <i className="fas fa-graduation-cap text-white text-3xl"></i>
           </div>
           <div>
-            <h2 className="text-base md:text-lg font-bold tracking-wide m-0 text-white">{systemInfo.organization}</h2>
-            <h6 className="text-[10px] md:text-[11px] font-semibold tracking-widest text-[#e8d9c7] uppercase mt-0.5 m-0">
-              {systemInfo.name}
-            </h6>
+            <h2 className="text-xl font-bold m-0 text-white">{systemInfo.organization}</h2>
+            <h2 className="text-base font-normal m-0 text-white/90">{systemInfo.office}</h2>
+            <h6 className="text-sm font-light tracking-[4px] mt-1 m-0 text-white/80">{systemInfo.name}</h6>
           </div>
         </div>
 
-        {/* Profil Kanan */}
-        <div className="flex items-center text-white">
-          <div className="hidden md:flex flex-col items-end mr-4">
+        {/* User Right */}
+        <div className="flex items-center ml-auto">
+          <div className="text-right mr-4">
             <h6 className="text-sm font-bold m-0 text-white">Peserta Ujian</h6>
-            <span className="text-[10px] text-[#e8d9c7] font-semibold">Sedang Aktif</span>
+            <a 
+              href="javascript:;" 
+              className="inline-block bg-white text-[#359AE2] px-5 py-1 rounded-full text-xs font-bold no-underline hover:opacity-80 transition-opacity"
+              onClick={(e) => { e.preventDefault(); navigate('/'); }}
+            >
+              Logout
+            </a>
           </div>
-          
-          <div className="w-10 h-10 bg-white/15 backdrop-blur-sm rounded-full flex items-center justify-center text-lg shadow-inner border border-white/20 mr-5 text-[#f8f5f1]">
-            <i className="fas fa-user-graduate"></i>
+          <div className="w-10 h-10 rounded-[10px] bg-black/30 flex items-center justify-center text-2xl text-white" style={{padding:'10px 20px'}}>
+            <span className="fas fa-user-graduate"></span>
           </div>
-          
-          {/* Tombol Logout elegan dengan efek glassmorphism */}
-          <button 
-            onClick={() => navigate('/')} 
-            className="bg-white/15 hover:bg-rose-500 hover:border-rose-400 border border-white/25 text-white px-5 py-2 rounded-full text-xs font-bold cursor-pointer transition-all duration-300 shadow-sm flex items-center gap-2"
-          >
-            <i className="fas fa-power-off text-[10px]"></i> Selesai
-          </button>
         </div>
       </header>
       
-      <main className="w-full flex-1 flex flex-col p-4 md:p-6 overflow-y-auto">
+      {/* Content Area */}
+      <main className="w-full flex-1 flex flex-col px-5 md:px-10 overflow-y-auto">
         <div className="w-full min-h-full flex-1 flex flex-col">
           <Outlet />
         </div>

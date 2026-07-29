@@ -23,29 +23,29 @@ export default function SoalEditorPage() {
       <h3>Soal Analisis Numerik & Kecepatan</h3>
       <p>Sebuah kendaraan taktis milik instansi melaju dari Kota A menuju Kota B dengan kecepatan awal \( v_0 = 40 \\text{ km/jam} \). Setelah menempuh jarak selama 2 jam, kecepatan dinaikkan menjadi 60 km/jam. Berikut adalah rekapitulasi waktu tempuh dan konsumsi bahan bakar selama perjalanan:</p>
       
-      <table style="width: 100%; border-collapse: collapse; margin: 12px 0; border: 1px solid #e8d9c7;">
+      <table style="width: 100%; border-collapse: collapse; margin: 12px 0; border: 1px solid #d4c4ab;">
         <thead>
-          <tr style="background-color: #f8f5f1; color: #2c2c2c;">
-            <th style="border: 1px solid #e8d9c7; padding: 10px; text-align: left;">Sesi Perjalanan</th>
-            <th style="border: 1px solid #e8d9c7; padding: 10px; text-align: left;">Kecepatan Rata-rata</th>
-            <th style="border: 1px solid #e8d9c7; padding: 10px; text-align: left;">Durasi Waktu</th>
+          <tr style="background-color: #F4F6F9; color: #333333;">
+            <th style="border: 1px solid #d4c4ab; padding: 10px; text-align: left;">Sesi Perjalanan</th>
+            <th style="border: 1px solid #d4c4ab; padding: 10px; text-align: left;">Kecepatan Rata-rata</th>
+            <th style="border: 1px solid #d4c4ab; padding: 10px; text-align: left;">Durasi Waktu</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td style="border: 1px solid #e8d9c7; padding: 10px;">Tahap Pertama</td>
-            <td style="border: 1px solid #e8d9c7; padding: 10px;">40 km/jam</td>
-            <td style="border: 1px solid #e8d9c7; padding: 10px;">2 Jam</td>
+            <td style="border: 1px solid #d4c4ab; padding: 10px;">Tahap Pertama</td>
+            <td style="border: 1px solid #d4c4ab; padding: 10px;">40 km/jam</td>
+            <td style="border: 1px solid #d4c4ab; padding: 10px;">2 Jam</td>
           </tr>
-          <tr style="background-color: #f8f5f1/40;">
-            <td style="border: 1px solid #e8d9c7; padding: 10px;">Tahap Kedua</td>
-            <td style="border: 1px solid #e8d9c7; padding: 10px;">60 km/jam</td>
-            <td style="border: 1px solid #e8d9c7; padding: 10px;">3,5 Jam</td>
+          <tr style="background-color: #F4F6F9/40;">
+            <td style="border: 1px solid #d4c4ab; padding: 10px;">Tahap Kedua</td>
+            <td style="border: 1px solid #d4c4ab; padding: 10px;">60 km/jam</td>
+            <td style="border: 1px solid #d4c4ab; padding: 10px;">3,5 Jam</td>
           </tr>
         </tbody>
       </table>
 
-      <div style="background-color: #f8f5f1; border-left: 4px solid #2f69a8; padding: 12px 16px; border-radius: 8px; margin: 12px 0;">
+      <div style="background-color: #F4F6F9; border-left: 4px solid #2f69a8; padding: 12px 16px; border-radius: 8px; margin: 12px 0;">
         <strong style="color: #2f69a8;"><i class="fas fa-info-circle"></i> Catatan Parameter:</strong> Abaikan hambatan angin dan kondisi lalu lintas.
       </div>
       <p>Berapakah total jarak tempuh (\( S_{total} \)) dari Kota A sampai Kota B?</p>
@@ -63,7 +63,7 @@ export default function SoalEditorPage() {
         <li>Jarak Tahap 2 (\( S_2 \)) = Kecepatan × Waktu = \( 60 \\times 3,5 = 210 \\text{ km} \)</li>
         <li>Total Jarak (\( S_{total} \)) = \( S_1 + S_2 = 80 + 210 = 290 \\text{ km} \)</li>
       </ul>
-      <p>Oleh karena itu, kunci jawaban yang tepat adalah <span style="background-color: #2fa86e; color: white; padding: 2px 6px; border-radius: 4px; font-weight: bold;">Opsi C</span>.</p>
+      <p>Oleh karena itu, kunci jawaban yang tepat adalah <span style="background-color: #4caf50; color: white; padding: 2px 6px; border-radius: 4px; font-weight: bold;">Opsi C</span>.</p>
     `
   })
 
@@ -79,7 +79,7 @@ export default function SoalEditorPage() {
   }
 
   return (
-    <div className="space-y-6 w-full font-sans text-[#2c2c2c] pb-10">
+    <div className="space-y-6 w-full font-['Roboto'] text-[#333333] pb-10">
       {/* Banner Utama */}
       <PageBanner
         title="Editor Butir Soal CBT (Rich Text Editor)"
@@ -99,7 +99,7 @@ export default function SoalEditorPage() {
       />
 
       {/* Info Metadata Butir Soal */}
-      <Card className="shadow-sm border border-[#e8d9c7]">
+      <Card className="shadow-sm border border-[#d4c4ab]">
         <CardHeader actions={
           <Badge variant="accent" dot><i className="fas fa-check"></i> Mode Editor CBT Aktif</Badge>
         }>
@@ -156,12 +156,12 @@ export default function SoalEditorPage() {
       <div className="flex flex-col lg:flex-row gap-6">
         <div className="w-full lg:w-3/4 flex flex-col space-y-6">
           {/* Menu Tab Switcher */}
-          <div className="flex gap-2 bg-white p-2 rounded-2xl border border-[#e8d9c7] shadow-2xs">
+          <div className="flex gap-2 bg-white p-2 rounded-2xl border border-[#d4c4ab] shadow-2xs">
             <button
               type="button"
               onClick={() => setActiveTab('stem')}
               className={`flex-1 py-3 px-4 rounded-xl font-bold text-sm transition-all cursor-pointer flex items-center justify-center gap-2 ${
-                activeTab === 'stem' ? 'bg-[#a86e2f] text-white shadow-sm ring-1 ring-[#a86e2f]/20' : 'text-[#6b5e52] hover:bg-[#f8f5f1]'
+                activeTab === 'stem' ? 'bg-[#855b2f] text-white shadow-sm ring-1 ring-[#855b2f]/20' : 'text-[#5A5A5A] hover:bg-[#F4F6F9]'
               }`}
             >
               <i className="fas fa-edit"></i> 1. Stem Pertanyaan Soal
@@ -170,7 +170,7 @@ export default function SoalEditorPage() {
               type="button"
               onClick={() => setActiveTab('opsi')}
               className={`flex-1 py-3 px-4 rounded-xl font-bold text-sm transition-all cursor-pointer flex items-center justify-center gap-2 ${
-                activeTab === 'opsi' ? 'bg-[#a86e2f] text-white shadow-sm ring-1 ring-[#a86e2f]/20' : 'text-[#6b5e52] hover:bg-[#f8f5f1]'
+                activeTab === 'opsi' ? 'bg-[#855b2f] text-white shadow-sm ring-1 ring-[#855b2f]/20' : 'text-[#5A5A5A] hover:bg-[#F4F6F9]'
               }`}
             >
               <i className="fas fa-list-ol"></i> 2. Opsi Jawaban (A-E)
@@ -179,7 +179,7 @@ export default function SoalEditorPage() {
               type="button"
               onClick={() => setActiveTab('pembahasan')}
               className={`flex-1 py-3 px-4 rounded-xl font-bold text-sm transition-all cursor-pointer flex items-center justify-center gap-2 ${
-                activeTab === 'pembahasan' ? 'bg-[#a86e2f] text-white shadow-sm ring-1 ring-[#a86e2f]/20' : 'text-[#6b5e52] hover:bg-[#f8f5f1]'
+                activeTab === 'pembahasan' ? 'bg-[#855b2f] text-white shadow-sm ring-1 ring-[#855b2f]/20' : 'text-[#5A5A5A] hover:bg-[#F4F6F9]'
               }`}
             >
               <i className="fas fa-lightbulb"></i> 3. Pembahasan & Kunci
@@ -188,7 +188,7 @@ export default function SoalEditorPage() {
 
           {/* Area Editor Sesuai Tab */}
           {activeTab === 'stem' && (
-            <Card className="shadow-sm border border-[#e8d9c7]">
+            <Card className="shadow-sm border border-[#d4c4ab]">
               <CardHeader>Penyuntingan Rich Text Stem Pertanyaan Utama</CardHeader>
               <CardBody className="p-6">
                 <RichTextEditor
@@ -203,7 +203,7 @@ export default function SoalEditorPage() {
           )}
 
           {activeTab === 'opsi' && (
-            <Card className="shadow-sm border border-[#e8d9c7]">
+            <Card className="shadow-sm border border-[#d4c4ab]">
               <CardHeader>Penyuntingan Opsi Pilihan Ganda (A - E)</CardHeader>
               <CardBody className="p-6 space-y-4">
                 {['A', 'B', 'C', 'D', 'E'].map((letter) => {
@@ -211,20 +211,20 @@ export default function SoalEditorPage() {
                   const keyName = `opsi${letter}`
                   
                   return (
-                    <div key={letter} className={`p-4 rounded-2xl border transition-all ${isCorrect ? 'bg-[#f8f5f1] border-[#a86e2f] ring-2 ring-[#a86e2f]/15' : 'bg-white border-[#e8d9c7]'}`}>
+                    <div key={letter} className={`p-4 rounded-2xl border transition-all ${isCorrect ? 'bg-[#F4F6F9] border-[#855b2f] ring-2 ring-[#855b2f]/15' : 'bg-white border-[#d4c4ab]'}`}>
                       <div className="flex items-center justify-between mb-2">
                         <div className="flex items-center gap-2.5">
-                          <span className={`w-8 h-8 rounded-xl font-extrabold flex items-center justify-center text-sm ${isCorrect ? 'bg-[#a86e2f] text-white' : 'bg-[#f8f5f1] text-[#2c2c2c] border border-[#e8d9c7]'}`}>
+                          <span className={`w-8 h-8 rounded-xl font-extrabold flex items-center justify-center text-sm ${isCorrect ? 'bg-[#855b2f] text-white' : 'bg-[#F4F6F9] text-[#333333] border border-[#d4c4ab]'}`}>
                             {letter}
                           </span>
-                          <span className="font-bold text-sm text-[#2c2c2c]">Pilihan Jawaban {letter}</span>
+                          <span className="font-bold text-sm text-[#333333]">Pilihan Jawaban {letter}</span>
                           {isCorrect && <Badge variant="primary" dot>Kunci Jawaban Benar</Badge>}
                         </div>
                         <button
                           type="button"
                           onClick={() => setQuestionData({ ...questionData, kunciJawaban: letter })}
                           className={`px-3 py-1 rounded-lg text-xs font-bold cursor-pointer transition-colors ${
-                            isCorrect ? 'bg-[#2fa86e] text-white shadow-2xs' : 'bg-[#f8f5f1] text-[#6b5e52] hover:bg-[#e8d9c7]'
+                            isCorrect ? 'bg-[#4caf50] text-white shadow-2xs' : 'bg-[#F4F6F9] text-[#5A5A5A] hover:bg-[#d4c4ab]'
                           }`}
                         >
                           {isCorrect ? '✓ Dipilih sebagai Kunci' : 'Jadikan Kunci Jawaban'}
@@ -243,11 +243,11 @@ export default function SoalEditorPage() {
           )}
 
           {activeTab === 'pembahasan' && (
-            <Card className="shadow-sm border border-[#e8d9c7]">
+            <Card className="shadow-sm border border-[#d4c4ab]">
               <CardHeader>Penyuntingan Rich Text Pembahasan & Solusi Akhir</CardHeader>
               <CardBody className="p-6 space-y-5">
-                <div className="flex items-center justify-between p-4 rounded-xl bg-[#f8f5f1] border border-[#e8d9c7]">
-                  <div className="font-bold text-sm text-[#2c2c2c]">Kunci Jawaban yang Ditetapkan:</div>
+                <div className="flex items-center justify-between p-4 rounded-xl bg-[#F4F6F9] border border-[#d4c4ab]">
+                  <div className="font-bold text-sm text-[#333333]">Kunci Jawaban yang Ditetapkan:</div>
                   <div className="flex items-center gap-2">
                     {['A', 'B', 'C', 'D', 'E'].map((opt) => (
                       <button
@@ -255,7 +255,7 @@ export default function SoalEditorPage() {
                         type="button"
                         onClick={() => setQuestionData({ ...questionData, kunciJawaban: opt })}
                         className={`w-9 h-9 rounded-xl font-bold transition-all cursor-pointer ${
-                          questionData.kunciJawaban === opt ? 'bg-[#a86e2f] text-white shadow-sm ring-2 ring-[#a86e2f]/30' : 'bg-white text-[#6b5e52] border border-[#e8d9c7] hover:bg-[#f8f5f1]'
+                          questionData.kunciJawaban === opt ? 'bg-[#855b2f] text-white shadow-sm ring-2 ring-[#855b2f]/30' : 'bg-white text-[#5A5A5A] border border-[#d4c4ab] hover:bg-[#F4F6F9]'
                         }`}
                       >
                         {opt}
@@ -278,40 +278,40 @@ export default function SoalEditorPage() {
 
         {/* Live Preview Panel Kanan */}
         <div className="w-full lg:w-1/4 flex flex-col space-y-6">
-          <Card className="shadow-sm border border-[#e8d9c7] sticky top-24">
-            <CardHeader actions={<i className="fas fa-desktop text-[#a86e2f]"></i>}>
+          <Card className="shadow-sm border border-[#d4c4ab] sticky top-24">
+            <CardHeader actions={<i className="fas fa-desktop text-[#855b2f]"></i>}>
               Simulator Preview Soal
             </CardHeader>
             <CardBody className="p-5 space-y-4 text-xs">
-              <div className="p-3 rounded-xl bg-[#f8f5f1] border border-[#e8d9c7]">
-                <div className="text-[10px] font-bold text-[#6b5e52] uppercase tracking-wider">Mata Ujian</div>
-                <div className="font-extrabold text-[#2c2c2c] text-sm mt-0.5">{questionData.kategori}</div>
+              <div className="p-3 rounded-xl bg-[#F4F6F9] border border-[#d4c4ab]">
+                <div className="text-[10px] font-bold text-[#5A5A5A] uppercase tracking-wider">Mata Ujian</div>
+                <div className="font-extrabold text-[#333333] text-sm mt-0.5">{questionData.kategori}</div>
               </div>
 
               <div>
-                <div className="text-[10px] font-bold text-[#6b5e52] uppercase tracking-wider mb-2">Simulasi Render Stem:</div>
+                <div className="text-[10px] font-bold text-[#5A5A5A] uppercase tracking-wider mb-2">Simulasi Render Stem:</div>
                 <div 
-                  className="p-3 rounded-xl bg-white border border-[#e8d9c7] shadow-2xs max-h-[220px] overflow-y-auto prose prose-xs"
+                  className="p-3 rounded-xl bg-white border border-[#d4c4ab] shadow-2xs max-h-[220px] overflow-y-auto prose prose-xs"
                   dangerouslySetInnerHTML={{ __html: questionData.stem }}
                 />
               </div>
 
               <div>
-                <div className="text-[10px] font-bold text-[#6b5e52] uppercase tracking-wider mb-2">Opsi & Kunci Jawaban:</div>
+                <div className="text-[10px] font-bold text-[#5A5A5A] uppercase tracking-wider mb-2">Opsi & Kunci Jawaban:</div>
                 <div className="space-y-1.5">
                   {['A', 'B', 'C', 'D', 'E'].map((letter) => {
                     const isCorrect = questionData.kunciJawaban === letter
                     return (
-                      <div key={letter} className={`flex items-center justify-between p-2 rounded-lg border text-[11px] ${isCorrect ? 'bg-[#a86e2f]/10 border-[#a86e2f] font-bold text-[#a86e2f]' : 'bg-white border-[#e8d9c7] text-[#6b5e52]'}`}>
+                      <div key={letter} className={`flex items-center justify-between p-2 rounded-lg border text-[11px] ${isCorrect ? 'bg-[#855b2f]/10 border-[#855b2f] font-bold text-[#855b2f]' : 'bg-white border-[#d4c4ab] text-[#5A5A5A]'}`}>
                         <span className="truncate"><strong>{letter}.</strong> {questionData[`opsi${letter}`]}</span>
-                        {isCorrect && <i className="fas fa-check-circle text-[#a86e2f]"></i>}
+                        {isCorrect && <i className="fas fa-check-circle text-[#855b2f]"></i>}
                       </div>
                     )
                   })}
                 </div>
               </div>
 
-              <div className="border-t border-[#e8d9c7] pt-3">
+              <div className="border-t border-[#d4c4ab] pt-3">
                 <Button variant="primary" className="w-full font-bold shadow-sm" icon="fa-check-double" onClick={handleSave}>
                   Simpan & Publish Soal
                 </Button>
